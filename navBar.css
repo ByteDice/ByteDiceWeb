@@ -1,0 +1,41 @@
+li {
+  list-style-type: none;
+  display: inline;
+  margin: calc(1px * var(--pxDensity));
+}
+ul {
+  padding: calc(1px * var(--pxDensity)) 0px;
+}
+
+.navBar {
+  background-color: var(--navBar_Inner);
+  width: calc(128px * var(--pxDensity));
+  box-shadow: calc(1px * var(--pxDensity)) 0px var(--navBar_Border),
+              calc(-1px * var(--pxDensity)) 0px var(--navBar_Border),
+              0px calc(1px * var(--pxDensity)) var(--navBar_Border),
+              0px calc(-1px * var(--pxDensity)) var(--navBar_Border),
+              0px calc(2px * var(--pxDensity)) 0px calc(1px * var(--pxDensity)) rgba(0, 0, 0, 0.5);
+}
+.navBtn {
+  background-color: transparent;
+  width: calc(12px * var(--pxDensity));
+  height: calc(12px * var(--pxDensity));
+  display: inline-block;
+  padding: 0%;
+  border: none;
+}
+.navBtnImg {
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+  margin: 0%;
+  filter: drop-shadow(0px calc(1px * var(--pxDensity)) rgba(0, 0, 0, 0.5));
+}
+.navBtnImg:hover {
+  filter: brightness(1.35)  drop-shadow(0px calc(1px * var(--pxDensity)) rgba(0, 0, 0, 0.5));
+  cursor: pointer;
+}
+.navBtnImg:active {
+  filter: brightness(0.75);
+  transform: translateY(calc(1px * var(--pxDensity)));
+}
