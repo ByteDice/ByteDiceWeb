@@ -3,9 +3,6 @@ li {
   display: inline;
   margin: calc(1px * var(--pxDensity));
 }
-ul {
-  padding: calc(1px * var(--pxDensity)) 0px;
-}
 
 .navBar {
   background-color: var(--navBar_Inner);
@@ -13,8 +10,12 @@ ul {
   box-shadow: calc(1px * var(--pxDensity)) 0px var(--navBar_Border),
               calc(-1px * var(--pxDensity)) 0px var(--navBar_Border),
               0px calc(1px * var(--pxDensity)) var(--navBar_Border),
-              0px calc(-1px * var(--pxDensity)) var(--navBar_Border),
-              0px calc(2px * var(--pxDensity)) 0px calc(1px * var(--pxDensity)) rgba(0, 0, 0, 0.5);
+              0px calc(-1px * var(--pxDensity)) var(--navBar_Border);
+
+  filter: drop-shadow(0px calc(2px * var(--pxDensity)) rgba(0, 0, 0, 0.5));
+  padding: calc(1px * var(--pxDensity)) 0px;
+  display: inline-block;
+  width: auto;
 }
 .navBtn {
   background-color: transparent;
