@@ -47,7 +47,7 @@ document.addEventListener("keydown", function(event) {
 let loadingScreenEl = document.createElement("div")
 loadingScreenEl.className = "bgDiv"
 
-let loadingImg = `<img class="loadingImg" draggable="false" src="/assets/discord_8x8.png">`
+let loadingImg = `<img class="loadingImg" draggable="false" src="/assets/byteDiceBlinkAnim_32x32.png">`
 let closeText = `
 	<button class="loadingCornerText pxFont" onclick="stopShowingLoading()">
 		Press ESC to instantly close theloading screen<br>Click me to never see it again.
