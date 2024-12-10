@@ -1,0 +1,40 @@
+.bgDiv {
+  background-color: #323232;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100vw;
+  height: 100vh;
+}
+.loadingImg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(32px * var(--pxDensity));
+  height: calc(32px * var(--pxDensity));
+  image-rendering: pixelated;
+}
+@keyframes fade-out {
+  0% {opacity: 100%;}
+  100% {opacity: 0%;}
+}
+/* custom pixel 3x5 font */
+.loadingCornerText {
+  background-color: transparent;
+  color: #ffffff;
+  border: none;
+  text-align: left;
+  position: absolute;
+  bottom: 0%;
+  left: 0%;
+  cursor: pointer;
+}
+.loadingText {
+  position: absolute;
+  bottom: 0%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: 1.5rem;
+}
