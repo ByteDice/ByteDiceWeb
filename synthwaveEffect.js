@@ -109,14 +109,12 @@ function animateSynthWave() {
     hill.widthMul *= 1.01
 
 
-    continue
-
     if (previousHill && idx != 0) {
       for (idx in previousHill.points) {
-        let startX = previousHill.points[idx][0] + previousHill.x
-        let startY = previousHill.points[idx][1] + previousHill.y
-        let endX = hill.points[idx][0] + hill.x
-        let endY = hill.points[idx][1] + hill.y
+        let startX = (previousHill.points[idx][0] * previousHill.widthMul) + ((-previousHill.width * previousHill.widthMul) / 2) + previousHill.x
+        let startY = (previousHill.points[idx][1] * previousHill.widthMul) + previousHill.y
+        let endX = (hill.points[idx][0] * hill.widthMul) + ((-hill.width * hill.widthMul) / 2) + hill.x
+        let endY = (hill.points[idx][1] * hill.widthMul) + hill.y
 
         let grad = ctx.createLinearGradient(startX, startY, endX, endY)
         let col = hill.color
