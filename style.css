@@ -1,0 +1,29 @@
+body {
+  height: 100vh;
+  background-image: radial-gradient(
+                    circle at center 50%, 
+                    #62007f 0%, 
+                    #0d0035 100%);
+  background-position: 0% 10vh;
+  overflow: hidden;
+  background-color: #dadada !important;
+}
+.synthSun {
+  width: calc(40px * var(--pxDensity));
+  height: auto;
+  aspect-ratio: 1 / 1;
+  image-rendering: pixelated;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0px 0px 100px #C1AB00)
+}
+#starNoise {
+  position: fixed;
+  width: calc(512px * var(--pxDensity));
+  height: auto;
+  aspect-ratio: 1 / 1;
+  image-rendering: pixelated;
+  transform: translate(-50%, -50%);
+}

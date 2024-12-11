@@ -52,12 +52,12 @@ class Hill {
   draw() {
     ctx.strokeStyle = `rgb(${this.color[0]}, ${this.color[1]}, ${this.color[2]})`
     ctx.lineWidth = pxDensity
+
+    let startX = (this.points[0][0] * this.widthMul) + ((-this.width * this.widthMul) / 2) + this.x
+    let startY = (this.points[0][1] * this.widthMul) + this.y
   
     ctx.beginPath()
-    ctx.moveTo(
-      (this.points[0][0] * this.widthMul) + ((-this.width * this.widthMul) / 2) + this.x,
-      (this.points[0][1] * this.widthMul) + this.y
-    )
+    ctx.moveTo(startX, startY)
   
     for (let point of this.points) {
       ctx.lineTo(
@@ -95,7 +95,7 @@ function animateSynthWave() {
   ctx.clearRect(0, 0, canvas.width, canvas.height)
 
   if (iters >= iterToNewHill) {
-    let hillInstance = new Hill(canvas.width / 2, canvas.height / 3 * 2, [0, 0, 50], 25, canvas.width, 325)
+    let hillInstance = new Hill(canvas.width / 2, canvas.height / 3 * 2, [0, 180, 240], 25, canvas.width, 325)
     hillInstance.generate(25, 50, 100)
     hills.unshift(hillInstance)
     iters = 0
@@ -104,7 +104,7 @@ function animateSynthWave() {
 
   for (let idx in hills) {
     let hill = hills[idx]
-    hill.animateStep(hill.stepSize, 1)
+    hill.animateStep(hill.stepSize, -0.2)
     hill.stepSize = -0.005
     hill.widthMul *= 1.01
 
