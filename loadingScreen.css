@@ -8,8 +8,8 @@
 }
 .loadingImg {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: round(50%, var(--pxDensityPx));
+  left: round(50%, var(--pxDensityPx));
   transform: translate(-50%, -50%);
   width: calc(32px * var(--pxDensity));
   height: calc(32px * var(--pxDensity));
@@ -30,7 +30,7 @@
   left: 0%;
   cursor: pointer;
 }
-.loadingText {
+#loadingText {
   position: absolute;
   bottom: 0%;
   left: 50%;

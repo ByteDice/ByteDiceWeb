@@ -1,7 +1,7 @@
 let pxDensity = getComputedStyle(document.body).getPropertyValue("--pxDensity")
 let pxDensityDefined = false
 
-document.addEventListener("DOMContentLoaded", function() {
+function calcPixelDensity() {
   let densityWidth =  document.documentElement.clientWidth / 256
   let densityHeight = document.documentElement.clientHeight / 164
 
@@ -12,4 +12,4 @@ document.addEventListener("DOMContentLoaded", function() {
   pxDensityDefined = true
 
   console.log("pxDensity: " + getComputedStyle(document.body).getPropertyValue("--pxDensity"))
-}, false)
+}

@@ -143,10 +143,10 @@ function animateSynthWave() {
 }
 
 
-document.addEventListener("DOMContentLoaded", function() {
+function startSynthAnimation() {
   for (i = 0; i < 350; i++) {
     animateSynthWave()
   }
 
   setInterval( animateSynthWave, 1000 / 24)
-}, false)
+}

@@ -1,53 +1,51 @@
 let isLoading = true
-let loadingScreenEl = document.createElement("div")
-loadingScreenEl.className = "bgDiv"
-
-let loadingImg = `<img class="loadingImg" draggable="false" src="/assets/byteDiceBlinkAnim_32x32.png">`
-let closeText = `
-	<button class="loadingCornerText pxFont" onclick="stopShowingLoading()">
-		Press ESC to instantly close theloading screen<br>Click me to never see it again.
-	</button>
-`
+let stopLoading = false
+let loadingScreenProgress = document.getElementById("loadingText")
+let loadingScreenEl = document.getElementById("loadingScreen")
 
 let tips = [
 	"Just don't die.",
 	"Did you know this is a tip?",
 	"Is thisn't not very un-understandable?",
   "m".repeat(200),
-  "Bad at a game? Just press the \"get good at games\" button!"
+  "Bad at a game? Just press the \"get good at games\" button!",
+  "I AM NOT A FEMBOY NOR GAY. (I support though :thumbsup:)",
+  "You should listen to that song that goes \"do do do do do do do do do.\""
 ]
 
-let loadingText = `<p class="loadingText">Loading...<br>Tip: ${tips[randomIntFrom0(tips.length)]}</p>`
-
-loadingScreenEl.innerHTML = loadingImg + closeText + loadingText
-
+let selectedTip = tips[randomIntFrom0(tips.length)]
 const showLoading = localStorage["showLoading"] || "true"
 
 
-document.addEventListener("DOMContentLoaded", function() {
-	if (showLoading != "true") { return }
+function setLoadingProgress(newText) {
+  loadingScreenProgress.innerHTML = `Loading...<br>${newText}<br><br>Tip: ${selectedTip}`
+}
 
-	document.body.appendChild(loadingScreenEl)
+
+function startLoadingScreen() {
+	loadingScreenProgress.innerHTML = `Loading...<br><br>Tip: ${selectedTip}`
 
 	const loadDur = randomFloat(3000, 6000)
 
-	setTimeout(function() {
-		removeLoadingScreen()
-	}, loadDur)
-}, false)
+	setTimeout(removeLoadingScreen, loadDur)
+}
 
 
 function removeLoadingScreen() {
   if (!isLoading) { return }
 
+  setLoadingProgress("Done!")
+
   isLoading = false
 	const fadeOutDur = 0.5
 	
-	loadingScreenEl.style.animation = `fade-out ${fadeOutDur}s forwards`
-
 	setTimeout(function() {
-		document.body.removeChild(loadingScreenEl)
-	}, fadeOutDur * 1000);
+    loadingScreenEl.style.animation = `fade-out ${fadeOutDur}s forwards`
+
+    setTimeout(function() {
+      document.body.removeChild(loadingScreenEl)
+    }, fadeOutDur * 1000)
+  }, 500)
 }
 
 

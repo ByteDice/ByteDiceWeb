@@ -50,6 +50,14 @@
     </li>
   </ul>
 
+  <div class="bgDiv" id="loadingScreen">
+    <img class="loadingImg" draggable="false" src="/assets/byteDiceBlinkAnim_32x32.png">
+    <button class="loadingCornerText pxFont" onclick="stopShowingLoading()">
+      Press ESC to instantly close the loading screen<br>Or click me to never see it again.
+    </button>
+    <p id="loadingText">Loading...<br>Loading files...<br><br>Tip: Tip loading...</p>
+  </div>
+
   <script src="/globalScript.js"></script>
   <script src="/pxDensity.js"></script>
   <script src="/synthwaveEffect.js"></script>

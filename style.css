@@ -6,7 +6,7 @@ body {
                     #0d0035 100%);
   background-position: 0% 10vh;
   overflow: hidden;
-  background-color: #dadada !important;
+  margin: 0%;
 }
 .synthSun {
   width: calc(40px * var(--pxDensity));
