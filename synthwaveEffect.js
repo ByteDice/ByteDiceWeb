@@ -101,20 +101,19 @@ function drawPixelLine(fromX, fromY, toX, toY) {
 
 
 class Hill {
-  constructor(x, y, color, xRandom, width, frameCount) {
+  constructor(x, y, color, width, frameCount) {
     this.color = color
     this.i = 0
     this.points = []
     this.x = x
     this.y = y
-    this.xRandom = xRandom
     this.frameCount = frameCount
     this.stepSize = 1
     this.width = width
     this.widthMul = 0.2
   }
 
-  generate(iterCount, maxHeight, heightOffset) {
+  generate(iterCount, maxHeight, heightOffset, xRandom) {
     let offset = 0
     let stepSize = this.width / iterCount
   
@@ -124,7 +123,7 @@ class Hill {
       let randomXOffset = undefined
 
       if (i == 0 || i == iterCount) { randomXOffset = 0 }
-      else { randomXOffset = randomInt(-this.xRandom, this.xRandom) }
+      else { randomXOffset = randomInt(-xRandom, xRandom) }
 
       this.points.push([offset + randomXOffset, randomHeight])
   
@@ -184,29 +183,39 @@ class Hill {
 }
 
 
-function connectHills(hill, previousHill, idx) {
-  if (previousHill && idx != 0) {
-    for (idx in previousHill.points) {
-      let startX = (previousHill.points[idx][0] * previousHill.widthMul) + ((-previousHill.width * previousHill.widthMul) / 2) + previousHill.x
-      let startY = (previousHill.points[idx][1] * previousHill.widthMul) + previousHill.y
-      let endX = (hill.points[idx][0] * hill.widthMul) + ((-hill.width * hill.widthMul) / 2) + hill.x
-      let endY = (hill.points[idx][1] * hill.widthMul) + hill.y
+function connectHills(hill, previousHill, idx, debug) {
+  let pHill = previousHill
+
+  if (pHill && idx != 0) {
+    for (idx in pHill.points) {
+      let startX = ((pHill.points[idx][0] * pHill.widthMul) + ((-pHill.width * pHill.widthMul) / 2) + pHill.x) / pxDensity
+      let startY = ((pHill.points[idx][1] * pHill.widthMul) + pHill.y) / pxDensity
+
+      let endX = ((hill.points[idx][0] * hill.widthMul) + ((-hill.width * hill.widthMul) / 2) + hill.x) / pxDensity
+      let endY = ((hill.points[idx][1] * hill.widthMul) + hill.y) / pxDensity
 
       let grad = ctx.createLinearGradient(startX, startY, endX, endY)
       let col = hill.color
-      let pCol = previousHill.color
+      let pCol = pHill.color
       
       grad.addColorStop(0, `rgb(${pCol[0]}, ${pCol[1]}, ${pCol[2]})`)
       grad.addColorStop(1, `rgb(${col[0]}, ${col[1]}, ${col[2]})`)
 
-      ctx.strokeStyle = grad
-      ctx.strokeStyle = "#ff0000"
-      ctx.lineWidth = pxDensity
-
       ctx.beginPath()
-      ctx.moveTo(startX, startY)
-      ctx.lineTo(endX, endY)
-      ctx.stroke()
+
+      if (debug) {
+        ctx.strokeStyle = grad
+
+        ctx.moveTo(startX * pxDensity, startY * pxDensity)
+        ctx.lineTo(endX * pxDensity, endY * pxDensity)
+        ctx.stroke()
+      }
+      else {
+        ctx.fillStyle = grad
+
+        drawPixelLine(startX, startY, endX, endY)
+        ctx.fill()
+      }
     }
   }
 }
@@ -222,8 +231,8 @@ function animateSynthWave() {
   ctx.clearRect(0, 0, canvas.width, canvas.height)
 
   if (iters >= iterToNewHill) {
-    let hillInstance = new Hill(canvas.width / 2, canvas.height / 3 * 2, [0, 180, 240], 25, canvas.width, 325)
-    hillInstance.generate(25, canvas.height / 24, 100)
+    let hillInstance = new Hill(canvas.width / 2, canvas.height / 3 * 2, [0, 180, 240], canvas.width, 325)
+    hillInstance.generate(25, canvas.height / 24, 100, 15)
     hills.unshift(hillInstance)
     iters = 0
   }
@@ -236,7 +245,7 @@ function animateSynthWave() {
     hill.stepSize = -0.005
     hill.widthMul *= 1.01
 
-    //connectHills(hill, previousHill, idx)
+    connectHills(hill, previousHill, idx, false)
 
     previousHill = hill
   }

@@ -15,11 +15,10 @@ li {
   filter: drop-shadow(0px calc(2px * var(--pxDensity)) rgba(0, 0, 0, 0.5));
   padding: 0%;
   display: inline-block;
-  margin-bottom: calc(4px * var(--pxDensity));
   position: absolute;
-  bottom: 0%;
-  left: 50%;
-  transform: translateX(-50%);
+  top: round(calc(100% - calc(5px * var(--pxDensity))), var(--pxDensityPx));
+  left: round(50%, var(--pxDensityPx));
+  transform: translate(-50%, -100%);
   font-size: 0px;
   width: max-content;
 }
