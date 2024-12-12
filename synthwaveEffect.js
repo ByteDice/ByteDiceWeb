@@ -1,6 +1,7 @@
 let canvas = document.getElementById("synthwave")
 let ctx = canvas.getContext("2d")
 let hills = []
+let isAnimating = true
 
 canvas.width = window.innerWidth
 canvas.height = window.innerHeight
@@ -92,11 +93,13 @@ let iters = 0
 let previousHill = undefined
 
 function animateSynthWave() {
+  if (!isAnimating) { return }
+
   ctx.clearRect(0, 0, canvas.width, canvas.height)
 
   if (iters >= iterToNewHill) {
     let hillInstance = new Hill(canvas.width / 2, canvas.height / 3 * 2, [0, 180, 240], 25, canvas.width, 325)
-    hillInstance.generate(25, 50, 100)
+    hillInstance.generate(25, canvas.height / 24, 100)
     hills.unshift(hillInstance)
     iters = 0
   }
@@ -141,5 +144,9 @@ function animateSynthWave() {
 
 
 document.addEventListener("DOMContentLoaded", function() {
+  for (i = 0; i < 350; i++) {
+    animateSynthWave()
+  }
+
   setInterval( animateSynthWave, 1000 / 24)
 }, false)

@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
   document.documentElement.style.setProperty("--pxDensity", Math.max(densityWidth, densityHeight))
+  document.documentElement.style.setProperty("--pxDensityPx", `${Math.max(densityWidth, densityHeight)}px`)
   pxDensity = getComputedStyle(document.body).getPropertyValue("--pxDensity")
   pxDensityDefined = true
 

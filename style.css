@@ -14,8 +14,8 @@ body {
   aspect-ratio: 1 / 1;
   image-rendering: pixelated;
   position: absolute;
-  top: 60%;
-  left: 50%;
+  top: round(60%, var(--pxDensityPx));
+  left: round(50%, var(--pxDensityPx));
   transform: translate(-50%, -50%);
   filter: drop-shadow(0px 0px 100px #C1AB00)
 }
