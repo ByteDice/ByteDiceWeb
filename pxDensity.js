@@ -1,4 +1,4 @@
-let pxDensity = getComputedStyle(document.body).getPropertyValue("--pxDensity")
+let pxDensity = parseFloat(getComputedStyle(document.body).getPropertyValue("--pxDensity"))
 let pxDensityDefined = false
 
 function calcPixelDensity() {
@@ -8,7 +8,7 @@ function calcPixelDensity() {
 
   document.documentElement.style.setProperty("--pxDensity", Math.max(densityWidth, densityHeight))
   document.documentElement.style.setProperty("--pxDensityPx", `${Math.max(densityWidth, densityHeight)}px`)
-  pxDensity = getComputedStyle(document.body).getPropertyValue("--pxDensity")
+  pxDensity = parseFloat(getComputedStyle(document.body).getPropertyValue("--pxDensity"))
   pxDensityDefined = true
 
   console.log("pxDensity: " + getComputedStyle(document.body).getPropertyValue("--pxDensity"))

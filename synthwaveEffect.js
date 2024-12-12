@@ -3,8 +3,11 @@ let ctx = canvas.getContext("2d")
 let hills = []
 let isAnimating = true
 
+let pxInflate = 0.5
+
 canvas.width = window.innerWidth
 canvas.height = window.innerHeight
+ctx.imageSmoothingEnabled = false;
 
 
 function lerp(x, y, t) {
@@ -14,6 +17,86 @@ function lerp(x, y, t) {
 
 function hillCurve(x, width) {
   return (Math.sin(Math.PI * (x + 1)) + 1) ** width
+}
+
+
+function drawPixelLineLow(fromX, fromY, toX, toY) {
+  let dx = toX - fromX
+  let dy = toY - fromY
+  let yi = 1
+
+  if (dy < 0) {
+    yi = -1
+    dy = -dy
+  }
+
+  let d = 2 * dy - dx
+  y = fromY
+
+  for (let x = fromX; x <= toX; x++) {
+    ctx.rect(
+      clampNearest(x * pxDensity, pxDensity) - 0.5,
+      clampNearest(y * pxDensity, pxDensity) - 0.5,
+      pxInflate + pxDensity,
+      pxInflate + pxDensity
+    );
+
+    if (d > 0) {
+        y = y + yi;
+        d = d + (2 * (dy - dx));
+    }
+    else { d = d + 2 * dy; }
+  }
+}
+
+
+function drawPixelLineHigh(fromX, fromY, toX, toY) {
+  let dx = toX - fromX
+  let dy = toY - fromY
+  let xi = 1
+
+  if (dx < 0) {
+    xi = -1
+    dx = -dx
+  }
+
+  let d = 2 * dx - dy
+  x = fromX
+
+  for (let y = fromY; y <= toY; y++) {
+    ctx.rect(
+      clampNearest(x * pxDensity, pxDensity) - 0.5,
+      clampNearest(y * pxDensity, pxDensity) - 0.5,
+      pxInflate + pxDensity,
+      pxInflate + pxDensity
+    );
+
+    if (d > 0) {
+        x = x + xi;
+        d = d + (2 * (dx - dy));
+    }
+    else { d = d + 2 * dx; }
+  }
+}
+
+
+function drawPixelLine(fromX, fromY, toX, toY) {
+  if (Math.abs(toY - fromY) < Math.abs(toX - fromX)) {
+    if (fromX > toX) {
+      drawPixelLineLow(toX, toY, fromX, fromY);
+    } 
+    else {
+      drawPixelLineLow(fromX, fromY, toX, toY);
+    }
+  }
+  else {
+    if (fromY > toY) {
+      drawPixelLineHigh(toX, toY, fromX, fromY);
+    } 
+    else {
+      drawPixelLineHigh(fromX, fromY, toX, toY);
+    }
+  }
 }
 
 
@@ -50,34 +133,47 @@ class Hill {
   }
 
 
-  draw() {
-    ctx.strokeStyle = `rgb(${this.color[0]}, ${this.color[1]}, ${this.color[2]})`
+  draw(debug) {
     ctx.lineWidth = pxDensity
 
-    let startX = (this.points[0][0] * this.widthMul) + ((-this.width * this.widthMul) / 2) + this.x
-    let startY = (this.points[0][1] * this.widthMul) + this.y
+    let startX = ((this.points[0][0] * this.widthMul) + ((-this.width * this.widthMul) / 2) + this.x) / pxDensity
+    let startY = ((this.points[0][1] * this.widthMul) + this.y) / pxDensity
+
+    let previousX = startX
+    let previousY = startY
   
     ctx.beginPath()
-    ctx.moveTo(startX, startY)
+    if (debug) { ctx.moveTo(startX * pxDensity, startY * pxDensity) }
   
     for (let point of this.points) {
-      ctx.lineTo(
-      (point[0] * this.widthMul) + ((-this.width * this.widthMul) / 2) + this.x,
-      (point[1] * this.widthMul) + this.y
-      )
+      let x = ((point[0] * this.widthMul) + ((-this.width * this.widthMul) / 2) + this.x) / pxDensity
+      let y = ((point[1] * this.widthMul) + this.y) / pxDensity
+
+      if (debug) { ctx.lineTo(x * pxDensity, y * pxDensity) }
+      else { drawPixelLine(previousX, previousY, x, y) }
+
+      previousX = x
+      previousY = y
     }
-    ctx.stroke()
+    if (debug) {
+      ctx.strokeStyle = "#ff0000"
+      ctx.stroke()
+    }
+    else {
+      ctx.fillStyle = `rgb(${this.color[0]}, ${this.color[1]}, ${this.color[2]})`
+      ctx.fill()
+    }
   }
 
 
-  animateStep(stepSize, colorIncrement) {
+  animateStep(stepSize, colorIncrement, debug) {
     if (this.i >= this.frameCount) { 
       hills.pop(this)
       return
     }
 
     this.y += stepSize
-    this.draw()
+    this.draw(debug)
 
     this.i += 1
 
@@ -88,7 +184,35 @@ class Hill {
 }
 
 
-const iterToNewHill = 15
+function connectHills(hill, previousHill, idx) {
+  if (previousHill && idx != 0) {
+    for (idx in previousHill.points) {
+      let startX = (previousHill.points[idx][0] * previousHill.widthMul) + ((-previousHill.width * previousHill.widthMul) / 2) + previousHill.x
+      let startY = (previousHill.points[idx][1] * previousHill.widthMul) + previousHill.y
+      let endX = (hill.points[idx][0] * hill.widthMul) + ((-hill.width * hill.widthMul) / 2) + hill.x
+      let endY = (hill.points[idx][1] * hill.widthMul) + hill.y
+
+      let grad = ctx.createLinearGradient(startX, startY, endX, endY)
+      let col = hill.color
+      let pCol = previousHill.color
+      
+      grad.addColorStop(0, `rgb(${pCol[0]}, ${pCol[1]}, ${pCol[2]})`)
+      grad.addColorStop(1, `rgb(${col[0]}, ${col[1]}, ${col[2]})`)
+
+      ctx.strokeStyle = grad
+      ctx.strokeStyle = "#ff0000"
+      ctx.lineWidth = pxDensity
+
+      ctx.beginPath()
+      ctx.moveTo(startX, startY)
+      ctx.lineTo(endX, endY)
+      ctx.stroke()
+    }
+  }
+}
+
+
+const iterToNewHill = 25
 let iters = 0
 let previousHill = undefined
 
@@ -107,34 +231,12 @@ function animateSynthWave() {
 
   for (let idx in hills) {
     let hill = hills[idx]
-    hill.animateStep(hill.stepSize, -0.2)
+    //hill.animateStep(hill.stepSize, -0.2, true)
+    hill.animateStep(hill.stepSize, -0.2, false)
     hill.stepSize = -0.005
     hill.widthMul *= 1.01
 
-
-    if (previousHill && idx != 0) {
-      for (idx in previousHill.points) {
-        let startX = (previousHill.points[idx][0] * previousHill.widthMul) + ((-previousHill.width * previousHill.widthMul) / 2) + previousHill.x
-        let startY = (previousHill.points[idx][1] * previousHill.widthMul) + previousHill.y
-        let endX = (hill.points[idx][0] * hill.widthMul) + ((-hill.width * hill.widthMul) / 2) + hill.x
-        let endY = (hill.points[idx][1] * hill.widthMul) + hill.y
-
-        let grad = ctx.createLinearGradient(startX, startY, endX, endY)
-        let col = hill.color
-        let pCol = previousHill.color
-        
-        grad.addColorStop(0, `rgb(${pCol[0]}, ${pCol[1]}, ${pCol[2]})`)
-        grad.addColorStop(1, `rgb(${col[0]}, ${col[1]}, ${col[2]})`)
-
-        ctx.strokeStyle = grad
-        ctx.lineWidth = pxDensity
-
-        ctx.beginPath()
-        ctx.moveTo(startX, startY)
-        ctx.lineTo(endX, endY)
-        ctx.stroke()
-      }
-    }
+    //connectHills(hill, previousHill, idx)
 
     previousHill = hill
   }

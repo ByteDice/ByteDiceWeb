@@ -13,6 +13,16 @@ function randomInt(min, max) {
 }
 
 
+function clampNearest(n, mul) {
+  if(n > 0)
+    return Math.ceil(n / mul) * mul;
+  else if( n < 0)
+      return Math.floor(n / mul) * mul;
+  else
+      return 0;
+}
+
+
 function showGrid() {
   let canvasEl = document.createElement("canvas")
   canvasEl.width = window.innerWidth

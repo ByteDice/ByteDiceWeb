@@ -10,7 +10,12 @@ let tips = [
   "m".repeat(200),
   "Bad at a game? Just press the \"get good at games\" button!",
   "I AM NOT A FEMBOY NOR GAY. (I support though :thumbsup:)",
-  "You should listen to that song that goes \"do do do do do do do do do.\""
+  "You should listen to that song that goes \"do do do do do do do do do.\"",
+  "Every pixel in this website's pixel art is positioned pixel perfect.",
+  "Shouldn't I be talking about tips?",
+  "Did you know that... uh... hold on let me think... I don't know, I forgot.",
+  "This tip is very helpful.",
+  "The synthwave terrain background is fully procedural. No images or gifs were used."
 ]
 
 let selectedTip = tips[randomIntFrom0(tips.length)]

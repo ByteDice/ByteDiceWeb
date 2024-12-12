@@ -21,6 +21,7 @@ li {
   left: 50%;
   transform: translateX(-50%);
   font-size: 0px;
+  width: max-content;
 }
 .navBtn {
   background-color: transparent;
