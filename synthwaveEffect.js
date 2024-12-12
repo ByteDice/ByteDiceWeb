@@ -231,7 +231,7 @@ function animateSynthWave() {
   ctx.clearRect(0, 0, canvas.width, canvas.height)
 
   if (iters >= iterToNewHill) {
-    let hillInstance = new Hill(canvas.width / 2, canvas.height / 3 * 2, [0, 180, 240], canvas.width, 325)
+    let hillInstance = new Hill(canvas.width / 2, canvas.height / 3 * 2, [0, 180, 240], canvas.width, 350)
     hillInstance.generate(25, canvas.height / 24, 100, 15)
     hills.unshift(hillInstance)
     iters = 0
