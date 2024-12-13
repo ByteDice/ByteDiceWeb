@@ -13,46 +13,44 @@
 </head>
 
 <body style="background-color: #323232; color: #ffffff;">
-  <img src="/assets/starNoise_512x512.png" draggable="false" id="starNoise">
-  <img src="/assets/synthwaveSun_40x40.png" draggable="false" class="synthSun">
-  <canvas id="synthwave" style="position: absolute; bottom: round(0%, var(--pxDensityPx)); left: round(0%, var(--pxDensityPx));"></canvas>
-  
-  <ul class="navBar">
-    <li>
-      <!-- discord URL -->
-      <a href="https://discord.com" target="_blank" class="navBtn">
-        <img class="navBtnImg" draggable="false" src="/assets/navBarBtn.png">
-        <img class="navBtnIcon" draggable="false" src="/assets/discord_8x8.png">
-      </a>
-    </li>
-    <li>
-      <a href="https://youtube.com/@ByteDice" target="_blank" class="navBtn">
-        <img class="navBtnImg" draggable="false" src="/assets/navBarBtn.png">
-        <img class="navBtnIcon" draggable="false" src="/assets/youtube_8x8.png">
-      </a>
-    </li>
-    <li>
-      <a href="https://github.com/ByteDice" target="_blank" class="navBtn">
-        <img class="navBtnImg" draggable="false" src="/assets/navBarBtn.png">
-        <img class="navBtnIcon" draggable="false" src="/assets/github_8x8.png">
-      </a>
-    </li>
-    <li>
-      <a class="navBtn">
-        <img class="navBtnImg" draggable="false" src="/assets/navBarBtn.png">
-        <img class="navBtnIcon" draggable="false" src="/assets/powerplates_8x8.png">
-      </a>
-    </li>
-    <li>
-      <a class="navBtn">
-        <img class="navBtnImg" draggable="false" src="/assets/navBarBtn.png">
-      </a>
-    </li>
-  </ul>
+  <div id="mainDiv">
+    <img src="/assets/starNoise_512x512.png" draggable="false" id="starNoise">
+    <img src="/assets/synthwaveSun_40x40.png" draggable="false" class="synthSun">
+    <canvas id="synthwave" style="position: absolute; bottom: round(0%, var(--pxDensityPx)); left: round(0%, var(--pxDensityPx));"></canvas>
+    
+    <!-- change discord URL to server URL -->
+    <ul class="navBar">
+      <li>
+        <!-- discord URL -->
+        <button onclick="slideTransition('https://discord.com')" class="navBtn">
+          <img class="navBtnImg" draggable="false" src="/assets/navBarBtn.png">
+          <img class="navBtnIcon" draggable="false" src="/assets/discord_8x8.png">
+        </button>
+      </li>
+      <li>
+        <button onclick="slideTransition('https://youtube.com/@ByteDice')" class="navBtn">
+          <img class="navBtnImg" draggable="false" src="/assets/navBarBtn.png">
+          <img class="navBtnIcon" draggable="false" src="/assets/youtube_8x8.png">
+        </button>
+      </li>
+      <li>
+        <button onclick="slideTransition('https://github.com/ByteDice')" class="navBtn">
+          <img class="navBtnImg" draggable="false" src="/assets/navBarBtn.png">
+          <img class="navBtnIcon" draggable="false" src="/assets/github_8x8.png">
+        </button>
+      </li>
+      <li>
+        <button class="navBtn">
+          <img class="navBtnImg" draggable="false" src="/assets/navBarBtn.png">
+          <img class="navBtnIcon" draggable="false" src="/assets/powerplates_8x8.png">
+        </button>
+      </li>
+    </ul>
+  </div>
 
   <div class="bgDiv" id="loadingScreen">
     <img class="loadingImg" draggable="false" src="/assets/byteDiceBlinkAnim_32x32.png">
-    <button class="loadingCornerText pxFont" onclick="stopShowingLoading()">
+    <button class="pxFont" onclick="stopShowingLoading()" id="loadingCornerText">
       Press ESC to instantly close the loading screen<br>Or click me to never see it again.
     </button>
     <p id="loadingText">Loading...<br>Loading files...<br><br>Tip: Tip loading...</p>
@@ -63,6 +61,7 @@
   <script src="/synthwaveEffect.js"></script>
   <script src="/script.js"></script>
   <script src="/loadingScreen.js"></script>
+  <script src="/screenTransition.js"></script>
 </body>
 
 </html>

@@ -20,7 +20,7 @@
   100% {opacity: 0%;}
 }
 /* custom pixel 3x5 font */
-.loadingCornerText {
+#loadingCornerText {
   background-color: transparent;
   color: #ffffff;
   border: none;

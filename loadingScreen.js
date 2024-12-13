@@ -22,6 +22,11 @@ let selectedTip = tips[randomIntFrom0(tips.length)]
 const showLoading = localStorage["showLoading"] || "true"
 
 
+function newTip() {
+  selectedTip = tips[randomIntFrom0(tips.length)]
+} 
+
+
 function setLoadingProgress(newText) {
   loadingScreenProgress.innerHTML = `Loading...<br>${newText}<br><br>Tip: ${selectedTip}`
 }
@@ -48,7 +53,9 @@ function removeLoadingScreen() {
     loadingScreenEl.style.animation = `fade-out ${fadeOutDur}s forwards`
 
     setTimeout(function() {
-      document.body.removeChild(loadingScreenEl)
+      loadingScreenEl.style.left = "100vw"
+      document.getElementById("loadingCornerText").remove()
+      newTip()
     }, fadeOutDur * 1000)
   }, 500)
 }
