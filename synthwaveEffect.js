@@ -1,7 +1,8 @@
+// TODO: dont render lines behind the fill (fillHillPolygons())
+
 let canvas = document.getElementById("synthwave")
 let ctx = canvas.getContext("2d")
 let hills = []
-let isAnimating = true
 
 let pxInflate = 0.5
 
@@ -80,6 +81,30 @@ function drawPixelLineHigh(fromX, fromY, toX, toY) {
 }
 
 
+function idxWidthOffset(hill, idx) {
+  let x = ((hill.points[idx][0] * hill.widthMul) + ((-hill.width * hill.widthMul) / 2) + hill.x) / pxDensity
+  let y = ((hill.points[idx][1] * hill.widthMul) + hill.y) / pxDensity
+
+  return { x: x, y: y }
+}
+
+
+function idxWidthOffsetNoPx(hill, idx) {
+  let x = ((hill.points[idx][0] * hill.widthMul) + ((-hill.width * hill.widthMul) / 2) + hill.x)
+  let y = ((hill.points[idx][1] * hill.widthMul) + hill.y)
+
+  return { x: x, y: y }
+}
+
+
+function xyWidthOffset(hill, x, y) {
+  let x1 = ((x * hill.widthMul) + ((-hill.width * hill.widthMul) / 2) + hill.x) / pxDensity
+  let y1 = ((y * hill.widthMul) + hill.y) / pxDensity
+
+  return { x: x1, y: y1 }
+}
+
+
 function drawPixelLine(fromX, fromY, toX, toY) {
   if (Math.abs(toY - fromY) < Math.abs(toX - fromX)) {
     if (fromX > toX) {
@@ -135,24 +160,22 @@ class Hill {
   draw(debug) {
     ctx.lineWidth = pxDensity
 
-    let startX = ((this.points[0][0] * this.widthMul) + ((-this.width * this.widthMul) / 2) + this.x) / pxDensity
-    let startY = ((this.points[0][1] * this.widthMul) + this.y) / pxDensity
+    let start = xyWidthOffset(this, this.points[0][0], this.points[0][1])
 
-    let previousX = startX
-    let previousY = startY
+    let previousX = start.x
+    let previousY = start.y
   
     ctx.beginPath()
-    if (debug) { ctx.moveTo(startX * pxDensity, startY * pxDensity) }
+    if (debug) { ctx.moveTo(start.x * pxDensity, start.y * pxDensity) }
   
     for (let point of this.points) {
-      let x = ((point[0] * this.widthMul) + ((-this.width * this.widthMul) / 2) + this.x) / pxDensity
-      let y = ((point[1] * this.widthMul) + this.y) / pxDensity
+      let pos = xyWidthOffset(this, point[0], point[1])
 
-      if (debug) { ctx.lineTo(x * pxDensity, y * pxDensity) }
-      else { drawPixelLine(previousX, previousY, x, y) }
+      if (debug) { ctx.lineTo(pos.x * pxDensity, pos.y * pxDensity) }
+      else { drawPixelLine(previousX, previousY, pos.x, pos.y) }
 
-      previousX = x
-      previousY = y
+      previousX = pos.x
+      previousY = pos.y
     }
     if (debug) {
       ctx.strokeStyle = "#ff0000"
@@ -183,18 +206,15 @@ class Hill {
 }
 
 
-function connectHills(hill, previousHill, idx, debug) {
+function connectHills(hill, previousHill, hillIdx, debug) {
   let pHill = previousHill
 
-  if (pHill && idx != 0) {
-    for (idx in pHill.points) {
-      let startX = ((pHill.points[idx][0] * pHill.widthMul) + ((-pHill.width * pHill.widthMul) / 2) + pHill.x) / pxDensity
-      let startY = ((pHill.points[idx][1] * pHill.widthMul) + pHill.y) / pxDensity
+  if (pHill && hillIdx != 0) {
+    for (let idx in pHill.points) {
+      let start = idxWidthOffset(pHill, idx)
+      let end = idxWidthOffset(hill, idx)
 
-      let endX = ((hill.points[idx][0] * hill.widthMul) + ((-hill.width * hill.widthMul) / 2) + hill.x) / pxDensity
-      let endY = ((hill.points[idx][1] * hill.widthMul) + hill.y) / pxDensity
-
-      let grad = ctx.createLinearGradient(startX, startY, endX, endY)
+      let grad = ctx.createLinearGradient(start.x, start.y, end.x, end.y)
       let col = hill.color
       let pCol = pHill.color
       
@@ -206,16 +226,43 @@ function connectHills(hill, previousHill, idx, debug) {
       if (debug) {
         ctx.strokeStyle = grad
 
-        ctx.moveTo(startX * pxDensity, startY * pxDensity)
-        ctx.lineTo(endX * pxDensity, endY * pxDensity)
+        ctx.moveTo(start.x * pxDensity, start.y * pxDensity)
+        ctx.lineTo(end.x * pxDensity, end.y * pxDensity)
         ctx.stroke()
       }
       else {
         ctx.fillStyle = grad
 
-        drawPixelLine(startX, startY, endX, endY)
+        drawPixelLine(start.x, start.y, end.x, end.y)
         ctx.fill()
       }
+    }
+  }
+}
+
+
+function fillHillPolygons(hill, previousHill, hillIdx) {
+  let pHill = previousHill
+
+  if (pHill && hillIdx != 0) {
+    for (let idx in pHill.points) {
+      if (idx == 0) { continue }
+
+      let br = idxWidthOffsetNoPx(pHill, idx)
+      let bl = idxWidthOffsetNoPx(pHill, idx - 1)
+      let tr = idxWidthOffsetNoPx(hill, idx)
+      let tl = idxWidthOffsetNoPx(hill, idx - 1)
+
+      ctx.beginPath()
+      ctx.fillStyle = "#323232"
+
+      ctx.moveTo(clampNearest(tl.x, pxDensity), clampNearest(tl.y, pxDensity))
+      ctx.lineTo(clampNearest(tr.x, pxDensity), clampNearest(tr.y, pxDensity))
+      ctx.lineTo(clampNearest(br.x, pxDensity), clampNearest(br.y, pxDensity))
+      ctx.lineTo(clampNearest(bl.x, pxDensity), clampNearest(bl.y, pxDensity))
+      ctx.lineTo(clampNearest(tl.x, pxDensity), clampNearest(tl.y, pxDensity))
+
+      ctx.fill()
     }
   }
 }
@@ -231,17 +278,30 @@ function animateSynthWave() {
   ctx.clearRect(0, 0, canvas.width, canvas.height)
 
   if (iters >= iterToNewHill) {
-    let hillInstance = new Hill(canvas.width / 2, canvas.height / 3 * 2, [0, 180, 240], canvas.width, 350)
-    hillInstance.generate(25, canvas.height / 24, 100, 15)
+    let hillInstance = new Hill(canvas.width / 2 - (1 * pxDensity), canvas.height / 3 * 2, [0, 180, 240], canvas.width, 350)
+    hillInstance.generate(25, canvas.height / 24, 100, 2 * pxDensity)
     hills.unshift(hillInstance)
     iters = 0
   }
 
+  let prevHillPolygons = undefined
 
   for (let idx in hills) {
     let hill = hills[idx]
+    hill.y += hill.stepSize
+    hill.widthMul *= 1.01
+
+    fillHillPolygons(hill, prevHillPolygons, idx)
+
+    prevHillPolygons = hill
+  }
+
+  for (let idx in hills) {
+    let hill = hills[idx]
+
     //hill.animateStep(hill.stepSize, -0.2, true)
     hill.animateStep(hill.stepSize, -0.2, false)
+
     hill.stepSize = -0.005
     hill.widthMul *= 1.01
 
@@ -259,5 +319,5 @@ function startSynthAnimation() {
     animateSynthWave()
   }
 
-  setInterval( animateSynthWave, 1000 / 24)
+  setInterval( animateSynthWave, 1000 / 12)
 }

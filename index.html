@@ -10,10 +10,14 @@
   <link rel="stylesheet" href="/globalStyle.css">
   <link rel="stylesheet" href="/loadingScreen.css">
   <link rel="stylesheet" href="style.css">
+
+  <link rel="icon" type="image/png" href="/assets/favicon_32x32.png">
 </head>
 
 <body style="background-color: #323232; color: #ffffff;">
   <div id="mainDiv">
+    <img src="/assets/bgGradient_256x164.png" class="bgGradient">
+    
     <img src="/assets/starNoise_512x512.png" draggable="false" id="starNoise">
     <img src="/assets/synthwaveSun_40x40.png" draggable="false" class="synthSun">
     <canvas id="synthwave" style="position: absolute; bottom: round(0%, var(--pxDensityPx)); left: round(0%, var(--pxDensityPx));"></canvas>
@@ -43,6 +47,12 @@
         <button class="navBtn">
           <img class="navBtnImg" draggable="false" src="/assets/navBarBtn.png">
           <img class="navBtnIcon" draggable="false" src="/assets/powerplates_8x8.png">
+        </button>
+      </li>
+      <li>
+        <button onClick="pauseAnimBtn('auto')" class="navBtn">
+          <img class="navBtnImg" draggable="false" src="/assets/navBarBtn.png">
+          <img class="navBtnIcon" draggable="false" src="" id="animationToggle">
         </button>
       </li>
     </ul>

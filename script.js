@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
   
   setLoadingProgress("Animating synthwave background...")
   startSynthAnimation()
+  pauseAnimBtn(localStorage["isAnimating"] || "true")
 
   if (showLoading != "true") { 
     removeLoadingScreen()

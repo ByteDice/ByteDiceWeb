@@ -1,3 +1,5 @@
+let isAnimating = true
+
 function randomFloat(min, max) {
   return Math.random() * (max - min) + min;
 }
@@ -53,4 +55,27 @@ function showGrid() {
   }
 
   ctx.stroke()
+}
+
+
+function pauseAnimBtn(state) {
+  if (state == "auto") {
+    if (localStorage["isAnimating"] == "true") { localStorage["isAnimating"] = "false" }
+    else { localStorage["isAnimating"] = "true" }
+
+    state = localStorage["isAnimating"]
+  }
+
+  let pauseBtn = document.getElementById("animationToggle")
+
+  if (state == "true") {
+    isAnimating = true
+    pauseBtn.src = "/assets/pauseAnimation_8x8.png"
+  }
+  else {
+    isAnimating = false
+    pauseBtn.src = "/assets/playAnimation_8x8.png"
+  }
+
+  localStorage["isAnimating"] = state
 }

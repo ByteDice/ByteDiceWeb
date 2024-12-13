@@ -13,10 +13,11 @@ body {
   top: round(60%, var(--pxDensityPx));
   left: round(50%, var(--pxDensityPx));
   transform: translate(-50%, -50%);
-  filter: drop-shadow(0px 0px 100px #C1AB00)
 }
 #starNoise {
-  position: fixed;
+  position: absolute;
+  top: 0%;
+  left: 0%;
   width: calc(512px * var(--pxDensity));
   height: auto;
   aspect-ratio: 1 / 1;
@@ -24,10 +25,17 @@ body {
   transform: translate(-50%, -50%);
 }
 #mainDiv {
-  background-position: 0% 10vh;
-  background-image: radial-gradient(
-                    circle at center 50%, 
-                    #62007f 0%, 
-                    #0d0035 100%);
+  top: 0%;
+  left: 0%;
   height: 100vh;
+}
+.bgGradient {
+  image-rendering: pixelated;
+  min-width: 100vw;
+  min-height: 100vh;
+  aspect-ratio: auto;
+  position: absolute;
+  top: round(50%, var(--pxDensityPx));
+  left: round(50%, var(--pxDensityPx));
+  transform: translate(-50%, -50%);
 }
