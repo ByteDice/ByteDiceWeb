@@ -4,6 +4,9 @@ const scene = new THREE.Scene()
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
 const renderer = new THREE.WebGLRenderer({ alpha: true })
 
+// TODO: when tabbing out it sometimes doesnt pause the animation
+// TODO: add pixelation shader
+
 if (!renderer) {
   alert("Renderer failed to load, using static images instead.")
   // TODO: add image logic
@@ -35,6 +38,7 @@ let meshIndices = [
 geometry.setAttribute("position", new THREE.BufferAttribute(new Float32Array(meshVerts), 3))
 geometry.setIndex(new THREE.BufferAttribute(new Uint16Array(meshIndices), 1))
 geometry.computeVertexNormals()
+geometry.computeBoundingBox()
 
 const material = new THREE.MeshBasicMaterial({ color: 0xff0000, wireframe: false, side: THREE.DoubleSide })
 const mesh = new THREE.Mesh(geometry, material)
@@ -42,8 +46,13 @@ const mesh = new THREE.Mesh(geometry, material)
 //scene.add(mesh)
 
 // "toward sun"
-camera.position.z = 5
-camera.position.y = 2
+/* camera.position.z = 5
+camera.position.y = 2 */
+
+// far away "toward sun"
+camera.position.z = 0
+camera.position.y = 1
+camera.rotation.x = 0.2
 
 // top down
 /* camera.position.y = 5
@@ -74,7 +83,7 @@ function generateHill(width, length, segments, maxHeight, posOffsetZ = 0, prevHi
   let hillVerts = hillData.verts
   let hillUVs = hillData.uvs
 
-  for (i = 0; i < segments; i++) {
+  for (let i = 0; i < segments; i++) {
     hillIndices.push(i * 2, i * 2 + 2, i * 2 + 1)
     hillIndices.push(i * 2 + 1, i * 2 + 2, i * 2 + 3)
   }
@@ -85,9 +94,12 @@ function generateHill(width, length, segments, maxHeight, posOffsetZ = 0, prevHi
   geometry.setAttribute("uv", new THREE.BufferAttribute(new Float32Array(hillUVs), 2))
   geometry.setIndex(new THREE.BufferAttribute(new Uint16Array(hillIndices), 1))
   geometry.computeVertexNormals()
+  geometry.computeBoundingBox()
 
   const material = generateHillMat(segments, width, length)
   const newMesh = new THREE.Mesh(geometry, material)
+
+  newMesh.position.z = posOffsetZ
 
   return {mesh: newMesh, verts: hillVerts, indices: hillIndices}
 }
@@ -100,13 +112,12 @@ function generateHillVerts(
   startPos,
   prevHillHeights,
   segments,
-  length,
-  posOffsetZ
+  length
 ) {
   let hillVerts = []
   let hillUVs = []
 
-  for (i = 0; i < triCount; i++) {
+  for (let i = 0; i < triCount; i++) {
     let height = randomFloat(0, maxHeight) * hillCurve(i / triCount, 1.2)
 
     hillVerts.push(i / (triCount - 1) * width + startPos)
@@ -114,14 +125,14 @@ function generateHillVerts(
     if (prevHillHeights.length / 2 != segments + 1) { hillVerts.push(0) }
     else { hillVerts.push(prevHillHeights[i * 2 + 1]) }
 
-    hillVerts.push(length / 2 + posOffsetZ)
+    hillVerts.push(length / 2)
 
     hillUVs.push(i / (triCount - 1), 0)
 
     hillVerts.push(
       i / (triCount - 1) * width + startPos,
       height,
-      -length / 2 + posOffsetZ
+      -length / 2
     )
     hillUVs.push(i / (triCount - 1), 1)
   }
@@ -189,26 +200,102 @@ function generateHillMat(segments, width, length) {
     }
   })
 
-  console.log([width / segments, length])
-
   return material
 }
 
 
-function animate() {
-  requestAnimationFrame(animate)
-  
-  renderer.render(scene, camera)
+let allHillMeshes = []
+
+function addHillMesh(mesh) {
+  allHillMeshes.push(mesh)
+  scene.add(mesh)
 }
 
-let newHill = generateHill(camera.aspect * 10, 2, 25, 4, 0)
 
-scene.add(newHill.mesh)
-scene.add(generateHill(camera.aspect * 10, 2, 25, 4, -2, newHill.verts).mesh)
-animate()
+const hillLength = 1.2
+let hillSpawnOffset = -25
+let lastHillVerts = []
+let hasPreAnimated = false
+
+function preAnimateSynthwave(times) {
+  for (let i = 0; i < times; i++) {
+    let hillOffset = -(i * hillLength) + 0.02
+
+    let newHill = generateHill(
+      camera.aspect * 10,
+      hillLength,
+      25,
+      4,
+      hillOffset,
+      lastHillVerts
+    )
+
+    addHillMesh(newHill.mesh)
+    lastHillVerts = newHill.verts
+    hillSpawnOffset = hillOffset
+  }
+
+  hasPreAnimated = true
+}
 
 
-function onResizeSynthWave() {
+let lastTime = 0
+const tickRate = 12
+let tickMultiplier = 1
+let distSinceLastHill = 0
+
+function animateSynthwave(timestamp) {
+  let deltaTime = (timestamp - lastTime) / 1000
+  lastTime = timestamp;
+
+  let currentTickRate = 1 / deltaTime
+  tickMultiplier = tickRate / currentTickRate
+
+  if (!hasPreAnimated) { return }
+
+  if (!isAnimating) {
+    renderer.render(scene, camera)
+    requestAnimationFrame(animateSynthwave)
+    return 
+  }
+  
+  const moveDist = 0.05 * tickMultiplier
+  distSinceLastHill += moveDist
+
+  for (let hill of allHillMeshes) {
+    hill.position.z += moveDist
+    
+    const outOfBoundsCoord = camera.aspect * 75
+    if (hill.position.z - hill.geometry.boundingBox.min.y >= outOfBoundsCoord) {
+      scene.remove(hill)
+    }
+  }
+
+  if (distSinceLastHill >= hillLength) {
+
+    let hillZOffset = hillLength - distSinceLastHill
+
+    let newHill = generateHill(
+      camera.aspect * 10,
+      hillLength,
+      25,
+      4,
+      hillZOffset + 0.02 + hillSpawnOffset,
+      lastHillVerts
+    )
+
+    addHillMesh(newHill.mesh)
+    distSinceLastHill = -hillZOffset
+    lastHillVerts = newHill.verts
+  }
+
+  renderer.render(scene, camera)
+
+  requestAnimationFrame(animateSynthwave)
+}
+
+
+function onResizeSynthwave() {
   renderer.setSize(window.innerWidth, window.innerHeight)
   camera.aspect = window.innerWidth / window.innerHeight
   camera.updateProjectionMatrix()
