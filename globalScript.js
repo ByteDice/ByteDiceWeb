@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", async function() {
 }, false)
 
 
-window.addEventListener("resize", () => {
+window.addEventListener("resize", function() {
   calcPixelDensity()
 
   switch (CURRENT_PAGE) {
@@ -146,12 +146,28 @@ window.addEventListener("resize", () => {
 
 let prevAnimationState = isAnimating
 
-document.addEventListener("visibilitychange", function (event) {
+
+document.addEventListener("visibilitychange", function() {
   if (document.hidden) {
-    prevAnimationState = isAnimating
-    isAnimating = false
+    prevAnimationState = isAnimating;
+    isAnimating = false;
   }
   else {
-    isAnimating = prevAnimationState
+    isAnimating = prevAnimationState;
+  }
+});
+
+/*
+window.addEventListener("blur", function() {
+  if (document.visibilityState === "visible") {
+    prevAnimationState = isAnimating;
+    isAnimating = false;
+  }
+});
+*/
+
+window.addEventListener("focus", function() {
+  if (!document.hidden) {
+    isAnimating = prevAnimationState;
   }
 });

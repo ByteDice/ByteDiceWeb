@@ -4,7 +4,7 @@ const scene = new THREE.Scene()
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
 const renderer = new THREE.WebGLRenderer({ alpha: true })
 
-// TODO: when tabbing out it sometimes doesnt pause the animation
+// TODO: when tabbing out it sometimes doesnt pause the animation (maybe fixed? Needs more testing)
 // TODO: add pixelation shader
 
 if (!renderer) {
