@@ -7,8 +7,6 @@ document.addEventListener("DOMContentLoaded", function() {
   setLoadingProgress("Adding stars...")
   addStars()
   
-  setLoadingProgress("Animating synthwave background...")
-  startSynthAnimation()
   pauseAnimBtn(localStorage["isAnimating"] || "true")
 
   if (showLoading != "true") { 

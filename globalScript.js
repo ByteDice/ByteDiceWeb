@@ -70,11 +70,11 @@ function pauseAnimBtn(state) {
 
   if (state == "true") {
     isAnimating = true
-    pauseBtn.src = "/assets/pauseAnimation_8x8.png"
+    pauseBtn.src = "./assets/pauseAnimation_8x8.png"
   }
   else {
     isAnimating = false
-    pauseBtn.src = "/assets/playAnimation_8x8.png"
+    pauseBtn.src = "./assets/playAnimation_8x8.png"
   }
 
   localStorage["isAnimating"] = state

@@ -3,27 +3,30 @@ let stopLoading = false
 let loadingScreenProgress = document.getElementById("loadingText")
 let loadingScreenEl = document.getElementById("loadingScreen")
 
-let tips = [
-	"Just don't die.",
-	"Did you know this is a tip?",
-	"Is thisn't not very un-understandable?",
-  "m".repeat(200),
-  "Bad at a game? Just press the \"get good at games\" button!",
-  "I AM NOT A FEMBOY NOR GAY. (I support though :thumbsup:)",
-  "You should listen to that song that goes \"do do do do do do do do do.\"",
-  "(Almost) Every pixel in this website's pixel art is positioned pixel perfect.",
-  "Shouldn't I be talking about tips?",
-  "Did you know that... uh... hold on let me think... I don't know, I forgot.",
-  "This tip is very helpful.",
-  "The synthwave terrain background is fully procedural. No images or gifs were used."
-]
 
-let selectedTip = tips[randomIntFrom0(tips.length)]
+let tipsJson;
+
+(function loadTipsSync() {
+  const xhr = new XMLHttpRequest();
+  xhr.open("GET", "./loadingScreenTips.json", false)
+  xhr.send(null)
+
+  if (xhr.status === 200) {
+    tipsJson = JSON.parse(xhr.responseText)
+  } else {
+    console.error("Failed to load tips:", xhr.status, xhr.statusText)
+    tipsJson = []
+  }
+})()
+
+console.log(tipsJson)
+
+let selectedTip = tipsJson[randomIntFrom0(tipsJson.length)]
 const showLoading = localStorage["showLoading"] || "true"
 
 
 function newTip() {
-  selectedTip = tips[randomIntFrom0(tips.length)]
+  selectedTip = tipsJson[randomIntFrom0(tipsJson.length)]
 } 
 
 

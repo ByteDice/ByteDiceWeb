@@ -1,0 +1,26 @@
+[
+  {
+    "icon": "discord_8x8.png",
+    "action": "navigate",
+    "actionValue": "https://discord.com"
+  },
+  {
+    "icon": "youtube_8x8.png",
+    "action": "navigate",
+    "actionValue": "https://youtube.com/@ByteDice"
+  },
+  {
+    "icon": "github_8x8.png",
+    "action": "navigate",
+    "actionValue": "https://github.com/ByteDice"
+  },
+  {
+    "icon": "powerplates_8x8.png"
+  },
+  {
+    "icon": "pauseAnimation_8x8.png",
+    "action": "function",
+    "actionValue": "https://discord.com",
+    "iconId": "animationToggle"
+  }
+]

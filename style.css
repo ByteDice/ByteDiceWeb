@@ -37,3 +37,8 @@ body {
   left: round(50%, var(--pxDensityPx));
   transform: translate(-50%, -50%);
 }
+#synthwaveCanvas {
+  position: absolute;
+  bottom: round(0%, var(--pxDensityPx));
+  left: round(0%, var(--pxDensityPx));
+}
