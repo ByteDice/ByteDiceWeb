@@ -6,6 +6,7 @@ const PAGES = {
 let CURRENT_PAGE = PAGES.null
 
 let isAnimating = true
+let gridVisible = false
 
 function randomFloat(min, max) {
   return Math.random() * (max - min) + min;
@@ -32,8 +33,15 @@ function clampNearest(n, mul) {
 }
 
 
-function showGrid() {
+function toggleGrid() {
+  if (gridVisible) {
+    document.getElementById("gridCanvas").remove()
+    gridVisible = false
+    return
+  }
+
   let canvasEl = document.createElement("canvas")
+  canvasEl.id = "gridCanvas"
   canvasEl.width = window.innerWidth
   canvasEl.height = window.innerHeight
   canvasEl.style.position = "absolute"
@@ -62,6 +70,8 @@ function showGrid() {
   }
 
   ctx.stroke()
+
+  gridVisible = true
 }
 
 
@@ -113,3 +123,15 @@ document.addEventListener("DOMContentLoaded", async function() {
     setLoadingProgress("Cleaning up...")
   }
 }, false)
+
+
+window.addEventListener("resize", () => {
+  switch (CURRENT_PAGE) {
+    case (PAGES.SYNTHWAVE): onResizeSynthWave()
+  }
+
+  if (gridVisible) {
+    toggleGrid()
+    toggleGrid()
+  }
+})
