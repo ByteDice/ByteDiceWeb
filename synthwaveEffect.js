@@ -18,55 +18,80 @@ renderer.setClearColor(0x000000, 0)
 const geometry = new THREE.BufferGeometry()
 
 let meshVerts = [
-  1, 0, 1,
   -1, 0, 1,
-  -1, 0, -1,
+  -1, 1, -1,
+  1, 1, 1,
   1, 0, -1
 ]
 
 let meshIndices = [
   0, 1, 2,
-  0, 2, 3
+  1, 2, 3
 ]
 
 
 geometry.setAttribute("position", new THREE.BufferAttribute(new Float32Array(meshVerts), 3))
-geometry.setIndex(new THREE.BufferAttribute(new Float32Array(meshIndices), 3))
+geometry.setIndex(new THREE.BufferAttribute(new Uint16Array(meshIndices), 1))
 geometry.computeVertexNormals()
 
-const material = new THREE.MeshBasicMaterial({ color: 0xff0000, wireframe: true })
+const material = new THREE.MeshBasicMaterial({ color: 0xff0000, wireframe: false, side: THREE.DoubleSide })
 const mesh = new THREE.Mesh(geometry, material)
 
-scene.add(mesh)
+//scene.add(mesh)
+
 
 camera.position.z = 5
 camera.position.y = 2
 
 
-function generateHill(width, length, segments, minHeight, maxHeight, prevHillVerts) {
+function hillCurve(x, width) {
+  return (Math.sin(Math.PI * (x + 1)) + 1) ** width
+}
+
+
+function generateHill(width, length, segments, maxHeight, posOffsetZ = 0, prevHillVerts = []) {
   let hillVerts = []
+  let hillIndices = []
   let startPos = -width / 2
+  let triCount = segments + 1
 
-  for (i = 0; i < segments; i++) {
-    hillVerts.push(i / (segments - 1) * width + startPos)
-    hillVerts.push(0)
-    hillVerts.push(length / 2)
+  let prevHillHeights = prevHillVerts.filter((_, index) => (index - 1) % 3 === 0)
 
-    hillVerts.push(i / (segments - 1) * width + startPos)
-    hillVerts.push(0)
-    hillVerts.push(-length / 2)
+  for (i = 0; i < triCount; i++) {
+    let height = randomFloat(0, maxHeight) * hillCurve(i / triCount, 1.2)
+
+    hillVerts.push(i / (triCount - 1) * width + startPos)
+
+    if (prevHillHeights.length / 2 != segments + 1) {
+      hillVerts.push(0)
+    }
+    else {
+      hillVerts.push(prevHillHeights[i * 2 + 1])
+    }
+
+    hillVerts.push(length / 2 + posOffsetZ)
+
+    hillVerts.push(i / (triCount - 1) * width + startPos)
+    hillVerts.push(height)
+    hillVerts.push(-length / 2 + posOffsetZ)
+  }
+
+  for (let i = 0; i < hillVerts.length / 2 - (segments + 3); i++) {
+    hillIndices.push(i)
+    hillIndices.push(i + 1)
+    hillIndices.push(i + 2)
   }
 
   const geometry = new THREE.BufferGeometry()
 
   geometry.setAttribute("position", new THREE.BufferAttribute(new Float32Array(hillVerts), 3))
-  //geometry.setIndex(new THREE.BufferAttribute(new Float32Array(hillIndices), 3))
-  //geometry.computeVertexNormals()
+  geometry.setIndex(new THREE.BufferAttribute(new Uint16Array(hillIndices), 1))
+  geometry.computeVertexNormals()
 
-  const material = new THREE.MeshBasicMaterial({ color: 0x00FF00, wireframe: true })
+  const material = new THREE.MeshBasicMaterial({ color: 0x00FF00, wireframe: true, side: THREE.DoubleSide })
   const newMesh = new THREE.Mesh(geometry, material)
 
-  return newMesh
+  return {mesh: newMesh, verts: hillVerts, indices: hillIndices}
 }
 
 
@@ -76,7 +101,10 @@ function animate() {
   renderer.render(scene, camera)
 }
 
-scene.add(generateHill(2, 2, 9))
+let newHill = generateHill(camera.aspect * 10, 2, 25, 4)
+
+scene.add(newHill.mesh)
+scene.add(generateHill(camera.aspect * 10, 2, 25, 4, -2, newHill.verts).mesh)
 animate()
 
 
