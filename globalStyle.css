@@ -13,6 +13,10 @@ html {
   font-size: 1rem;
 }
 
+canvas {
+  position: absolute;
+}
+
 .pxFont {
   font-family: "Roboto", sans-serif;
   font-size: 1rem;
