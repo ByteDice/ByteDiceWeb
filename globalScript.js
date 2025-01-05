@@ -135,7 +135,7 @@ window.addEventListener("resize", () => {
   calcPixelDensity()
 
   switch (CURRENT_PAGE) {
-    case (PAGES.SYNTHWAVE): onResizeSynthWave()
+    case (PAGES.SYNTHWAVE): onResizeSynthwave()
   }
 
   if (gridVisible) {
@@ -143,3 +143,15 @@ window.addEventListener("resize", () => {
     toggleGrid()
   }
 })
+
+let prevAnimationState = isAnimating
+
+document.addEventListener("visibilitychange", function (event) {
+  if (document.hidden) {
+    prevAnimationState = isAnimating
+    isAnimating = false
+  }
+  else {
+    isAnimating = prevAnimationState
+  }
+});

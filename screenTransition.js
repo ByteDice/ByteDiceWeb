@@ -8,6 +8,7 @@ function slideTransition(url) {
   let mainDiv = document.getElementById("mainDiv")
 
   loadingScreen.style.animation = slideLeft
+  loadingScreen.style.pointerEvents = "auto"
   mainDiv.style.animation = slideLeft
 
   setLoadingProgress(`Loading URL "${url}"`)

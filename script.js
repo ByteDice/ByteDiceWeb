@@ -3,6 +3,10 @@ CURRENT_PAGE = PAGES.SYNTHWAVE
 function loadingScreenSynthwave() {
   setLoadingProgress("Adding stars...")
   addStars()
+
+  setLoadingProgress("Starting synthwave animation...")
+  preAnimateSynthwave(25)
+  animateSynthwave(0)
 }
 
 

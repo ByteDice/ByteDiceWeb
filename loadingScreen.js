@@ -49,6 +49,7 @@ function removeLoadingScreen() {
 
     setTimeout(function() {
       loadingScreenEl.style.left = "100vw"
+      loadingScreenEl.style.pointerEvents = "none"
       document.getElementById("loadingCornerText").remove()
       newTip()
     }, fadeOutDur * 1000)
