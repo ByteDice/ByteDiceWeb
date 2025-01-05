@@ -5,7 +5,9 @@ const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerH
 const renderer = new THREE.WebGLRenderer({ alpha: true })
 
 if (!renderer) {
-  alert("Renderer failed to load")
+  alert("Renderer failed to load, using static images instead.")
+  // TODO: add image logic
+  throw new Error("Renderer initialization failed.")
 }
 
 renderer.setSize(window.innerWidth, window.innerHeight)
@@ -40,9 +42,11 @@ const mesh = new THREE.Mesh(geometry, material)
 //scene.add(mesh)
 
 
-camera.position.z = 5
-camera.position.y = 2
+/* camera.position.z = 5
+camera.position.y = 2 */
 
+camera.position.y = 5
+camera.lookAt(0, 0, 0)
 
 function hillCurve(x, width) {
   return (Math.sin(Math.PI * (x + 1)) + 1) ** width
@@ -50,48 +54,138 @@ function hillCurve(x, width) {
 
 
 function generateHill(width, length, segments, maxHeight, posOffsetZ = 0, prevHillVerts = []) {
-  let hillVerts = []
   let hillIndices = []
   let startPos = -width / 2
   let triCount = segments + 1
 
   let prevHillHeights = prevHillVerts.filter((_, index) => (index - 1) % 3 === 0)
 
-  for (i = 0; i < triCount; i++) {
-    let height = randomFloat(0, maxHeight) * hillCurve(i / triCount, 1.2)
+  let hillData = generateHillVerts(
+    triCount,
+    maxHeight,
+    width,
+    startPos,
+    prevHillHeights,
+    segments,
+    length,
+    posOffsetZ
+  )
+  let hillVerts = hillData.verts
+  let hillUVs = hillData.uvs
 
-    hillVerts.push(i / (triCount - 1) * width + startPos)
-
-    if (prevHillHeights.length / 2 != segments + 1) {
-      hillVerts.push(0)
-    }
-    else {
-      hillVerts.push(prevHillHeights[i * 2 + 1])
-    }
-
-    hillVerts.push(length / 2 + posOffsetZ)
-
-    hillVerts.push(i / (triCount - 1) * width + startPos)
-    hillVerts.push(height)
-    hillVerts.push(-length / 2 + posOffsetZ)
-  }
-
-  for (let i = 0; i < hillVerts.length / 2 - (segments + 3); i++) {
-    hillIndices.push(i)
-    hillIndices.push(i + 1)
-    hillIndices.push(i + 2)
+  for (i = 0; i < segments; i++) {
+    hillIndices.push(i * 2, i * 2 + 2, i * 2 + 1)
+    hillIndices.push(i * 2 + 1, i * 2 + 2, i * 2 + 3)
   }
 
   const geometry = new THREE.BufferGeometry()
 
   geometry.setAttribute("position", new THREE.BufferAttribute(new Float32Array(hillVerts), 3))
+  geometry.setAttribute("uv", new THREE.BufferAttribute(new Float32Array(hillUVs), 2))
   geometry.setIndex(new THREE.BufferAttribute(new Uint16Array(hillIndices), 1))
   geometry.computeVertexNormals()
 
-  const material = new THREE.MeshBasicMaterial({ color: 0x00FF00, wireframe: true, side: THREE.DoubleSide })
+  const material = generateHillMat(segments, width, length)
   const newMesh = new THREE.Mesh(geometry, material)
 
   return {mesh: newMesh, verts: hillVerts, indices: hillIndices}
+}
+
+
+function generateHillVerts(
+  triCount,
+  maxHeight,
+  width,
+  startPos,
+  prevHillHeights,
+  segments,
+  length,
+  posOffsetZ
+) {
+  let hillVerts = []
+  let hillUVs = []
+
+  for (i = 0; i < triCount; i++) {
+    let height = randomFloat(0, maxHeight) * hillCurve(i / triCount, 1.2)
+
+    hillVerts.push(i / (triCount - 1) * width + startPos)
+
+    if (prevHillHeights.length / 2 != segments + 1) { hillVerts.push(0) }
+    else { hillVerts.push(prevHillHeights[i * 2 + 1]) }
+
+    hillVerts.push(length / 2 + posOffsetZ)
+
+    hillUVs.push(i / (triCount - 1), 0)
+
+    hillVerts.push(
+      i / (triCount - 1) * width + startPos,
+      height,
+      -length / 2 + posOffsetZ
+    )
+    hillUVs.push(i / (triCount - 1), 1)
+  }
+
+  return {verts: hillVerts, uvs: hillUVs}
+}
+
+
+function generateHillMat(segments, width, length) {
+  //return new THREE.MeshBasicMaterial({ color: 0x00FF00, wireframe: false })
+
+  const vertexShader = `
+    varying vec2 vUv;
+    void main() {
+      vUv = uv;
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+    }
+  `
+
+  const fragmentShader = `
+    varying vec2 vUv;
+    uniform vec3 edgeColor;
+    uniform vec3 centerColor;
+    uniform int segmentCount;
+    uniform float aspectRatio;
+
+    void main() {
+      vec2 uv = vUv;
+      uv.x = fract(uv.x * float(segmentCount));
+
+      // Define the edge threshold
+      float edgeThreshold = 0.1;
+
+      // Check for the top, bottom, and sides (not including corners as edges)
+      float isEdge = 0.0;
+      
+      // Check top and bottom edges
+      if (uv.y < edgeThreshold || uv.y > (1.0 - edgeThreshold)) {
+        isEdge = 1.0;
+      }
+      
+      // Check side edges, but exclude corners
+      if (uv.x < edgeThreshold || uv.x > (1.0 - edgeThreshold)) {
+        isEdge = 1.0;
+      }
+
+      // Mix the colors based on whether it's an edge
+      vec3 color = mix(centerColor, edgeColor, isEdge);
+
+      gl_FragColor = vec4(color, 1.0);
+    }
+  `
+
+  const material = new THREE.ShaderMaterial({
+    vertexShader,
+    fragmentShader,
+    uniforms: {
+      edgeColor: { value: new THREE.Color(0x00b4f0) },
+      centerColor: { value: new THREE.Color(0x323232) },
+      segmentCount: { value: segments },
+      aspectRatio: { value: (width / segments) / length }
+    }
+  })
+
+  return material
 }
 
 
