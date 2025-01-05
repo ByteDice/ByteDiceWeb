@@ -11,6 +11,5 @@ function calcPixelDensity() {
 
   pxDensity = parseFloat(getComputedStyle(document.body).getPropertyValue("--pxDensity"))
 
-  console.log("pxDensity: " + getComputedStyle(document.body).getPropertyValue("--pxDensity"))
   pxDensityDefined = true
 }

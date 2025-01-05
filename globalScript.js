@@ -33,6 +33,11 @@ function clampNearest(n, mul) {
 }
 
 
+function lerp(x, y, t) {
+  return x + t * (y - x)
+}
+
+
 function toggleGrid() {
   if (gridVisible) {
     document.getElementById("gridCanvas").remove()
@@ -109,6 +114,7 @@ document.addEventListener("DOMContentLoaded", async function() {
 
   setLoadingProgress("Calculating pixel density...")
   calcPixelDensity()
+  console.log("pxDensity: " + getComputedStyle(document.body).getPropertyValue("--pxDensity"))
 
   switch (CURRENT_PAGE) {
     case (PAGES.SYNTHWAVE): loadingScreenSynthwave()
@@ -126,6 +132,8 @@ document.addEventListener("DOMContentLoaded", async function() {
 
 
 window.addEventListener("resize", () => {
+  calcPixelDensity()
+
   switch (CURRENT_PAGE) {
     case (PAGES.SYNTHWAVE): onResizeSynthWave()
   }
