@@ -41,12 +41,13 @@ const mesh = new THREE.Mesh(geometry, material)
 
 //scene.add(mesh)
 
+// "toward sun"
+camera.position.z = 5
+camera.position.y = 2
 
-/* camera.position.z = 5
-camera.position.y = 2 */
-
-camera.position.y = 5
-camera.lookAt(0, 0, 0)
+// top down
+/* camera.position.y = 5
+camera.lookAt(0, 0, 0) */
 
 function hillCurve(x, width) {
   return (Math.sin(Math.PI * (x + 1)) + 1) ** width
@@ -145,29 +146,32 @@ function generateHillMat(segments, width, length) {
     uniform vec3 edgeColor;
     uniform vec3 centerColor;
     uniform int segmentCount;
-    uniform float aspectRatio;
+    uniform vec2 resolution;
 
     void main() {
       vec2 uv = vUv;
       uv.x = fract(uv.x * float(segmentCount));
 
-      // Define the edge threshold
-      float edgeThreshold = 0.1;
+      float edgeThresholdX = 0.1;
+      float edgeThresholdY = 0.1;
 
-      // Check for the top, bottom, and sides (not including corners as edges)
+      if (resolution.x > resolution.y) {
+        edgeThresholdX *= resolution.y / resolution.x;
+      }
+      else {
+        edgeThresholdY *= resolution.x / resolution.y;
+      }
+
       float isEdge = 0.0;
       
-      // Check top and bottom edges
-      if (uv.y < edgeThreshold || uv.y > (1.0 - edgeThreshold)) {
+      if (uv.y < edgeThresholdY || uv.y > (1.0 - edgeThresholdY)) {
         isEdge = 1.0;
       }
       
-      // Check side edges, but exclude corners
-      if (uv.x < edgeThreshold || uv.x > (1.0 - edgeThreshold)) {
+      if (uv.x < edgeThresholdX || uv.x > (1.0 - edgeThresholdX)) {
         isEdge = 1.0;
       }
 
-      // Mix the colors based on whether it's an edge
       vec3 color = mix(centerColor, edgeColor, isEdge);
 
       gl_FragColor = vec4(color, 1.0);
@@ -181,9 +185,11 @@ function generateHillMat(segments, width, length) {
       edgeColor: { value: new THREE.Color(0x00b4f0) },
       centerColor: { value: new THREE.Color(0x323232) },
       segmentCount: { value: segments },
-      aspectRatio: { value: (width / segments) / length }
+      resolution: { value: [width / segments, length] }
     }
   })
+
+  console.log([width / segments, length])
 
   return material
 }
@@ -195,7 +201,7 @@ function animate() {
   renderer.render(scene, camera)
 }
 
-let newHill = generateHill(camera.aspect * 10, 2, 25, 4)
+let newHill = generateHill(camera.aspect * 10, 2, 25, 4, 0)
 
 scene.add(newHill.mesh)
 scene.add(generateHill(camera.aspect * 10, 2, 25, 4, -2, newHill.verts).mesh)
