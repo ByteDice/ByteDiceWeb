@@ -1,3 +1,10 @@
+const PAGES = {
+  null: -1,
+  SYNTHWAVE: 0,
+}
+
+let CURRENT_PAGE = PAGES.null
+
 let isAnimating = true
 
 function randomFloat(min, max) {
@@ -19,9 +26,9 @@ function clampNearest(n, mul) {
   if(n > 0)
     return Math.ceil(n / mul) * mul;
   else if( n < 0)
-      return Math.floor(n / mul) * mul;
+    return Math.floor(n / mul) * mul;
   else
-      return 0;
+    return 0;
 }
 
 
@@ -79,3 +86,30 @@ function pauseAnimBtn(state) {
 
   localStorage["isAnimating"] = state
 }
+
+
+document.addEventListener("DOMContentLoaded", async function() {
+  startLoadingScreen()
+
+  setLoadingProgress("Fetching tips...")
+
+  await loadTips()
+
+  newTip()
+
+  setLoadingProgress("Calculating pixel density...")
+  calcPixelDensity()
+
+  switch (CURRENT_PAGE) {
+    case (PAGES.SYNTHWAVE): loadingScreenSynthwave()
+  }
+  
+  pauseAnimBtn(localStorage["isAnimating"] || "true")
+
+  if (showLoading != "true") { 
+    removeLoadingScreen()
+  }
+  else {
+    setLoadingProgress("Cleaning up...")
+  }
+}, false)

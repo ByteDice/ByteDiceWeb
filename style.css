@@ -39,6 +39,8 @@ body {
 }
 #synthwaveCanvas {
   position: absolute;
-  bottom: round(0%, var(--pxDensityPx));
+  top: round(0%, var(--pxDensityPx));
   left: round(0%, var(--pxDensityPx));
+  width: 100%;
+  height: 100%;
 }

@@ -4,25 +4,17 @@ let loadingScreenProgress = document.getElementById("loadingText")
 let loadingScreenEl = document.getElementById("loadingScreen")
 
 
-let tipsJson;
+let tipsJson
 
-(function loadTipsSync() {
-  const xhr = new XMLHttpRequest();
-  xhr.open("GET", "./loadingScreenTips.json", false)
-  xhr.send(null)
 
-  if (xhr.status === 200) {
-    tipsJson = JSON.parse(xhr.responseText)
-  } else {
-    console.error("Failed to load tips:", xhr.status, xhr.statusText)
-    tipsJson = []
-  }
-})()
+async function loadTips() {
+  let tipsText = await fetch("./loadingScreenTips.json").then(response => response.text())
+  tipsJson = JSON.parse(tipsText)
+}
 
-console.log(tipsJson)
 
-let selectedTip = tipsJson[randomIntFrom0(tipsJson.length)]
 const showLoading = localStorage["showLoading"] || "true"
+let selectedTip = "undefined"
 
 
 function newTip() {

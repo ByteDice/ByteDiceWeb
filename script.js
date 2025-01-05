@@ -1,21 +1,9 @@
-document.addEventListener("DOMContentLoaded", function() {
-  startLoadingScreen()
+CURRENT_PAGE = PAGES.SYNTHWAVE
 
-  setLoadingProgress("Calculating pixel density...")
-  calcPixelDensity()
-  
+function loadingScreenSynthwave() {
   setLoadingProgress("Adding stars...")
   addStars()
-  
-  pauseAnimBtn(localStorage["isAnimating"] || "true")
-
-  if (showLoading != "true") { 
-    removeLoadingScreen()
-  }
-  else {
-    setLoadingProgress("Cleaning up...")
-  }
-}, false)
+}
 
 
 function addStars() {
