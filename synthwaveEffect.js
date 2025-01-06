@@ -1,8 +1,74 @@
-CURRENT_PAGE = PAGES.SYNTHWAVE
-
 const scene = new THREE.Scene()
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
 const renderer = new THREE.WebGLRenderer({ alpha: true })
+
+const composer = new THREE.EffectComposer(renderer)
+
+composer.setSize(window.innerWidth, window.innerHeight)
+
+const renderPass = new THREE.RenderPass(scene, camera)
+composer.addPass(renderPass)
+
+const renderTarget = new THREE.WebGLRenderTarget(window.innerWidth, window.innerHeight, {
+  minFilter: THREE.NearestFilter,
+  magFilter: THREE.NearestFilter,
+  format: THREE.RGBAFormat,
+  type: THREE.UNSIGNED_BYTE
+})
+
+const shaderMaterial = new THREE.ShaderMaterial({
+  vertexShader: `
+    varying vec2 vUv;
+
+    void main() {
+      vUv = uv;
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+    }
+  `,
+  fragmentShader: `
+    varying vec2 vUv;
+
+    uniform vec3 edgeColor;
+    uniform vec3 centerColor;
+    uniform sampler2D tDiffuse;
+    uniform float pxDensity;
+    uniform vec2 resolution;
+    uniform float aspectRatio;
+
+    void main() {
+      vec2 uv = vUv;
+      uv.x *= aspectRatio;
+
+      float screenPxCount = max(resolution.x, resolution.y) / (pxDensity * 12.5);
+      vec2 p = floor(uv * screenPxCount);
+      p /= screenPxCount;
+
+      vec4 color = texture2D(tDiffuse, p);
+
+      float brightness = (color.r + color.g + color.b) / 3.0;
+
+      float threshold = 0.5;
+      vec3 finalColor = mix(centerColor, edgeColor, step(threshold, brightness));
+
+      if (color.a < 0.3) { finalColor = vec3(0.0); }
+
+      gl_FragColor = vec4(finalColor, color.a);
+    }
+  `,
+  uniforms: {
+    edgeColor: { value: new THREE.Color(0x00b4f0) },
+    centerColor: { value: new THREE.Color(0x323232) },
+    tDiffuse: { value: null },
+    pxDensity: { value: pxDensity },
+    resolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
+    aspectRatio: { value: camera.aspect }
+  }
+})
+
+const shaderPass = new THREE.ShaderPass(shaderMaterial)
+composer.addPass(shaderPass)
+
+shaderPass.material.uniforms.tDiffuse.value = renderTarget.texture
 
 // TODO: when tabbing out it sometimes doesnt pause the animation
 // TODO: add pixelation shader
@@ -154,8 +220,8 @@ function generateHillMat(segments, width, length) {
 
   const fragmentShader = `
     varying vec2 vUv;
-    uniform vec3 edgeColor;
-    uniform vec3 centerColor;
+    //uniform vec3 edgeColor;
+    //uniform vec3 centerColor;
     uniform int segmentCount;
     uniform vec2 resolution;
 
@@ -183,7 +249,12 @@ function generateHillMat(segments, width, length) {
         isEdge = 1.0;
       }
 
-      vec3 color = mix(centerColor, edgeColor, isEdge);
+      // mix(centerColor, edgeColor, isEdge);
+      vec3 color = mix(
+        vec3(0.0, 0.0, 0.0),
+        vec3(1.0, 1.0, 1.0),
+        isEdge
+      );
 
       gl_FragColor = vec4(color, 1.0);
     }
@@ -193,10 +264,10 @@ function generateHillMat(segments, width, length) {
     vertexShader,
     fragmentShader,
     uniforms: {
-      edgeColor: { value: new THREE.Color(0x00b4f0) },
-      centerColor: { value: new THREE.Color(0x323232) },
+      //edgeColor: { value: new THREE.Color(0x00b4f0) },
+      //centerColor: { value: new THREE.Color(0x323232) },
       segmentCount: { value: segments },
-      resolution: { value: [width / segments, length] }
+      resolution: { value: new THREE.Vector2(width / segments, length) }
     }
   })
 
@@ -246,7 +317,7 @@ let distSinceLastHill = 0
 
 function animateSynthwave(timestamp) {
   let deltaTime = (timestamp - lastTime) / 1000
-  lastTime = timestamp;
+  lastTime = timestamp
 
   let currentTickRate = 1 / deltaTime
   tickMultiplier = tickRate / currentTickRate
@@ -254,7 +325,11 @@ function animateSynthwave(timestamp) {
   if (!hasPreAnimated) { return }
 
   if (!isAnimating) {
+    renderer.setRenderTarget(renderTarget)
     renderer.render(scene, camera)
+
+    renderer.setRenderTarget(null)
+    composer.render()
     requestAnimationFrame(animateSynthwave)
     return 
   }
@@ -289,7 +364,11 @@ function animateSynthwave(timestamp) {
     lastHillVerts = newHill.verts
   }
 
+  renderer.setRenderTarget(renderTarget)
   renderer.render(scene, camera)
+
+  renderer.setRenderTarget(null)
+  composer.render()
 
   requestAnimationFrame(animateSynthwave)
 }
@@ -297,6 +376,7 @@ function animateSynthwave(timestamp) {
 
 function onResizeSynthwave() {
   renderer.setSize(window.innerWidth, window.innerHeight)
+  composer.setSize(window.innerWidth, window.innerHeight)
   camera.aspect = window.innerWidth / window.innerHeight
   camera.updateProjectionMatrix()
 }
