@@ -222,7 +222,7 @@ function preAnimateSynthwave(times) {
     let hillOffset = -(i * hillLength) + 0.02
 
     let newHill = generateHill(
-      camera.aspect * 10,
+      15, //camera.aspect * 10,
       hillLength,
       25,
       4,
@@ -276,7 +276,7 @@ function animateSynthwave(timestamp) {
     let hillZOffset = hillLength - distSinceLastHill
 
     let newHill = generateHill(
-      camera.aspect * 10,
+      15, //camera.aspect * 10,
       hillLength,
       25,
       4,
