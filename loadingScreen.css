@@ -33,8 +33,11 @@
 #loadingText {
   position: absolute;
   bottom: 0%;
-  left: 50%;
-  transform: translateX(-50%);
+  left: calc(50% - 40vw);
+  width: 80vw;
   text-align: center;
   font-size: 1.5rem;
+  word-break: break-word;
+  display: flex;
+  justify-content: center;
 }

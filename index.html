@@ -24,38 +24,41 @@
     <div id="canvasContainer"></div>
     
     <!-- TODO: change discord URL to server URL -->
-    <ul class="navBar">
-      <li>
-        <button onclick="slideTransition('https://discord.com')" class="navBtn">
-          <img class="navBtnImg" draggable="false" src="./assets/navBarBtn.png">
-          <img class="navBtnIcon" draggable="false" src="./assets/discord_8x8.png">
-        </button>
-      </li>
-      <li>
-        <button onclick="slideTransition('https://youtube.com/@ByteDice')" class="navBtn">
-          <img class="navBtnImg" draggable="false" src="./assets/navBarBtn.png">
-          <img class="navBtnIcon" draggable="false" src="./assets/youtube_8x8.png">
-        </button>
-      </li>
-      <li>
-        <button onclick="slideTransition('https://github.com/ByteDice')" class="navBtn">
-          <img class="navBtnImg" draggable="false" src="./assets/navBarBtn.png">
-          <img class="navBtnIcon" draggable="false" src="./assets/github_8x8.png">
-        </button>
-      </li>
-      <li>
-        <button class="navBtn">
-          <img class="navBtnImg" draggable="false" src="./assets/navBarBtn.png">
-          <img class="navBtnIcon" draggable="false" src="./assets/powerplates_8x8.png">
-        </button>
-      </li>
-      <li>
-        <button onClick="pauseAnimBtn('auto')" class="navBtn">
-          <img class="navBtnImg" draggable="false" src="./assets/navBarBtn.png">
-          <img class="navBtnIcon" draggable="false" src="./assets/pauseAnimation_8x8.png" id="animationToggle">
-        </button>
-      </li>
-    </ul>
+    <!-- TODO: make automatic navBar creator -->
+    <div class="navBarAligner">
+      <ul class="navBar">
+        <li>
+          <button onclick="slideTransition('https://discord.com')" class="navBtn">
+            <img class="navBtnImg" draggable="false" src="./assets/navBarBtn.png">
+            <img class="navBtnIcon" draggable="false" src="./assets/discord_8x8.png">
+          </button>
+        </li>
+        <li>
+          <button onclick="slideTransition('https://youtube.com/@ByteDice')" class="navBtn">
+            <img class="navBtnImg" draggable="false" src="./assets/navBarBtn.png">
+            <img class="navBtnIcon" draggable="false" src="./assets/youtube_8x8.png">
+          </button>
+        </li>
+        <li>
+          <button onclick="slideTransition('https://github.com/ByteDice')" class="navBtn">
+            <img class="navBtnImg" draggable="false" src="./assets/navBarBtn.png">
+            <img class="navBtnIcon" draggable="false" src="./assets/github_8x8.png">
+          </button>
+        </li>
+        <li>
+          <button class="navBtn">
+            <img class="navBtnImg" draggable="false" src="./assets/navBarBtn.png">
+            <img class="navBtnIcon" draggable="false" src="./assets/powerplates_8x8.png">
+          </button>
+        </li>
+        <li>
+          <button onClick="pauseAnimBtn('auto')" class="navBtn">
+            <img class="navBtnImg" draggable="false" src="./assets/navBarBtn.png">
+            <img class="navBtnIcon" draggable="false" src="./assets/pauseAnimation_8x8.png" id="animationToggle">
+          </button>
+        </li>
+      </ul>
+    </div>
   </div>
 
   <div class="bgDiv" id="loadingScreen">
