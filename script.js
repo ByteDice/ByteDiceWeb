@@ -5,8 +5,8 @@ function loadingScreenSynthwave() {
   addStars()
 
   setLoadingProgress("Starting synthwave animation...")
-  preAnimateSynthwave(25)
-  animateSynthwave(0)
+  //preAnimateSynthwave(25)
+  //animateSynthwave(0)
 }
 
 

@@ -5,12 +5,6 @@ li {
   margin-bottom: calc(2px * var(--pxDensity));
 }
 
-.navBarAligner {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  height: 100vh;
-}
 .navBar {
   background-color: var(--navBar_Inner);
   box-shadow: calc(1px * var(--pxDensity)) 0px var(--navBar_Border),
@@ -20,10 +14,13 @@ li {
 
   filter: drop-shadow(0px calc(2px * var(--pxDensity)) rgba(0, 0, 0, 0.5));
   padding: 0%;
-  display: inline-block;
-  transform: translateY(calc(-4px * var(--pxDensity)));
+  display: inline;
+  position: absolute;
+  top: round(calc(100% - calc(5px * var(--pxDensity))), var(--pxDensityPx));
+  left: round(50%, var(--pxDensityPx));
+  transform: translate(-50%, -100%);
   font-size: 0px;
-  text-align: center;
+  width: max-content;
 }
 .navBtn {
   background-color: transparent;
