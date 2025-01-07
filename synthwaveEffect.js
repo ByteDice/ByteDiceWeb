@@ -37,22 +37,14 @@ const shaderMaterial = new THREE.ShaderMaterial({
 
     void main() {
       vec2 uv = vUv;
-      uv.x *= aspectRatio;
 
-      float screenPxCount = max(resolution.x, resolution.y) / (pxDensity * 12.5);
-      vec2 p = floor(uv * screenPxCount);
-      p /= screenPxCount;
+      vec2 screenPxCount = vec2(resolution.x / pxDensity, resolution.y / pxDensity);
+      screenPxCount = vec2(256.0, 164.0);
+      vec2 p = floor(uv * screenPxCount) / screenPxCount;
 
       vec4 color = texture2D(tDiffuse, p);
 
-      float brightness = (color.r + color.g + color.b) / 3.0;
-
-      float threshold = 0.5;
-      vec3 finalColor = mix(centerColor, edgeColor, step(threshold, brightness));
-
-      if (color.a < 0.3) { finalColor = vec3(0.0); }
-
-      gl_FragColor = vec4(finalColor, color.a);
+      gl_FragColor = color;
     }
   `,
   uniforms: {
@@ -220,8 +212,8 @@ function generateHillMat(segments, width, length) {
 
   const fragmentShader = `
     varying vec2 vUv;
-    //uniform vec3 edgeColor;
-    //uniform vec3 centerColor;
+    uniform vec3 edgeColor;
+    uniform vec3 centerColor;
     uniform int segmentCount;
     uniform vec2 resolution;
 
@@ -249,12 +241,7 @@ function generateHillMat(segments, width, length) {
         isEdge = 1.0;
       }
 
-      // mix(centerColor, edgeColor, isEdge);
-      vec3 color = mix(
-        vec3(0.0, 0.0, 0.0),
-        vec3(1.0, 1.0, 1.0),
-        isEdge
-      );
+      vec3 color = mix(centerColor, edgeColor, isEdge);
 
       gl_FragColor = vec4(color, 1.0);
     }
@@ -264,8 +251,8 @@ function generateHillMat(segments, width, length) {
     vertexShader,
     fragmentShader,
     uniforms: {
-      //edgeColor: { value: new THREE.Color(0x00b4f0) },
-      //centerColor: { value: new THREE.Color(0x323232) },
+      edgeColor: { value: new THREE.Color(0x00b4f0) },
+      centerColor: { value: new THREE.Color(0x323232) },
       segmentCount: { value: segments },
       resolution: { value: new THREE.Vector2(width / segments, length) }
     }
