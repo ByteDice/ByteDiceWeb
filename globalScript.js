@@ -116,6 +116,9 @@ document.addEventListener("DOMContentLoaded", async function() {
   calcPixelDensity()
   console.log("pxDensity: " + getComputedStyle(document.body).getPropertyValue("--pxDensity"))
 
+  if (densityWidth > densityHeight) { console.log("pxDensity Direction: Width, " + densityWidth) }
+  else { console.log("pxDensity Direction: Height, " + densityHeight) } 
+
   switch (CURRENT_PAGE) {
     case (PAGES.SYNTHWAVE): loadingScreenSynthwave()
   }
