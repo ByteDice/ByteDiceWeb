@@ -8,7 +8,7 @@ let tipsJson
 
 
 async function loadTips() {
-  let tipsText = await fetch("./loadingScreenTips.json").then(response => response.text())
+  let tipsText = await fetch("./data/loadingScreenTips.json").then(response => response.text())
   tipsJson = JSON.parse(tipsText)
 }
 
