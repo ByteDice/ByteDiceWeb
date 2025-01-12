@@ -92,11 +92,11 @@ function pauseAnimBtn(state) {
 
   if (state == "true") {
     isAnimating = true
-    pauseBtn.src = "./assets/icons/pauseAnimation_8x8.png"
+    pauseBtn.src = "/assets/icons/pauseAnimation_8x8.png"
   }
   else {
     isAnimating = false
-    pauseBtn.src = "./assets/icons/playAnimation_8x8.png"
+    pauseBtn.src = "/assets/icons/playAnimation_8x8.png"
   }
 
   localStorage["isAnimating"] = state
@@ -118,6 +118,10 @@ document.addEventListener("DOMContentLoaded", async function() {
 
   if (densityWidth > densityHeight) { console.log("pxDensity Direction: Width, " + densityWidth) }
   else { console.log("pxDensity Direction: Height, " + densityHeight) } 
+
+  setLoadingProgress("adding navBar...")
+  await loadNavBarJson()
+  onLoadNavBar()
 
   switch (CURRENT_PAGE) {
     case (PAGES.SYNTHWAVE): loadingScreenSynthwave()

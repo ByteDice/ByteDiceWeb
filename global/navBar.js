@@ -1,0 +1,51 @@
+let navBarJson
+
+function onLoadNavBar() {
+  const container = document.getElementById("navBarContainer")
+
+  if (!container) { return }
+
+  const navBarAligner = document.createElement("div")
+  navBarAligner.className = "navBarAligner"
+
+  const navBar = document.createElement("ul")
+  navBar.className = "navBar"
+
+
+  for (let btn of navBarJson) {
+    navBar.appendChild(createNavBarBtn(
+      btn["icon"]        || "",
+      btn["action"]      || "",
+      btn["actionValue"] || "",
+      btn["iconId"]      || ""
+    ))
+  }
+
+  navBarAligner.appendChild(navBar)
+  container.appendChild(navBarAligner)
+}
+
+function createNavBarBtn(icon = "", action = "", actionValue = "", iconId = "") {
+  let onClick
+  switch (action) {
+    case "navigate": onClick = `slideTransition('${actionValue}')`; break
+    case "function": onClick = `${actionValue}`; break
+    default: ""
+  }
+
+  let btn = document.createElement("li")
+  btn.innerHTML = `
+    <button onclick="${onClick}" class="navBtn">
+      <img class="navBtnImg" draggable="false" src="/assets/navBarBtn.png">
+      <img class="navBtnIcon" draggable="false" src="/assets/icons/${icon}" id="${iconId}">
+    </button>
+  `
+
+  return btn
+}
+
+async function loadNavBarJson() {
+  let navBarText = await fetch("/data/navBar.json").then(response => response.text())
+  navBarJson = JSON.parse(navBarText)
+}
+

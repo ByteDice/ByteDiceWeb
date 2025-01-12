@@ -15,12 +15,14 @@
     "actionValue": "https://github.com/ByteDice"
   },
   {
-    "icon": "powerplates_8x8.png"
+    "icon": "powerplates_8x8.png",
+    "action": "navigate",
+    "actionValue": "/powerplates"
   },
   {
     "icon": "pauseAnimation_8x8.png",
     "action": "function",
-    "actionValue": "https://discord.com",
+    "actionValue": "pauseAnimBtn('auto')",
     "iconId": "animationToggle"
   }
 ]

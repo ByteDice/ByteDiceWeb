@@ -6,70 +6,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Byte Dice</title>
 
-  <link rel="stylesheet" href="./global/navBar.css">
-  <link rel="stylesheet" href="./global/globalStyle.css">
-  <link rel="stylesheet" href="./global/loadingScreen.css">
+  <link rel="stylesheet" href="/global/navBar.css">
+  <link rel="stylesheet" href="/global/globalStyle.css">
+  <link rel="stylesheet" href="/global/loadingScreen.css">
   <link rel="stylesheet" href="style.css">
 
-  <link rel="icon" type="image/png" href="./assets/favicon_32x32.png">
+  <link rel="icon" type="image/png" href="/assets/favicon_32x32.png">
 </head>
 
 <body style="background-color: #323232; color: #ffffff;">
   <div id="mainDiv">
-    <img src="./assets/backgrounds/bgGradient_256x164.png" class="bgGradient">
+    <img src="/assets/backgrounds/bgGradient_256x164.png" class="bgGradient">
     
-    <img src="./assets/backgrounds/starNoise_512x512.png" draggable="false" id="starNoise">
-    <img src="./assets/synthwaveSun_40x40.png" draggable="false" class="synthSun">
+    <img src="/assets/backgrounds/starNoise_512x512.png" draggable="false" id="starNoise">
+    <img src="/assets/synthwaveSun_40x40.png" draggable="false" class="synthSun">
 
     <div id="canvasContainer"></div>
-    
-    <!-- TODO: change discord URL to server URL -->
-    <!-- TODO: make automatic navBar generator -->
-    <div class="navBarAligner">
-      <ul class="navBar">
-        <li>
-          <button onclick="slideTransition('https://discord.com')" class="navBtn">
-            <img class="navBtnImg" draggable="false" src="./assets/navBarBtn.png">
-            <img class="navBtnIcon" draggable="false" src="./assets/icons/discord_8x8.png">
-          </button>
-        </li>
-        <li>
-          <button onclick="slideTransition('https://youtube.com/@ByteDice')" class="navBtn">
-            <img class="navBtnImg" draggable="false" src="./assets/navBarBtn.png">
-            <img class="navBtnIcon" draggable="false" src="./assets/icons/youtube_8x8.png">
-          </button>
-        </li>
-        <li>
-          <button onclick="slideTransition('https://github.com/ByteDice')" class="navBtn">
-            <img class="navBtnImg" draggable="false" src="./assets/navBarBtn.png">
-            <img class="navBtnIcon" draggable="false" src="./assets/icons/github_8x8.png">
-          </button>
-        </li>
-        <li>
-          <button class="navBtn">
-            <img class="navBtnImg" draggable="false" src="./assets/navBarBtn.png">
-            <img class="navBtnIcon" draggable="false" src="./assets/icons/powerplates_8x8.png">
-          </button>
-        </li>
-        <li>
-          <button onClick="pauseAnimBtn('auto')" class="navBtn">
-            <img class="navBtnImg" draggable="false" src="./assets/navBarBtn.png">
-            <img class="navBtnIcon" draggable="false" src="./assets/icons/pauseAnimation_8x8.png" id="animationToggle">
-          </button>
-        </li>
-      </ul>
-    </div>
+    <div id="navBarContainer"></div>
   </div>
 
-  <div class="bgDiv" id="loadingScreen">
-    <img class="loadingImg" draggable="false" src="./assets/byteDiceBlinkAnim_32x32.png">
-
-    <button class="pxFont" onclick="stopShowingLoading()" id="loadingCornerText">
-      Press ESC to instantly close the loading screen<br>Or click me to never see it again.
-    </button>
-
-    <p id="loadingText">Loading...<br>Loading files...<br><br>Tip: Tip loading...</p>
-  </div>
+  <div id="loadingScreen"></div>
 
   
   <!-- libs -->
@@ -80,10 +36,11 @@
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/CopyShader.js"></script>
 
   <!-- global -->
-  <script src="./global/globalScript.js"></script> <!-- TODO: compact the other global scripts into this global script -->
-  <script src="./global/pxDensity.js"></script>
-  <script src="./global/loadingScreen.js"></script>
-  <script src="./global/screenTransition.js"></script>
+  <script src="/global/globalScript.js"></script>
+  <script src="/global/pxDensity.js"></script>
+  <script src="/global/loadingScreen.js"></script>
+  <script src="/global/navBar.js"></script>
+  <script src="/global/screenTransition.js"></script>
 
   <!-- local -->
   <script src="script.js"></script>

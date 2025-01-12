@@ -1,14 +1,27 @@
 let isLoading = true
 let stopLoading = false
-let loadingScreenProgress = document.getElementById("loadingText")
 let loadingScreenEl = document.getElementById("loadingScreen")
 
+
+loadingScreenEl.className = "bgDiv"
+loadingScreenEl.innerHTML = `
+  <img class="loadingImg" draggable="false" src="/assets/byteDiceBlinkAnim_32x32.png">
+
+  <button class="pxFont" onclick="stopShowingLoading()" id="loadingCornerText">
+    Press ESC to instantly close the loading screen<br>Or click me to never see it again.
+  </button>
+
+  <p id="loadingText">Loading...<br>Loading files...<br><br>Tip: Tip loading...</p>
+`
+
+
+let loadingScreenProgress = document.getElementById("loadingText")
 
 let tipsJson
 
 
 async function loadTips() {
-  let tipsText = await fetch("./data/loadingScreenTips.json").then(response => response.text())
+  let tipsText = await fetch("/data/loadingScreenTips.json").then(response => response.text())
   tipsJson = JSON.parse(tipsText)
 }
 
