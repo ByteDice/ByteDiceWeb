@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    # $DEPLOYPATH needs to be initialized
+    - /bin/cp -R * $DEPLOYPATH
