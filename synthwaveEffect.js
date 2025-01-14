@@ -1,3 +1,5 @@
+let usePostProcessing = true
+
 const scene = new THREE.Scene()
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
 const renderer = new THREE.WebGLRenderer({ alpha: true })
@@ -35,6 +37,10 @@ const shaderMaterial = new THREE.ShaderMaterial({
     uniform vec2 resolution;
     uniform float aspectRatio;
 
+    float brightness(vec3 c) {
+      return (c.r + c.g + c.b) / 3.0;
+    }
+
     void main() {
       vec2 uv = vUv;
 
@@ -44,7 +50,21 @@ const shaderMaterial = new THREE.ShaderMaterial({
 
       vec4 color = texture2D(tDiffuse, p);
 
-      gl_FragColor = color;
+      float b = brightness(color.rgb);
+      float centerB = brightness(centerColor);
+      float alpha = floor(color.a);
+
+      if (b > centerB) {
+        gl_FragColor = vec4(edgeColor, color.a);
+      }
+      else if (color == vec4(0.0)) {
+        gl_FragColor = vec4(0.0);
+      }
+      else {
+        gl_FragColor = vec4(centerColor, color.a);
+      }
+      
+      //gl_FragColor = color;
     }
   `,
   uniforms: {
@@ -221,8 +241,8 @@ function generateHillMat(segments, width, length) {
       vec2 uv = vUv;
       uv.x = fract(uv.x * float(segmentCount));
 
-      float edgeThresholdX = 0.1;
-      float edgeThresholdY = 0.1;
+      float edgeThresholdX = 0.075;
+      float edgeThresholdY = 0.075;
 
       if (resolution.x > resolution.y) {
         edgeThresholdX *= resolution.y / resolution.x;
@@ -312,12 +332,7 @@ function animateSynthwave(timestamp) {
   if (!hasPreAnimated) { return }
 
   if (!isAnimating) {
-    renderer.setRenderTarget(renderTarget)
-    renderer.render(scene, camera)
-
-    renderer.setRenderTarget(null)
-    composer.render()
-    requestAnimationFrame(animateSynthwave)
+    render()
     return 
   }
   
@@ -351,13 +366,26 @@ function animateSynthwave(timestamp) {
     lastHillVerts = newHill.verts
   }
 
-  renderer.setRenderTarget(renderTarget)
-  renderer.render(scene, camera)
+  render()
+}
 
-  renderer.setRenderTarget(null)
-  composer.render()
 
-  requestAnimationFrame(animateSynthwave)
+function render() {
+  if (usePostProcessing) {
+    renderer.setRenderTarget(renderTarget)
+    renderer.render(scene, camera)
+
+    renderer.setRenderTarget(null)
+    composer.render()
+
+    requestAnimationFrame(animateSynthwave)
+  }
+  else {
+    renderer.setRenderTarget(null)
+    renderer.render(scene, camera)
+
+    requestAnimationFrame(animateSynthwave)
+  }
 }
 
 
