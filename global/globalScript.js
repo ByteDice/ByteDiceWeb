@@ -180,6 +180,16 @@ window.addEventListener("resize", function() {
   }
 })
 
+
+window.addEventListener("pageshow", (event) => {
+  if (event.persisted) {
+    // reload page to clear unwanted cache.
+    // for some reason the loading screen stays
+    // permanently open without this.
+    window.location.reload();
+  }
+});
+
 let prevAnimationState = isAnimating
 
 /*
