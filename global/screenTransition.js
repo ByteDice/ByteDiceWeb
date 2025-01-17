@@ -1,6 +1,7 @@
 function slideTransition(url) {
-  const dur = 0.5
-  const loadingTime = 1.0
+  const dur = 500
+  const loadingTime = randomFloat(500, 1500)
+  debugPrint("loadDur transition", loadingTime)
 
   const slideLeft = `slide-left ${dur}s cubic-bezier(0, 0, 0, 1.46) forwards`
 
@@ -15,6 +16,6 @@ function slideTransition(url) {
 
   setTimeout(function() {
     setLoadingProgress("Done!")
-    setTimeout(function() { document.location = url }, loadingTime * 1000)
-  }, (dur + loadingTime) * 1000)
+    setTimeout(function() { document.location = url }, loadingTime)
+  }, dur + loadingTime)
 }

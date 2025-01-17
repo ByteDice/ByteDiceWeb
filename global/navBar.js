@@ -47,5 +47,6 @@ function createNavBarBtn(icon = "", action = "", actionValue = "", iconId = "") 
 async function loadNavBarJson() {
   let navBarText = await fetch("/data/navBar.json").then(response => response.text())
   navBarJson = JSON.parse(navBarText)
+  console.log(navBarJson)
 }
 

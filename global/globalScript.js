@@ -2,6 +2,12 @@ const PAGES = {
   null: -1,
   SYNTHWAVE: 0,
 }
+const CONSOLE_COLORS = {
+  red: "color: #FF0000;",
+  green: "color: #00FF00",
+  white: "color: #FFFFFF;",
+  debugTitle: "color: #00FF00;",
+}
 
 let CURRENT_PAGE = PAGES.null
 
@@ -35,6 +41,11 @@ function clampNearest(n, mul) {
 
 function lerp(x, y, t) {
   return x + t * (y - x)
+}
+
+
+function debugPrint(title, value) {
+  console.log(`%c${title}:\n%c${value}`, CONSOLE_COLORS.debugTitle, CONSOLE_COLORS.white)
 }
 
 
@@ -99,11 +110,13 @@ function pauseAnimBtn(state) {
     pauseBtn.src = "/assets/icons/playAnimation_8x8.png"
   }
 
-  localStorage["isAnimating"] = state
+  localStorage["isAnimating"] = isAnimating
 }
 
 
 document.addEventListener("DOMContentLoaded", async function() {
+  debugPrint("currentPage", `${CURRENT_PAGE} ${Object.keys(PAGES)[CURRENT_PAGE + 1]}`)
+
   startLoadingScreen()
 
   setLoadingProgress("Fetching tips...")
@@ -114,10 +127,10 @@ document.addEventListener("DOMContentLoaded", async function() {
 
   setLoadingProgress("Calculating pixel density...")
   calcPixelDensity()
-  console.log("pxDensity: " + getComputedStyle(document.body).getPropertyValue("--pxDensity"))
+  debugPrint("pxDensity", pxDensity)
 
-  if (densityWidth > densityHeight) { console.log("pxDensity Direction: Width, " + densityWidth) }
-  else { console.log("pxDensity Direction: Height, " + densityHeight) } 
+  if (densityWidth > densityHeight) { debugPrint("pxDensity Direction", `Width, ${densityWidth}`) }
+  else { debugPrint("pxDensity Direction", `Height, ${densityHeight}`) } 
 
   setLoadingProgress("adding navBar...")
   await loadNavBarJson()
@@ -128,6 +141,7 @@ document.addEventListener("DOMContentLoaded", async function() {
   }
   
   pauseAnimBtn(localStorage["isAnimating"] || "true")
+  debugPrint("Pause button state", isAnimating)
 
   if (showLoading != "true") { 
     removeLoadingScreen()
@@ -145,6 +159,7 @@ window.addEventListener("resize", function() {
     case (PAGES.SYNTHWAVE): onResizeSynthwave()
   }
 
+  // unoptimal but works well enough
   if (gridVisible) {
     toggleGrid()
     toggleGrid()
@@ -153,7 +168,7 @@ window.addEventListener("resize", function() {
 
 let prevAnimationState = isAnimating
 
-
+/*
 document.addEventListener("visibilitychange", function() {
   if (document.hidden) {
     prevAnimationState = isAnimating;
@@ -164,17 +179,18 @@ document.addEventListener("visibilitychange", function() {
   }
 });
 
-/*
+
 window.addEventListener("blur", function() {
   if (document.visibilityState === "visible") {
     prevAnimationState = isAnimating;
     isAnimating = false;
   }
 });
-*/
+
 
 window.addEventListener("focus", function() {
   if (!document.hidden) {
     isAnimating = prevAnimationState;
   }
 });
+*/

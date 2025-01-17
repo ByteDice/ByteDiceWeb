@@ -23,6 +23,7 @@ let tipsJson
 async function loadTips() {
   let tipsText = await fetch("/data/loadingScreenTips.json").then(response => response.text())
   tipsJson = JSON.parse(tipsText)
+  console.log(tipsJson)
 }
 
 
@@ -32,6 +33,7 @@ let selectedTip = "undefined"
 
 function newTip() {
   selectedTip = tipsJson[randomIntFrom0(tipsJson.length)]
+  debugPrint("new tip", selectedTip)
 } 
 
 
@@ -44,6 +46,7 @@ function startLoadingScreen() {
 	loadingScreenProgress.innerHTML = `Loading...<br><br>Tip: ${selectedTip}`
 
 	const loadDur = randomFloat(3000, 6000)
+  debugPrint("loadDur initial", loadDur)
 
 	setTimeout(removeLoadingScreen, loadDur)
 }
