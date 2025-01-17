@@ -82,7 +82,6 @@ composer.addPass(shaderPass)
 
 shaderPass.material.uniforms.tDiffuse.value = renderTarget.texture
 
-// TODO: when tabbing out it sometimes doesnt pause the animation
 // TODO: add pixelation shader
 
 if (!renderer) {
