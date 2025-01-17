@@ -140,7 +140,7 @@ document.addEventListener("DOMContentLoaded", async function() {
   }
   
   pauseAnimBtn(localStorage["isAnimating"] || "true")
-  debugPrint("Pause button state", isAnimating)
+  debugPrint("isAnimating", isAnimating)
 
   if (showLoading != "true") { 
     removeLoadingScreen()
