@@ -3,7 +3,7 @@ function slideTransition(url) {
   const loadingTime = randomFloat(500, 1500)
   debugPrint("loadDur transition", loadingTime)
 
-  const slideLeft = `slide-left ${dur}s cubic-bezier(0, 0, 0, 1.46) forwards`
+  const slideLeft = `slide-left ${dur / 1000}s cubic-bezier(0, 0, 0, 1.46) forwards`
 
   let loadingScreen = document.getElementById("loadingScreen")
   let mainDiv = document.getElementById("mainDiv")
