@@ -127,10 +127,9 @@ document.addEventListener("DOMContentLoaded", async function() {
 
   setLoadingProgress("Calculating pixel density...")
   calcPixelDensity()
-  debugPrint("pxDensity", pxDensity)
 
-  if (densityWidth > densityHeight) { debugPrint("pxDensity Direction", `Width, ${densityWidth}`) }
-  else { debugPrint("pxDensity Direction", `Height, ${densityHeight}`) } 
+  if (densityWidth > densityHeight) { debugPrint("pxDensity", `Width, ${pxDensity}`) }
+  else { debugPrint("pxDensity", `Height, ${pxDensity}`) } 
 
   setLoadingProgress("adding navBar...")
   await loadNavBarJson()
