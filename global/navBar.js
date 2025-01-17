@@ -1,7 +1,10 @@
 let navBarJson
+let alts
 
 function onLoadNavBar() {
   const container = document.getElementById("navBarContainer")
+  const altString = container.dataset.alt || ""
+  alts = altString.replace(" ", "").split(",")
 
   if (!container) { return }
 
@@ -17,7 +20,8 @@ function onLoadNavBar() {
       btn["icon"]        || "",
       btn["action"]      || "",
       btn["actionValue"] || "",
-      btn["iconId"]      || ""
+      btn["iconId"]      || "",
+      btn["alt"]         || ""
     ))
   }
 
@@ -25,7 +29,14 @@ function onLoadNavBar() {
   container.appendChild(navBarAligner)
 }
 
-function createNavBarBtn(icon = "", action = "", actionValue = "", iconId = "") {
+function createNavBarBtn(icon = "", action = "", actionValue = "", iconId = "", alt = "", hidden = "") {
+  if (alts.includes(alt["name"])) {
+    icon        = alt["icon"]        || ""
+    action      = alt["action"]      || ""
+    actionValue = alt["actionValue"] || ""
+    iconId      = alt["iconId"]      || ""
+  }
+
   let onClick
   switch (action) {
     case "navigate": onClick = `slideTransition('${actionValue}')`; break
@@ -34,6 +45,7 @@ function createNavBarBtn(icon = "", action = "", actionValue = "", iconId = "") 
   }
 
   let btn = document.createElement("li")
+
   btn.innerHTML = `
     <button onclick="${onClick}" class="navBtn">
       <img class="navBtnImg" draggable="false" src="/assets/navBarBtn.png">

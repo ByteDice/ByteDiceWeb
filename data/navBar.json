@@ -17,7 +17,13 @@
   {
     "icon": "powerplates_8x8.png",
     "action": "navigate",
-    "actionValue": "/powerplates"
+    "actionValue": "/powerplates",
+    "alt": {
+      "name": "byte",
+      "icon": "dice3_8x8.png",
+      "action": "navigate",
+      "actionValue": "/"
+    }
   },
   {
     "icon": "pauseAnimation_8x8.png",

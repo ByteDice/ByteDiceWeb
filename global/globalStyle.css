@@ -11,6 +11,9 @@
 html {
   font-family: "Roboto", sans-serif;
   font-size: 1rem;
+  color: #ffffff;
+  background-color: #323232;
+  overflow: hidden;
 }
 
 canvas {
