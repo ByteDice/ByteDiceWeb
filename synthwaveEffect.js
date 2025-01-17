@@ -136,6 +136,12 @@ camera.rotation.x = 0.2
 /* camera.position.y = 5
 camera.lookAt(0, 0, 0) */
 
+debugPrint(
+  "Camera transform",
+  `Pos: [x: ${camera.position.x}, y: ${camera.position.y}, z: ${camera.position.z}]
+Rot: [x: ${camera.rotation.x}, y: ${camera.rotation.y}, z: ${camera.rotation.z}]`
+)
+
 function hillCurve(x, width) {
   return (Math.sin(Math.PI * (x + 1)) + 1) ** width
 }
@@ -314,6 +320,7 @@ function preAnimateSynthwave(times) {
   }
 
   hasPreAnimated = true
+  debugPrint("Pre-animated synthwave complete")
 }
 
 
@@ -336,7 +343,7 @@ function animateSynthwave(timestamp) {
     return 
   }
   
-  const moveDist = 0.05 * tickMultiplier
+  const moveDist = 0.0035 //0.05 * tickMultiplier
   distSinceLastHill += moveDist
 
   for (let hill of allHillMeshes) {

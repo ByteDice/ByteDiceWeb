@@ -45,9 +45,24 @@ function lerp(x, y, t) {
 
 
 function debugPrint(title, value) {
-  console.log(`%c${title}:\n%c${value}`, CONSOLE_COLORS.debugTitle, CONSOLE_COLORS.white)
-}
+  if (!title) {
+    console.error(
+`error[A0000]: this function takes 1 argument but 0 arguments were supplied
+ --> unknown:0:0
+  |
+0 | debugPrint()
+  | ^^^^^^^^^^-- argument #1 of type \`Any\` is missing`
+)
+    return;
+  }
 
+  if (value) {
+    console.log(`%c${title}:\n%c${value}`, CONSOLE_COLORS.debugTitle, CONSOLE_COLORS.white)
+  }
+  else {
+    console.log(`%c${title}`, CONSOLE_COLORS.debugTitle)
+  }
+}
 
 function toggleGrid() {
   if (gridVisible) {
