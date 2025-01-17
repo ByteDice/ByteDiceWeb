@@ -32,7 +32,18 @@ let selectedTip = "undefined"
 
 
 function newTip() {
-  selectedTip = tipsJson[randomIntFrom0(tipsJson.length)]
+  if (randomIntFrom0(1000) == 0) {
+    // If you snitch this easter egg code
+    // then I'll close the source and
+    // permanently remove the easter egg. 
+    selectedTip = `You like kissing boys, don't you?<br>
+      <img src="/assets/boykisser_64x64.png"
+      style="aspect-ratio: 1 / 1; width: min-content; height: min-content;">`
+  }
+  else {
+    selectedTip = tipsJson[randomIntFrom0(tipsJson.length)]
+  }
+
   debugPrint("new tip", selectedTip)
 } 
 
