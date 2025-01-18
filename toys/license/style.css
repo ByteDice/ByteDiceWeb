@@ -1,4 +1,4 @@
-.optionsContainer {
+#optionsContainer {
   display: inline;
   position: absolute;
   top: 0%;
@@ -6,4 +6,25 @@
   transform: translate(-50%);
   width: max-content;
   padding: calc(1px * var(--pxDensity));
+}
+#licenseContainer {
+  width: 600px;
+  height: auto;
+  aspect-ratio: 1.5 / 1;
+  padding: 40px;
+  padding-top: 80px;
+  position: absolute;
+  left: 50%;
+  bottom: 0%;
+  transform: translate(-50%, calc(-22px * var(--pxDensity)));
+}
+.blackBorderRect {
+  background-color: #FFFFFF;
+  border: 10px #000000 solid;
+  border-radius: 32px;
+  color: #000000;
+}
+#picContainer {
+  width: 150px;
+  height: 150px;
 }
