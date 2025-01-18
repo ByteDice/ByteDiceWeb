@@ -9,14 +9,15 @@
 }
 #licenseContainer {
   width: 600px;
-  height: auto;
-  aspect-ratio: 1.5 / 1;
+  height: 400px;
   padding: 40px;
   padding-top: 80px;
   position: absolute;
   left: 50%;
   bottom: 0%;
   transform: translate(-50%, calc(-22px * var(--pxDensity)));
+  font-size: 0.75rem;
+  box-sizing: border-box;
 }
 .blackBorderRect {
   background-color: #FFFFFF;
@@ -27,4 +28,27 @@
 #picContainer {
   width: 150px;
   height: 150px;
+}
+#credits {
+  position: absolute;
+  bottom: 0%;
+  left: 0%;
+  margin: 0% 0% 0% 20px;
+  color: var(--navBarBtn_Inner);
+  font-size: 0.6rem;
+}
+#signatureContainer {
+  display: inline-flex;
+  flex-direction: column;
+  margin: 5% 0% 0% 0%;
+}
+#signature {
+  margin: 0% 0% 0.2rem 0%;
+  text-align: center;
+  font-size: 1rem;
+}
+#signHere {
+  border-top: #000000 solid 6px;
+  margin: 0%;
+  padding: 0% 25px;
 }
