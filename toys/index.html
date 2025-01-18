@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no">
+
+  <link rel="stylesheet" href="/global/navBar.css">
+  <link rel="stylesheet" href="/global/globalStyle.css">
+  <link rel="stylesheet" href="/global/loadingScreen.css">
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="icon" type="image/png" href="/assets/favicon_32x32.png">
+  <title>Byte Dice - Toys</title>
+</head>
+
+<body>
+  <div id="mainDiv">
+    <div id="navBarContainer" data-alt="byte"></div>
+
+    <ul>
+      <li class="toyLi">
+        <button onclick="slideTransition('/toys/license')" class="toyContainer borderedRect">
+          <img class="toyImg" src="/assets/boykisserLicenseEmpty.png">
+          <div class="toyTextContainer">
+            <h1>Boykisser license generator</h1>
+            <p>Automatically generates a "Boykissser license" for you. Free of charge.</p>
+          </div>
+        </button>
+      </li>
+    </ul>
+  </div>
+
+  <div id="loadingScreen"></div>
+
+  <!-- global -->
+  <script src="/global/globalScript.js"></script>
+  <script src="/global/pxDensity.js"></script>
+  <script src="/global/loadingScreen.js"></script>
+  <script src="/global/navBar.js"></script>
+  <script src="/global/screenTransition.js"></script>
+
+  <!-- local -->
+  <script src="script.js"></script>
+</body>
+
+</html>

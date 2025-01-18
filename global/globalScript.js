@@ -1,7 +1,8 @@
 const PAGES = {
   null: -1,
   SYNTHWAVE: 0,
-  LICENSE: 1,
+  TOYS: 1,
+  LICENSE: 2,
 }
 const CONSOLE_COLORS = {
   red: "color: #FF0000;",

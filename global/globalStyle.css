@@ -1,13 +1,13 @@
 :root {
   --navBar_Inner: #43608D;
   --navBar_Border: #2F3E56;
+  --navBar_SecondInner: #344b6c;
   --navBarBtn_Inner: #474747;
   --navBarBtn_Border: #232323;
   --pxDensity: 1;
   --pxDensityPx: 1px;
   --bottomPxMargin: 1px;
 }
-
 html {
   font-family: "Roboto", sans-serif;
   font-size: 1rem;
@@ -15,17 +15,29 @@ html {
   background-color: #323232;
   overflow: hidden;
 }
-
 canvas {
   position: absolute;
 }
-
 .pxFont {
   font-family: "Roboto", sans-serif;
   font-size: 1rem;
 }
-
 @keyframes slide-left {
   0% { transform: translateX(0%); }
   100% { transform: translateX(-100%); }
+}
+.borderedRect {
+  background-color: var(--navBar_Inner);
+  box-shadow: calc(1px * var(--pxDensity)) 0px var(--navBar_Border),
+              calc(-1px * var(--pxDensity)) 0px var(--navBar_Border),
+              0px calc(1px * var(--pxDensity)) var(--navBar_Border),
+              0px calc(-1px * var(--pxDensity)) var(--navBar_Border);
+
+  filter: drop-shadow(0px calc(2px * var(--pxDensity)) rgba(0, 0, 0, 0.5));
+  padding: 0%;
+}
+.invisible {
+  background-color: transparent;
+  border: none;
+  color: inherit;
 }

@@ -6,14 +6,6 @@ li {
 }
 
 .navBar {
-  background-color: var(--navBar_Inner);
-  box-shadow: calc(1px * var(--pxDensity)) 0px var(--navBar_Border),
-              calc(-1px * var(--pxDensity)) 0px var(--navBar_Border),
-              0px calc(1px * var(--pxDensity)) var(--navBar_Border),
-              0px calc(-1px * var(--pxDensity)) var(--navBar_Border);
-
-  filter: drop-shadow(0px calc(2px * var(--pxDensity)) rgba(0, 0, 0, 0.5));
-  padding: 0%;
   display: inline;
   position: absolute;
   top: round(calc(100% - calc(5px * var(--pxDensity))), var(--pxDensityPx));
@@ -29,11 +21,11 @@ li {
   border: none;
   filter: drop-shadow(0px calc(1px * var(--pxDensity)) rgba(0, 0, 0, 0.5));
 }
-.navBtn:hover {
+button:hover {
   filter: brightness(1.35)  drop-shadow(0px calc(1px * var(--pxDensity)) rgba(0, 0, 0, 0.5));
   cursor: pointer;
 }
-.navBtn:active {
+button:active {
   filter: brightness(0.75);
   transform: translateY(calc(1px * var(--pxDensity)));
 }

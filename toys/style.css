@@ -1,0 +1,41 @@
+.toyContainer {
+  border: none;
+  width: calc(64px * var(--pxDensity));
+  height: calc(48px * var(--pxDensity));
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: calc(32px * var(--pxDensity)) 1fr;
+}
+.toyImg {
+  image-rendering: pixelated;
+  overflow: hidden;
+  max-width: calc(62px * var(--pxDensity));
+  height: calc(32px * var(--pxDensity));
+  margin: 0% auto;
+}
+.toyTextContainer {
+  background-color: var(--navBar_SecondInner);
+  padding: calc(1px * var(--pxDensity));
+  border-top: calc(1px * var(--pxDensity)) solid var(--navBar_Border);
+  text-align: left;
+  overflow: scroll;
+}
+h1 {
+  margin: 0%;
+  margin-bottom: calc(1px * var(--pxDensity));
+}
+p {
+  font-size: 1.3rem;
+  margin: 0%;
+}
+button:hover {
+  filter: brightness(1.15)  drop-shadow(0px calc(1px * var(--pxDensity)) rgba(0, 0, 0, 0.5));
+  cursor: pointer;
+}
+button:active {
+  filter: brightness(0.85);
+  transform: translateY(calc(1px * var(--pxDensity)));
+}
+.toyLi {
+  margin: calc(3px * var(--pxDensity));
+}

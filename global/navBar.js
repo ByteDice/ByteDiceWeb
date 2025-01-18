@@ -12,7 +12,7 @@ function onLoadNavBar() {
   navBarAligner.className = "navBarAligner"
 
   const navBar = document.createElement("ul")
-  navBar.className = "navBar"
+  navBar.className = "navBar borderedRect"
 
 
   for (let btn of navBarJson) {

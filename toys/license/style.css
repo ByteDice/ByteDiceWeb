@@ -1,0 +1,9 @@
+.optionsContainer {
+  display: inline;
+  position: absolute;
+  top: 0%;
+  left: round(50%, var(--pxDensityPx));
+  transform: translate(-50%);
+  width: max-content;
+  padding: calc(1px * var(--pxDensity));
+}
