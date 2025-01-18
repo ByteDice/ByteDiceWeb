@@ -17,16 +17,50 @@
 <body>
   <div id="mainDiv">
     <div id="navBarContainer" data-alt="byte"></div>
-    <div id="optionsContainer" class="borderedRect"></div>
+
+    <div id="optionsContainer" class="borderedRect">
+      <p id="optionsCredits">
+        Check out the original version by Chilli
+        <a onclick="slideTransition('https://picrew.me/en/image_maker/2310778')">here</a>!
+      </p>
+      
+      <form>
+        <label for="authorInput">For/Author</label>
+        <input type="text" id="authorInput" name="authorInput" value="Byte Dice"><br>
+        <label for="createdInput">Issued</label>
+        <input type="text" id="createdInput" name="createdInput" value="2025-01-01"><br>
+        <label for="expireInput">Expires</label>
+        <input type="text" id="expireInput" name="expireInput" value="NEVER!!!"><br>
+        <label for="identityInput">Identity</label>
+        <input type="text" id="identityInput" name="identityInput" value="any pronouns"><br>
+        <label for="sillyInput">Silly</label>
+        <div id="sillyNumberValue">03</div>
+        <div class="sliderDiv">
+          <input type="range" min="0" max="10" value="3" class="slider" id="sillyInput" name="sillyInput">
+        </div>
+      </form>
+    </div>
 
     <div id="licenseContainer" class="blackBorderRect">
-      <div id="picContainer" class="blackBorderRect"></div>
+      <div>
+        <div id="picContainer" class="blackBorderRect"></div>
 
-      <div id="signatureContainer">
-        <p id="signature">Byte Dice</p>
-        <p id="signHere">Sign here</p>
+        <div id="signatureContainer">
+          <p id="signature">Byte Dice</p>
+          <p id="signHere">Sign here</p>
+        </div>
       </div>
-      
+
+      <div>
+        <div id="detailsContainer">
+          <h2 id="authorDetail">For     <h2  id="authorValue" >Byte Dice</h2></h2>
+          <h2 id="createdDetail">Issued <h2  id="createdValue">2025-01-18</h2></h2>
+          <h2 id="expireDetail">Expires <h2  id="expireValue" >never</h2></h2>
+          <h2 id="genderDetail">Identity<h2  id="genderValue" >unknown</h2></h2>
+          <h2 id="sillyDetain">Silly    <div id="sillyValue"  >10/10</div></h2>
+        </div>
+      </div>
+
       <p id="credits">Original by Chilli<br>Remade by Byte Dice at bytedice.net/toys</p>
     </div>
   </div>
