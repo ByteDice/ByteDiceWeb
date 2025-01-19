@@ -164,5 +164,22 @@ input {
   aspect-ratio: 1 / 1;
 }
 #sillyValue {
-  display: inline;
+  height: 100%;
+  background-color: #FF0000;
+
+}
+.sillyGrid {
+  width: 99%;
+  aspect-ratio: 10 / 1;
+  height: auto;
+  background-image: repeating-linear-gradient(
+    to right, 
+    #000000 0px, 
+    #000000 3px,
+    transparent 3px, 
+    transparent 10%
+  );
+  border: 3px solid black;
+  border-radius: 8px;
+  align-self: center;
 }

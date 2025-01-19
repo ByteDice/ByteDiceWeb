@@ -36,18 +36,36 @@ identityInput.oninput = function() {
   genderValue.innerHTML = this.value
 }
 sillyInput.oninput = function() {
-  sillyNumberValue.innerHTML = prependZero(this.value)
+  setSillyValue(this.value)
 }
 signatureInput.oninput = function() {
   signatureValue.innerHTML = this.value
 }
 
 
-function onLoadLicense() {
-  authorValue.innerHTML  = prependZero(authorInput.value)
-  createdValue.innerHTML = prependZero(createdInput.value)
-  expireValue.innerHTML  = prependZero(expireInput.value)
-  genderValue.innerHTML  = prependZero(identityInput.value)
+function setSillyValue(value) {
+  sillyNumberValue.innerHTML = prependZero(value)
+  sillyValue.style.width = `${value * 10 + 0.1}%`
 
-  sillyNumberValue.innerHTML = prependZero(sillyInput.value)
+  let percent = value == 0 ? 0 : 100 / value
+  sillyValue.style.backgroundImage = `
+    repeating-linear-gradient(
+      to right, 
+    #000000 0px, 
+    #000000 3px,
+      transparent 3px, 
+      transparent ${percent}%
+    )
+  `
+}
+
+
+function onLoadLicense() {
+  authorValue.innerHTML    = authorInput.value
+  createdValue.innerHTML   = createdInput.value
+  expireValue.innerHTML    = expireInput.value
+  genderValue.innerHTML    = identityInput.value
+  signatureValue.innerHTML = signatureInput.value
+
+  setSillyValue(sillyInput.value)
 }
