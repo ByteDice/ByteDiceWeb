@@ -19,35 +19,48 @@
 <body>
   <!-- If you came here from u/RandomPersonDotExe, let them know that they are a good developer. -->
   <!-- Also, u/RandomPersonDotExe and Byte Dice are the same person. -->
-  <!-- Proof for the above comment? None, but I am Byte Dice and randomPerson sent you this saying it's their work -->
+  <!-- Proof for the above comment? None, but I am Byte Dice and randomPerson probably sent you this saying it's their work -->
   <!-- Proof that I am Byte Dice? Check the commit history. -->
 
   <div id="mainDiv">
     <div id="navBarContainer" data-alt="byte"></div>
 
     <div id="optionsContainer" class="borderedRect">
-      <p id="optionsCredits">
-        Check out the original version by Chilli
+      <h1 id="optionsCredits" class="h1Top">
+        Check out the original by Chilli
         <a onclick="slideTransition('https://picrew.me/en/image_maker/2310778')">here</a>!
-      </p>
+      </h1><br>
       
       <h1>Basic</h1>
       <form>
-        <label for="authorInput">For/Author</label>
-        <input type="text" id="authorInput" name="authorInput" value="Byte Dice"><br>
-        <label for="createdInput">Issued</label>
-        <input type="text" id="createdInput" name="createdInput" value="2025-01-01"><br>
-        <label for="expireInput">Expires</label>
-        <input type="text" id="expireInput" name="expireInput" value="NEVER!!!"><br>
-        <label for="identityInput">Identity</label>
-        <input type="text" id="identityInput" name="identityInput" value="any pronouns"><br>
-        <label for="sillyInput">Silly</label>
-        <div id="sillyNumberValue">03</div>
+        <label for="authorInput">For/Author</label><input type="text" id="authorInput" name="authorInput" value="Byte Dice"><br>
+        <label for="createdInput">Issued   </label><input type="text" id="createdInput" name="createdInput" value="2025-01-01"><br>
+        <label for="expireInput">Expires   </label><input type="text" id="expireInput" name="expireInput" value="NEVER!!!"><br>
+        <label for="identityInput">Identity</label><input type="text" id="identityInput" name="identityInput" value="any pronouns"><br>
+
+        <label for="sillyInput">Silly</label><div id="sillyNumberValue">03</div>
         <div class="sliderDiv">
           <input type="range" min="0" max="10" value="3" class="slider" id="sillyInput" name="sillyInput">
         </div><br>
-        <label for="signatureInput">Signature</label>
-        <input type="text" id="signatureInput" name="signatureInput" value="Byte Dice">
+
+        <label for="signatureInput">Signature</label><input type="text" id="signatureInput" name="signatureInput" value="Byte Dice">
+        <!-- Title & picture -->
+      </form>
+
+      <h1>Extra</h1>
+      <form>
+        <!-- decorations like
+          the QR-code
+          license bg-image/bg-color
+        -->
+      </form>
+
+      <h1>Advanced</h1>
+      <form>
+        <!-- 
+          license border radius
+          pic border radius
+        -->
       </form>
     </div>
 

@@ -1,11 +1,11 @@
 #optionsContainer {
-  display: inline;
-  position: absolute;
-  top: 0%;
-  left: round(50%, var(--pxDensityPx));
-  transform: translate(-50%);
+  display: block;
+  margin: 0% auto;
   width: max-content;
   padding: calc(2px * var(--pxDensity));
+  overflow-y: scroll;
+  max-height: 45vh;
+  max-width: 100vw;
 }
 #optionsCredits {
   margin: 0%;
@@ -18,7 +18,7 @@ label {
               0px calc(-1px * var(--pxDensity)) var(--navBarBtn_Border);
 
   padding: calc(1px * var(--pxDensity));
-  margin: calc(3px * var(--pxDensity)) calc(2px * var(--pxDensity)) 0% 0%;
+  margin: calc(3px * var(--pxDensity)) calc(3px * var(--pxDensity)) 0% 0%;
   box-sizing: border-box;
   width: round(auto, var(--pxDensity));
   height: round(auto, var(--pxDensity));
@@ -38,6 +38,7 @@ input {
   width: round(auto, var(--pxDensity));
   height: round(auto, var(--pxDensity));
   color: inherit;
+  display: inline-block;
 }
 .slider {
   -webkit-appearance: none;
@@ -54,7 +55,6 @@ input {
   outline: none;
   padding: 0%;
 }
-
 .slider::-webkit-slider-thumb, .slider::-moz-range-thumb {
   -webkit-appearance: none;
   appearance: none;
@@ -98,4 +98,24 @@ input {
   width: round(auto, var(--pxDensity));
   height: auto;
   aspect-ratio: 1 / 1;
+}
+h1 {
+  background-color: var(--navBarBtn_Inner);
+  box-shadow: calc(1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
+              calc(-1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
+              0px calc(1px * var(--pxDensity)) var(--navBarBtn_Border),
+              0px calc(-1px * var(--pxDensity)) var(--navBarBtn_Border);
+
+  padding: calc(1px * var(--pxDensity));
+  border: none;
+  margin: calc(6px * var(--pxDensity)) calc(2px * var(--pxDensity)) 0% 0%;
+  box-sizing: border-box;
+  width: round(auto, var(--pxDensity));
+  height: round(auto, var(--pxDensity));
+  color: inherit;
+  font-size: inherit;
+  display: inline-block;
+}
+.h1Top {
+  margin-top: calc(2px * var(--pxDensity));
 }

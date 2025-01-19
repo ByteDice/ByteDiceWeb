@@ -2,10 +2,7 @@
   width: 600px;
   height: 400px;
   padding: 40px 10px 40px 40px;
-  position: absolute;
-  left: 50%;
-  bottom: 0%;
-  transform: translate(-50%, calc(-22px * var(--pxDensity)));
+  margin: calc(5px * var(--pxDensity)) auto calc(30px * var(--pxDensity)) auto;
   font-size: 0.75rem;
   box-sizing: border-box;
   display: grid;
