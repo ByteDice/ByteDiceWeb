@@ -25,7 +25,7 @@ h1 {
   margin: 0%;
   margin-bottom: calc(1px * var(--pxDensity));
 }
-p {
+.desc {
   font-size: 1.3rem;
   margin: 0%;
 }
