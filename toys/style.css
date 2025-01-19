@@ -5,6 +5,7 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: calc(32px * var(--pxDensity)) 1fr;
+  color: inherit;
 }
 .toyImg {
   image-rendering: pixelated;

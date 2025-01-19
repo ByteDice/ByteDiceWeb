@@ -10,7 +10,7 @@
 #licenseContainer {
   width: 600px;
   height: 400px;
-  padding: 40px 40px 40px 40px;
+  padding: 40px 10px 40px 40px;
   position: absolute;
   left: 50%;
   bottom: 0%;
@@ -18,7 +18,7 @@
   font-size: 0.75rem;
   box-sizing: border-box;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: auto auto;
   grid-template-rows: auto auto;
 }
 .blackBorderRect {
@@ -54,10 +54,11 @@
   border-top: #000000 solid 6px;
   margin: 0%;
   padding: 0% 25px;
+  text-align: center;
 }
 #detailsContainer {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, auto);
 }
 h2 {
   margin: 5px;

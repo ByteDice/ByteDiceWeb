@@ -1,16 +1,18 @@
 CURRENT_PAGE = PAGES.LICENSE
 
-const authorInput   = document.getElementById("authorInput")
-const createdInput  = document.getElementById("createdInput")
-const expireInput   = document.getElementById("expireInput")
-const identityInput = document.getElementById("identityInput")
-const sillyInput    = document.getElementById("sillyInput")
+const authorInput    = document.getElementById("authorInput")
+const createdInput   = document.getElementById("createdInput")
+const expireInput    = document.getElementById("expireInput")
+const identityInput  = document.getElementById("identityInput")
+const sillyInput     = document.getElementById("sillyInput")
+const signatureInput = document.getElementById("signatureInput")
 
-const authorValue   = document.getElementById("authorValue")
-const createdValue  = document.getElementById("createdValue")
-const expireValue   = document.getElementById("expireValue")
-const genderValue   = document.getElementById("genderValue")
-const sillyValue    = document.getElementById("sillyValue")
+const authorValue    = document.getElementById("authorValue")
+const createdValue   = document.getElementById("createdValue")
+const expireValue    = document.getElementById("expireValue")
+const genderValue    = document.getElementById("genderValue")
+const sillyValue     = document.getElementById("sillyValue")
+const signatureValue = document.getElementById("signature")
 
 const sillyNumberValue = document.getElementById("sillyNumberValue")
 
@@ -35,6 +37,9 @@ identityInput.oninput = function() {
 }
 sillyInput.oninput = function() {
   sillyNumberValue.innerHTML = prependZero(this.value)
+}
+signatureInput.oninput = function() {
+  signatureValue.innerHTML = this.value
 }
 
 
