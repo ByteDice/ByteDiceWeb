@@ -153,8 +153,8 @@ document.addEventListener("DOMContentLoaded", async function() {
   onLoadNavBar()
 
   switch (CURRENT_PAGE) {
-    case (PAGES.SYNTHWAVE): loadingScreenSynthwave()
-    case (PAGES.LICENSE):   onLoadLicense()
+    case (PAGES.SYNTHWAVE): loadingScreenSynthwave(); break
+    case (PAGES.LICENSE):   onLoadLicense(); break
   }
   
   pauseAnimBtn(localStorage["isAnimating"] || "true")

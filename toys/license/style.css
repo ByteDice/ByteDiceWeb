@@ -10,8 +10,7 @@
 #licenseContainer {
   width: 600px;
   height: 400px;
-  padding: 40px;
-  padding-top: 80px;
+  padding: 40px 40px 40px 40px;
   position: absolute;
   left: 50%;
   bottom: 0%;
@@ -29,6 +28,7 @@
   color: #000000;
 }
 #picContainer {
+  margin-top: 40px;
   width: 150px;
   height: 150px;
 }
@@ -121,7 +121,7 @@ input {
 .slider::-webkit-slider-thumb, .slider::-moz-range-thumb {
   -webkit-appearance: none;
   appearance: none;
-  background-color: var(--navBar_Border);
+  background-color: var(--navBar_Inner);
   border: none;
   cursor: pointer;
   border-radius: 0%;
@@ -161,4 +161,7 @@ input {
   width: round(auto, var(--pxDensity));
   height: auto;
   aspect-ratio: 1 / 1;
+}
+#sillyValue {
+  display: inline;
 }
