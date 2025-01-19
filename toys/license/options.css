@@ -1,0 +1,101 @@
+#optionsContainer {
+  display: inline;
+  position: absolute;
+  top: 0%;
+  left: round(50%, var(--pxDensityPx));
+  transform: translate(-50%);
+  width: max-content;
+  padding: calc(2px * var(--pxDensity));
+}
+#optionsCredits {
+  margin: 0%;
+}
+label {
+  background-color: var(--navBarBtn_Inner);
+  box-shadow: calc(1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
+              calc(-1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
+              0px calc(1px * var(--pxDensity)) var(--navBarBtn_Border),
+              0px calc(-1px * var(--pxDensity)) var(--navBarBtn_Border);
+
+  padding: calc(1px * var(--pxDensity));
+  margin: calc(3px * var(--pxDensity)) calc(2px * var(--pxDensity)) 0% 0%;
+  box-sizing: border-box;
+  width: round(auto, var(--pxDensity));
+  height: round(auto, var(--pxDensity));
+}
+input {
+  background-color: var(--navBarBtn_Inner);
+  box-shadow: calc(1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
+              calc(-1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
+              0px calc(1px * var(--pxDensity)) var(--navBarBtn_Border),
+              0px calc(-1px * var(--pxDensity)) var(--navBarBtn_Border);
+
+  padding: calc(1px * var(--pxDensity));
+  border: none;
+  font-size: inherit;
+  margin: calc(3px * var(--pxDensity)) calc(2px * var(--pxDensity)) 0% 0%;
+  box-sizing: border-box;
+  width: round(auto, var(--pxDensity));
+  height: round(auto, var(--pxDensity));
+  color: inherit;
+}
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: var(--navBarBtn_Border);
+  box-shadow: none;
+  filter: none;
+  border: none;
+  font-size: inherit;
+  box-sizing: border-box;
+  width: round(auto, var(--pxDensity));
+  height: calc(1px * var(--pxDensity));
+  margin: 0%;
+  outline: none;
+  padding: 0%;
+}
+
+.slider::-webkit-slider-thumb, .slider::-moz-range-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: var(--navBar_Inner);
+  border: none;
+  cursor: pointer;
+  border-radius: 0%;
+  width: calc(3px * var(--pxDensity));
+  height: calc(3px * var(--pxDensity));
+}
+.sliderDiv {
+  display: inline-block;
+  background-color: var(--navBarBtn_Inner);
+  box-shadow: calc(1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
+              calc(-1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
+              0px calc(1px * var(--pxDensity)) var(--navBarBtn_Border),
+              0px calc(-1px * var(--pxDensity)) var(--navBarBtn_Border);
+
+  padding: calc(1px * var(--pxDensity));
+  border: none;
+  font-size: inherit;
+  margin: calc(3px * var(--pxDensity)) calc(2px * var(--pxDensity)) 0% 0%;
+  box-sizing: border-box;
+  width: round(auto, var(--pxDensity));
+  height: round(auto, var(--pxDensity));
+  color: inherit;
+}
+#sillyNumberValue {
+  display: inline;
+  background-color: var(--navBarBtn_Inner);
+  box-shadow: calc(1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
+              calc(-1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
+              0px calc(1px * var(--pxDensity)) var(--navBarBtn_Border),
+              0px calc(-1px * var(--pxDensity)) var(--navBarBtn_Border);
+
+  padding: calc(1px * var(--pxDensity));
+  border: none;
+  font-size: inherit;
+  margin: calc(3px * var(--pxDensity)) calc(2px * var(--pxDensity)) 0% 0%;
+  box-sizing: border-box;
+  width: round(auto, var(--pxDensity));
+  height: auto;
+  aspect-ratio: 1 / 1;
+}
