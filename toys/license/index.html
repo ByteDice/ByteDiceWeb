@@ -25,67 +25,81 @@
   <div id="mainDiv">
     <div id="navBarContainer" data-alt="byte"></div>
 
-    <div id="optionsContainer" class="borderedRect">
-      <h1 id="optionsCredits" class="h1Top">
-        Check out the original by Chilli
-        <a onclick="slideTransition('https://picrew.me/en/image_maker/2310778')">here</a>!
-      </h1><br>
+    <div class="allContainer">
+      <div id="optionsContainer" class="borderedRect">
+        <h1 id="optionsCredits" class="h1Top">
+          Check out the original by Chilli
+          <a onclick="slideTransition('https://picrew.me/en/image_maker/2310778')">here</a>!
+        </h1><br>
+        
+        <h1>Basic</h1>
+        <form>
+          <label for="titleInput">Title      </label><input type="text" id="titleInput" name="titleInput" value="Boykisser license"><br>
+          <label for="authorInput">For/Author</label><input type="text" id="authorInput" name="authorInput" value="Byte Dice"><br>
+          <label for="createdInput">Issued   </label><input type="text" id="createdInput" name="createdInput" value="2025-01-01"><br>
+          <label for="expireInput">Expires   </label><input type="text" id="expireInput" name="expireInput" value="NEVER!!!"><br>
+          <label for="identityInput">Identity</label><input type="text" id="identityInput" name="identityInput" value="any pronouns"><br>
+
+          <label for="sillyInput">Silly</label><div id="sillyNumberValue">03</div><div class="sliderDiv">
+            <input type="range" min="0" max="10" value="3" class="slider" id="sillyInput" name="sillyInput">
+          </div><br>
+
+          <label for="signatureInput">Signature</label><input type="text" id="signatureInput" name="signatureInput" value="Byte Dice"><br>
+
+          <label for="picInput">Picture</label><select id="picInput" name="picInput">
+            <option value="boykisser"   >Boykisser</option>
+            <option value="bi-kisser"   >Bi-kisser</option>
+            <option value="no-kisser"   >No-kisser</option>
+            <option value="pan-kisser"  >Pan-kisser</option>
+            <option value="trans-kisser">Trans-kisser</option>
+            <option value="bytedice"    >Byte Dice</option>
+            <option value="custom"      >Custom (upload)</option>
+          </select><br>
+          <!-- picture -->
+        </form>
+
+        <h1>Extra</h1>
+        <form>
+          <!-- decorations like
+            the QR-code
+            license bg-image/bg-color
+          -->
+        </form>
+
+        <h1>Advanced</h1>
+        <form>
+          <!-- 
+            license border radius
+            pic border radius
+            title gradient (2 colors + direction) or flag
+          -->
+        </form>
+      </div>
+
+      <div id="licenseContainer" class="blackBorderRect">
+        <h3 id="titleValue">Boykisser license</h3>
+        <div style="width: max-content;">
+          <div id="picContainer" class="blackBorderRect"></div>
+
+          <div id="signatureContainer">
+            <p id="signatureValue">Byte Dice</p>
+            <p id="signHere">Sign here</p>
+          </div>
+        </div>
       
-      <h1>Basic</h1>
-      <form>
-        <label for="authorInput">For/Author</label><input type="text" id="authorInput" name="authorInput" value="Byte Dice"><br>
-        <label for="createdInput">Issued   </label><input type="text" id="createdInput" name="createdInput" value="2025-01-01"><br>
-        <label for="expireInput">Expires   </label><input type="text" id="expireInput" name="expireInput" value="NEVER!!!"><br>
-        <label for="identityInput">Identity</label><input type="text" id="identityInput" name="identityInput" value="any pronouns"><br>
-
-        <label for="sillyInput">Silly</label><div id="sillyNumberValue">03</div>
-        <div class="sliderDiv">
-          <input type="range" min="0" max="10" value="3" class="slider" id="sillyInput" name="sillyInput">
-        </div><br>
-
-        <label for="signatureInput">Signature</label><input type="text" id="signatureInput" name="signatureInput" value="Byte Dice">
-        <!-- Title & picture -->
-      </form>
-
-      <h1>Extra</h1>
-      <form>
-        <!-- decorations like
-          the QR-code
-          license bg-image/bg-color
-        -->
-      </form>
-
-      <h1>Advanced</h1>
-      <form>
-        <!-- 
-          license border radius
-          pic border radius
-        -->
-      </form>
-    </div>
-
-    <div id="licenseContainer" class="blackBorderRect">
-      <div style="width: max-content;">
-        <div id="picContainer" class="blackBorderRect"></div>
-
-        <div id="signatureContainer">
-          <p id="signature">Byte Dice</p>
-          <p id="signHere">Sign here</p>
+        <div>
+          <div id="detailsContainer">
+            <h2>For      </h2><h2 id="authorValue" >Byte Dice</h2>
+            <h2>Issued   </h2><h2 id="createdValue">2025-01-18</h2>
+            <h2>Expires  </h2><h2 id="expireValue" >never</h2>
+            <h2>Identity </h2><h2 id="genderValue" >unknown</h2>
+            <h2>Silly</h2>
+            <div class="sillyGrid"><div id="sillyValue"></div></div>
+          </div>
         </div>
-      </div>
-    
-      <div>
-        <div id="detailsContainer">
-          <h2>For      </h2><h2  id="authorValue" >Byte Dice</h2>
-          <h2>Issued   </h2><h2  id="createdValue">2025-01-18</h2>
-          <h2>Expires  </h2><h2  id="expireValue" >never</h2>
-          <h2>Identity </h2><h2  id="genderValue" >unknown</h2>
-          <h2>Silly</h2>
-          <div class="sillyGrid"><div id="sillyValue"></div></div>
-        </div>
-      </div>
 
-      <p id="credits">Original by Chilli<br>Remade by Byte Dice at bytedice.net/toys</p>
+        <p id="credits">Original by Chilli<br>Remade by Byte Dice at bytedice.net/toys</p>
+      </div>
     </div>
   </div>
 

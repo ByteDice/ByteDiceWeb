@@ -1,71 +1,66 @@
 CURRENT_PAGE = PAGES.LICENSE
 
-const authorInput    = document.getElementById("authorInput")
-const createdInput   = document.getElementById("createdInput")
-const expireInput    = document.getElementById("expireInput")
-const identityInput  = document.getElementById("identityInput")
-const sillyInput     = document.getElementById("sillyInput")
-const signatureInput = document.getElementById("signatureInput")
+const inputOutputMap = {
+  titleInput: "titleValue",
+  authorInput: "authorValue",
+  createdInput: "createdValue",
+  expireInput: "expireValue",
+  identityInput: "genderValue",
+  signatureInput: "signatureValue",
+};
 
-const authorValue    = document.getElementById("authorValue")
-const createdValue   = document.getElementById("createdValue")
-const expireValue    = document.getElementById("expireValue")
-const genderValue    = document.getElementById("genderValue")
-const sillyValue     = document.getElementById("sillyValue")
-const signatureValue = document.getElementById("signature")
+for (const [inputId, outputId] of Object.entries(inputOutputMap)) {
+  const inputElement = document.getElementById(inputId);
+  const outputElement = document.getElementById(outputId);
 
-const sillyNumberValue = document.getElementById("sillyNumberValue")
-
-function prependZero(number) {
-  if (number < 10)
-    return "0" + number
-  else
-    return number
+  if (inputElement && outputElement) {
+    inputElement.oninput = function () {
+      outputElement.innerHTML = this.value;
+    };
+  }
 }
 
-authorInput.oninput = function() {
-  authorValue.innerHTML = this.value
-}
-createdInput.oninput = function() {
-  createdValue.innerHTML = this.value
-}
-expireInput.oninput = function() {
-  expireValue.innerHTML = this.value
-}
-identityInput.oninput = function() {
-  genderValue.innerHTML = this.value
-}
-sillyInput.oninput = function() {
-  setSillyValue(this.value)
-}
-signatureInput.oninput = function() {
-  signatureValue.innerHTML = this.value
-}
+const sillyInput = document.getElementById("sillyInput");
+const sillyValue = document.getElementById("sillyValue");
+const sillyNumberValue = document.getElementById("sillyNumberValue");
 
+if (sillyInput && sillyValue && sillyNumberValue) {
+  sillyInput.oninput = function () {
+    setSillyValue(this.value);
+  };
+}
 
 function setSillyValue(value) {
-  sillyNumberValue.innerHTML = prependZero(value)
-  sillyValue.style.width = `${value * 10 + 0.1}%`
+  sillyNumberValue.innerHTML = prependZero(value);
+  sillyValue.style.width = `${value * 10 + 0.1}%`;
 
-  let percent = value == 0 ? 0 : 100 / value
+  let percent = value == 0 ? 0 : 100 / value;
   sillyValue.style.backgroundImage = `
     repeating-linear-gradient(
       to right, 
-    #000000 0px, 
-    #000000 3px,
+      #000000 0px, 
+      #000000 3px,
       transparent 3px, 
       transparent ${percent}%
     )
-  `
+  `;
 }
 
+function prependZero(number) {
+  return number < 10 ? "0" + number : number;
+}
 
 function onLoadLicense() {
-  authorValue.innerHTML    = authorInput.value
-  createdValue.innerHTML   = createdInput.value
-  expireValue.innerHTML    = expireInput.value
-  genderValue.innerHTML    = identityInput.value
-  signatureValue.innerHTML = signatureInput.value
+  for (const [inputId, outputId] of Object.entries(inputOutputMap)) {
+    const inputElement = document.getElementById(inputId);
+    const outputElement = document.getElementById(outputId);
 
-  setSillyValue(sillyInput.value)
+    if (inputElement && outputElement) {
+      outputElement.innerHTML = inputElement.value;
+    }
+  }
+
+  if (sillyInput) {
+    setSillyValue(sillyInput.value);
+  }
 }

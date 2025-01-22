@@ -2,10 +2,11 @@
   display: block;
   margin: 0% auto;
   width: max-content;
+  height: auto;
   padding: calc(2px * var(--pxDensity));
   overflow-y: scroll;
-  max-height: 45vh;
   max-width: 100vw;
+  flex-grow: 1;
 }
 #optionsCredits {
   margin: 0%;
@@ -35,7 +36,8 @@ input {
   font-size: inherit;
   margin: calc(3px * var(--pxDensity)) calc(2px * var(--pxDensity)) 0% 0%;
   box-sizing: border-box;
-  width: round(auto, var(--pxDensity));
+  /* width: round(auto, var(--pxDensity)); */
+  width: 50%;
   height: round(auto, var(--pxDensity));
   color: inherit;
   display: inline-block;
@@ -49,7 +51,7 @@ input {
   border: none;
   font-size: inherit;
   box-sizing: border-box;
-  width: round(auto, var(--pxDensity));
+  width: 100%;
   height: calc(1px * var(--pxDensity));
   margin: 0%;
   outline: none;
@@ -78,7 +80,7 @@ input {
   font-size: inherit;
   margin: calc(3px * var(--pxDensity)) calc(2px * var(--pxDensity)) 0% 0%;
   box-sizing: border-box;
-  width: round(auto, var(--pxDensity));
+  width: 50%;
   height: round(auto, var(--pxDensity));
   color: inherit;
 }
@@ -93,7 +95,7 @@ input {
   padding: calc(1px * var(--pxDensity));
   border: none;
   font-size: inherit;
-  margin: calc(3px * var(--pxDensity)) calc(2px * var(--pxDensity)) 0% 0%;
+  margin: calc(3px * var(--pxDensity)) calc(3px * var(--pxDensity)) 0% 0%;
   box-sizing: border-box;
   width: round(auto, var(--pxDensity));
   height: auto;
@@ -118,4 +120,22 @@ h1 {
 }
 .h1Top {
   margin-top: calc(2px * var(--pxDensity));
+}
+select {
+  background-color: var(--navBarBtn_Inner);
+  box-shadow: calc(1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
+              calc(-1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
+              0px calc(1px * var(--pxDensity)) var(--navBarBtn_Border),
+              0px calc(-1px * var(--pxDensity)) var(--navBarBtn_Border);
+
+  padding: calc(1px * var(--pxDensity));
+  border: none;
+  font-size: inherit;
+  margin: calc(3px * var(--pxDensity)) calc(2px * var(--pxDensity)) 0% 0%;
+  box-sizing: border-box;
+  /* width: round(auto, var(--pxDensity)); */
+  width: 50%;
+  height: round(auto, var(--pxDensity));
+  color: inherit;
+  display: inline-block;
 }

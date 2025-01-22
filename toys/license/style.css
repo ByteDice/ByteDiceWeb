@@ -1,3 +1,8 @@
+.allContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
 .blackBorderRect {
   background-color: #FFFFFF;
   border: 10px #000000 solid;

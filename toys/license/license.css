@@ -1,16 +1,18 @@
 #licenseContainer {
+  position: relative;
   width: 600px;
-  height: 400px;
-  padding: 40px 10px 40px 40px;
-  margin: calc(5px * var(--pxDensity)) auto calc(30px * var(--pxDensity)) auto;
+  /* height: 400px; */
+  aspect-ratio: 3 / 2;
+  height: auto;
+  padding: 0px 20px 40px 40px;
+  margin: calc(5px * var(--pxDensity)) auto calc(25px * var(--pxDensity)) auto;
   font-size: 0.75rem;
   box-sizing: border-box;
   display: grid;
-  grid-template-columns: auto auto;
-  grid-template-rows: auto auto;
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: repeat(2, auto);
 }
 #picContainer {
-  margin-top: 40px;
   width: 150px;
   height: 150px;
 }
@@ -27,7 +29,7 @@
   flex-direction: column;
   margin: 5% 0% 0% 0%;
 }
-#signature {
+#signatureValue {
   margin: 0% 0% 0.2rem 0%;
   text-align: center;
   font-size: 1rem;
@@ -63,4 +65,10 @@ h2 {
   border: 3px solid black;
   border-radius: 8px;
   align-self: center;
+}
+#titleValue {
+  grid-area: 1 / 1 / 2 / 3;
+  font-size: 1.5rem;
+  margin: 0% auto 0% auto;
+  height: max-content;
 }
