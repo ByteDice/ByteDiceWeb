@@ -37,7 +37,7 @@ function newTip() {
     // then I'll close the source and
     // permanently remove the easter egg. 
     selectedTip = `You like kissing boys, don't you?<br>
-      <img src="/assets/boykisser_64x64.png"
+      <img src="/assets/boykissers/boykisser_64x64.png"
       style="aspect-ratio: 1 / 1; width: min-content; height: min-content;">`
   }
   else {

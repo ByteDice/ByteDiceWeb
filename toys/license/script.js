@@ -46,6 +46,10 @@ function setSillyValue(value) {
   `;
 }
 
+function setPictureValue() {
+
+}
+
 function prependZero(number) {
   return number < 10 ? "0" + number : number;
 }

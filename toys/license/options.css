@@ -8,8 +8,9 @@
   max-width: 100vw;
   flex-grow: 1;
 }
-#optionsCredits {
+.optionsCredits {
   margin: 0%;
+  max-width: calc(100% - (5px * var(--pxDensity)));
 }
 label {
   background-color: var(--navBarBtn_Inner);
@@ -42,7 +43,7 @@ input {
   color: inherit;
   display: inline-block;
 }
-.slider {
+.slider { /* its slightly offset down >:( */
   -webkit-appearance: none;
   appearance: none;
   background-color: var(--navBarBtn_Border);
@@ -56,7 +57,7 @@ input {
   margin: 0%;
   outline: none;
   padding: 0%;
-}
+} 
 .slider::-webkit-slider-thumb, .slider::-moz-range-thumb {
   -webkit-appearance: none;
   appearance: none;
