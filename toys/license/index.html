@@ -58,16 +58,15 @@
             <option value="pan-kisser"   >Pan-kisser</option>
             <option value="trans-kisser" >Trans-kisser</option>
             <option value="bytedice"     >Byte Dice</option>
-            <option value="custom"       >Custom (upload)</option>
-          </select><br>
+            <option value="custom" id="customPic">Custom (upload)</option>
+          </select><input type="file" id="picUpload" accept=".png,.jpg,.jpeg,.webp"><br>
           <!-- picture -->
         </form>
 
         <h1>Extra</h1>
         <form>
           <!-- decorations like
-            the QR-code
-            license bg-image/bg-color
+            the QR-code and other "accessories"
           -->
         </form>
 
@@ -77,6 +76,7 @@
             license border radius
             pic border radius
             title gradient (2 colors + direction) or flag
+            license bg-image/bg-gradient
           -->
         </form>
       </div>
@@ -84,7 +84,7 @@
       <div id="licenseContainer" class="blackBorderRect">
         <h3 id="titleValue">Boykisser license</h3>
         <div style="width: max-content;">
-          <div id="picContainer" class="blackBorderRect"></div>
+          <img id="picValue" class="blackBorderRect" src="">
 
           <div id="signatureContainer">
             <p id="signatureValue">Byte Dice</p>

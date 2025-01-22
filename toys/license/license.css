@@ -12,9 +12,10 @@
   grid-template-columns: repeat(2, auto);
   grid-template-rows: repeat(2, auto);
 }
-#picContainer {
+#picValue {
   width: 150px;
   height: 150px;
+  display: block;
 }
 #credits {
   position: absolute;

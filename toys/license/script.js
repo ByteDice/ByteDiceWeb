@@ -46,9 +46,15 @@ function setSillyValue(value) {
   `;
 }
 
-function setPictureValue() {
+const picInput = document.getElementById("picInput")
+const picValue = document.getElementById("picValue")
 
+function setPictureValue() {
+  let src = picInput.value != "custom" ? `/assets/boykissers/${picInput.value}.png` : ""
+  picValue.src = src
 }
+
+picInput.oninput = function() { setPictureValue() }
 
 function prependZero(number) {
   return number < 10 ? "0" + number : number;
@@ -66,5 +72,9 @@ function onLoadLicense() {
 
   if (sillyInput) {
     setSillyValue(sillyInput.value);
+  }
+
+  if (picInput) {
+    setPictureValue()
   }
 }
