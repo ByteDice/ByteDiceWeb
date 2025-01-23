@@ -92,8 +92,8 @@ if (!renderer) {
 
 renderer.setSize(window.innerWidth, window.innerHeight)
 
-const mainDiv = document.getElementById("canvasContainer")
-mainDiv.appendChild(renderer.domElement)
+const mainCanvas = document.getElementById("canvasContainer")
+mainCanvas.appendChild(renderer.domElement)
 
 renderer.setClearColor(0x000000, 0)
 
