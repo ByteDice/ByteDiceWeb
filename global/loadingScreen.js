@@ -29,7 +29,7 @@ async function loadTips() {
 }
 
 
-const showLoading = localStorage["showLoading"] || "true"
+const fakeLoading = localStorage["fakeLoading"] || "true"
 let selectedTip = "undefined"
 
 
@@ -57,6 +57,11 @@ function setLoadingProgress(newText) {
 function startLoadingScreen() {
 	loadingScreenProgress.innerHTML = `Loading...<br><br>Tip: ${selectedTip}`
 
+  if (fakeLoading != "true") {
+    let cText = document.getElementById("loadingCornerText")
+    if (cText) { cText.remove() }
+  }
+
 	const loadDur = randomFloat(2000, 4000)
   debugPrint("loadDur initial", loadDur)
 
@@ -81,7 +86,8 @@ function removeLoadingScreen(rmCornerText = false) {
     setTimeout(function() {
       loadingScreenEl.style.left = "100vw"
       if (rmCornerText) {
-        document.getElementById("loadingCornerText").remove()
+        let cText = document.getElementById("loadingCornerText")
+        if (cText) { cText.remove() }
       }
       newTip()
     }, fadeOutDur * 1000)
@@ -90,7 +96,7 @@ function removeLoadingScreen(rmCornerText = false) {
 
 
 function stopShowingLoading() {
-	localStorage["showLoading"] = false
+	localStorage["fakeLoading"] = false
 }
 
 

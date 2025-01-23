@@ -160,7 +160,7 @@ document.addEventListener("DOMContentLoaded", async function() {
   pauseAnimBtn(localStorage["isAnimating"] || "true")
   debugPrint("isAnimating", isAnimating)
 
-  if (showLoading != "true") { 
+  if (fakeLoading != "true") { 
     removeLoadingScreen(true)
   }
   else {
