@@ -12,6 +12,10 @@
   <link rel="stylesheet" href="license.css">
   <link rel="stylesheet" href="options.css">
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
+
   <link rel="icon" type="image/png" href="/assets/favicon_32x32.png">
   <title>Byte Dice - Boykisser license</title>
 </head>
@@ -28,21 +32,19 @@
     <div class="allContainer">
       <div id="optionsContainer" class="borderedRect">
         <h1 class="optionsCredits h1Top">
-          Check out the
-          <a onclick="slideTransition('https://picrew.me/en/image_maker/2310778', event)">original</a> by Chilli!<br>
-          Boykisser picture presets made by 
-          <a onclick="slideTransition('https://www.deviantart.com/greenbandit2004', event)">greenbandit2004</a>.<br>
+          Check out the <a onclick="slideTransition('https://picrew.me/en/image_maker/2310778', event)">original</a> by Chilli!<br>
+          Boykisser picture presets made by <a onclick="slideTransition('https://www.deviantart.com/greenbandit2004', event)">greenbandit2004</a>.<br>
           Please contact
-          <a onclick="slideTransition('https://www.reddit.com/u/RandomPersonDotExe', event)">u/RandomPersonDotExe</a>
+            <a onclick="slideTransition('https://www.reddit.com/u/RandomPersonDotExe', event)">u/RandomPersonDotExe</a>
           or Discord @bytedice for takedown requests.
         </h1><br>
         
-        <h1>Basic</h1>
+        <h1>Basic</h1><br>
         <form>
-          <label for="titleInput">Title      </label><input type="text" id="titleInput" name="titleInput" value="Boykisser license"><br>
+          <label for="titleInput">Title</label><input type="text" id="titleInput" name="titleInput" value="Boykisser license"><br>
           <label for="authorInput">For/Author</label><input type="text" id="authorInput" name="authorInput" value="Byte Dice"><br>
-          <label for="createdInput">Issued   </label><input type="text" id="createdInput" name="createdInput" value="2025-01-01"><br>
-          <label for="expireInput">Expires   </label><input type="text" id="expireInput" name="expireInput" value="NEVER!!!"><br>
+          <label for="createdInput">Issued</label><input type="text" id="createdInput" name="createdInput" value="2025-01-01"><br>
+          <label for="expireInput">Expires</label><input type="text" id="expireInput" name="expireInput" value="NEVER!!!"><br>
           <label for="identityInput">Identity</label><input type="text" id="identityInput" name="identityInput" value="any pronouns"><br>
 
           <label for="sillyInput">Silly</label><div id="sillyNumberValue">03</div><div class="sliderDiv">
@@ -59,18 +61,22 @@
             <option value="trans-kisser" >Trans-kisser</option>
             <option value="bytedice"     >Byte Dice</option>
             <option value="custom" id="customPic">Custom (upload)</option>
-          </select><input type="file" id="picUpload" accept=".png,.jpg,.jpeg,.webp"><br>
-          <!-- picture -->
-        </form>
+          <!-- very clean code, nothing to see here (i dont want whitespaces) -->
+          </select><label
+            for="picUpload" id="picUploadLabel"><img src="/assets/icons/upload.svg" id="picUploadIcon" draggable="false"></label
+          ><input
+            type="file" id="picUpload" name="picUpload" accept=".png,.jpg,.jpeg,.webp"
+          ><br>
+        </form><br>
 
-        <h1>Extra</h1>
+        <h1>Extra</h1><br>
         <form>
           <!-- decorations like
             the QR-code and other "accessories"
           -->
-        </form>
+        </form><br>
 
-        <h1>Advanced</h1>
+        <h1>Advanced</h1><br>
         <form>
           <!-- 
             license border radius
@@ -84,7 +90,9 @@
       <div id="licenseContainer" class="blackBorderRect">
         <h3 id="titleValue">Boykisser license</h3>
         <div style="width: max-content;">
-          <img id="picValue" class="blackBorderRect" src="">
+          <div id="picContainer" class="blackBorderRect">
+            <img id="picValue" src="" draggable="false">
+          </div>
 
           <div id="signatureContainer">
             <p id="signatureValue">Byte Dice</p>

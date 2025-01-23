@@ -11,8 +11,9 @@
 }
 a {
   cursor: pointer;
-  color: #1010da;
+  color: #0000EE;
   text-decoration: underline;
+  font-weight: normal;
 }
 a:visited {
   color: #551A8B;

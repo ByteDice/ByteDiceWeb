@@ -48,11 +48,28 @@ function setSillyValue(value) {
 
 const picInput = document.getElementById("picInput")
 const picValue = document.getElementById("picValue")
+const picUpload = document.getElementById("picUpload")
+const customPicOption = document.getElementById("customPic")
 
 function setPictureValue() {
-  let src = picInput.value != "custom" ? `/assets/boykissers/${picInput.value}.png` : ""
-  picValue.src = src
+  if (picInput.value != "custom") {
+    let src = `/assets/boykissers/${picInput.value}.png`
+    picValue.src = src
+  }
+  else {
+    if (picUpload.files.length > 0) {
+      const file = picUpload.files[0]
+      const fileName = file.name
+      picValue.src = URL.createObjectURL(file)
+      customPicOption.innerHTML = `Custom (${fileName})`
+    }
+    else {
+      customPicOption.innerHTML = "Custom (upload)"
+    }
+  }
 }
+
+picUpload.oninput = function() { setPictureValue() }
 
 picInput.oninput = function() { setPictureValue() }
 
