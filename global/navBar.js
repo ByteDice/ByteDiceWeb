@@ -39,7 +39,7 @@ function createNavBarBtn(icon = "", action = "", actionValue = "", iconId = "", 
 
   let onClick
   switch (action) {
-    case "navigate": onClick = `slideTransition('${actionValue}')`; break
+    case "navigate": onClick = `slideTransition('${actionValue}', event)`; break
     case "function": onClick = `${actionValue}`; break
     default: ""
   }

@@ -1,6 +1,8 @@
 let isLoading = true
 let stopLoading = false
 let loadingScreenEl = document.getElementById("loadingScreen")
+let loadingComplete = false
+let fakeLoadingComplete = false
 
 
 loadingScreenEl.className = "bgDiv"
@@ -52,18 +54,20 @@ function setLoadingProgress(newText) {
   loadingScreenProgress.innerHTML = `Loading...<br>${newText}<br><br>Tip: ${selectedTip}`
 }
 
-
 function startLoadingScreen() {
 	loadingScreenProgress.innerHTML = `Loading...<br><br>Tip: ${selectedTip}`
 
-	const loadDur = randomFloat(3000, 6000)
+	const loadDur = randomFloat(2000, 4000)
   debugPrint("loadDur initial", loadDur)
 
-	setTimeout(removeLoadingScreen, loadDur)
+	setTimeout(function() {
+    if (loadingComplete) { removeLoadingScreen() }
+    fakeLoadingComplete = true
+  }, loadDur)
 }
 
 
-function removeLoadingScreen() {
+function removeLoadingScreen(rmCornerText = false) {
   if (!isLoading) { return }
 
   setLoadingProgress("Done!")
@@ -76,8 +80,9 @@ function removeLoadingScreen() {
 
     setTimeout(function() {
       loadingScreenEl.style.left = "100vw"
-      loadingScreenEl.style.pointerEvents = "none"
-      document.getElementById("loadingCornerText").remove()
+      if (rmCornerText) {
+        document.getElementById("loadingCornerText").remove()
+      }
       newTip()
     }, fadeOutDur * 1000)
   }, 500)

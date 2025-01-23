@@ -161,10 +161,14 @@ document.addEventListener("DOMContentLoaded", async function() {
   debugPrint("isAnimating", isAnimating)
 
   if (showLoading != "true") { 
-    removeLoadingScreen()
+    removeLoadingScreen(true)
   }
   else {
     setLoadingProgress("Cleaning up...")
+    loadingComplete = true
+    if (fakeLoadingComplete) {
+      removeLoadingScreen()
+    }
   }
 }, false)
 
