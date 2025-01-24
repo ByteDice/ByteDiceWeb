@@ -36,7 +36,7 @@
   left: calc(50vw - min(45vw, 250px));
   width: min(90vw, 500px);
   text-align: center;
-  font-size: min(5vmin, 2vmax);
+  font-size: min(5vmin, 2vmax, 25px);
   display: flex;
   justify-content: center;
   color: #ffffff;
