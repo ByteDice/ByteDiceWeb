@@ -19,14 +19,16 @@
   padding: calc(1px * var(--pxDensity));
   border-top: calc(1px * var(--pxDensity)) solid var(--navBar_Border);
   text-align: left;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 h1 {
+  font-size: max(1.2em, 2.5vmin);
   margin: 0%;
   margin-bottom: calc(1px * var(--pxDensity));
 }
 .desc {
-  font-size: 1.3rem;
+  font-size: max(1em, 2vmin);
   margin: 0%;
 }
 button:hover {
@@ -39,4 +41,8 @@ button:active {
 }
 .toyLi {
   margin: calc(3px * var(--pxDensity));
+}
+ul {
+  margin: 0%;
+  padding: 0%;
 }
