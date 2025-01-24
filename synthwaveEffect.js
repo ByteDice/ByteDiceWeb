@@ -18,69 +18,84 @@ const renderTarget = new THREE.WebGLRenderTarget(window.innerWidth, window.inner
   type: THREE.UNSIGNED_BYTE
 })
 
-const shaderMaterial = new THREE.ShaderMaterial({
-  vertexShader: `
-    varying vec2 vUv;
+let shaderMaterial
+let shaderPass
 
-    void main() {
-      vUv = uv;
-      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-    }
-  `,
-  fragmentShader: `
-    varying vec2 vUv;
 
-    uniform vec3 edgeColor;
-    uniform vec3 centerColor;
-    uniform sampler2D tDiffuse;
-    uniform float pxDensity;
-    uniform vec2 resolution;
-    uniform float aspectRatio;
+function defShaderMaterial() {
+  shaderMaterial = makeShaderMaterial()
 
-    float brightness(vec3 c) {
-      return (c.r + c.g + c.b) / 3.0;
-    }
+  shaderPass = new THREE.ShaderPass(shaderMaterial)
+  composer.addPass(shaderPass)
+  shaderPass.material.uniforms.tDiffuse.value = renderTarget.texture
+}
 
-    void main() {
-      vec2 uv = vUv;
 
-      vec2 screenPxCount = vec2(resolution.x / pxDensity, resolution.y / pxDensity);
-      screenPxCount = vec2(256.0, 164.0);
-      vec2 p = floor(uv * screenPxCount) / screenPxCount;
+function makeShaderMaterial() {
+  return new THREE.ShaderMaterial({
+    vertexShader: `
+      varying vec2 vUv;
 
-      vec4 color = texture2D(tDiffuse, p);
-
-      float b = brightness(color.rgb);
-      float centerB = brightness(centerColor);
-      float alpha = floor(color.a);
-
-      if (b > centerB) {
-        gl_FragColor = vec4(edgeColor, color.a);
+      void main() {
+        vUv = uv;
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
       }
-      else if (color == vec4(0.0)) {
-        gl_FragColor = vec4(0.0);
+    `,
+    fragmentShader: `
+      varying vec2 vUv;
+
+      uniform vec3 edgeColor;
+      uniform vec3 centerColor;
+      uniform sampler2D tDiffuse;
+      uniform float pxDensity;
+      uniform vec2 resolution;
+
+      float brightness(vec3 c) {
+        return (c.r + c.g + c.b) / 3.0;
       }
-      else {
-        gl_FragColor = vec4(centerColor, color.a);
+
+      void main() {
+        vec2 uv = vUv;
+
+        vec2 screenPxCount = vec2(resolution.x / pxDensity, resolution.y / pxDensity);
+        //screenPxCount = vec2(256.0, 164.0);
+        vec2 p = floor(uv * screenPxCount) / screenPxCount;
+
+        vec4 color = texture2D(tDiffuse, p);
+
+        float b = brightness(color.rgb);
+        float centerB = brightness(centerColor);
+        float alpha = floor(color.a);
+
+        if (b > centerB) {
+          gl_FragColor = vec4(edgeColor, color.a);
+        }
+        else if (color == vec4(0.0)) {
+          gl_FragColor = vec4(0.0);
+        }
+        else {
+          gl_FragColor = vec4(centerColor, color.a);
+        }
+        
+        //gl_FragColor = color;
       }
-      
-      //gl_FragColor = color;
+    `,
+    uniforms: {
+      edgeColor: { value: new THREE.Color(0x00b4f0) },
+      centerColor: { value: new THREE.Color(0x323232) },
+      tDiffuse: { value: null },
+      pxDensity: { value: pxDensity },
+      resolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) }
     }
-  `,
-  uniforms: {
-    edgeColor: { value: new THREE.Color(0x00b4f0) },
-    centerColor: { value: new THREE.Color(0x323232) },
-    tDiffuse: { value: null },
-    pxDensity: { value: pxDensity },
-    resolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
-    aspectRatio: { value: camera.aspect }
-  }
-})
+  })
+}
 
-const shaderPass = new THREE.ShaderPass(shaderMaterial)
-composer.addPass(shaderPass)
 
-shaderPass.material.uniforms.tDiffuse.value = renderTarget.texture
+function updateShaderMatPxDensity() {
+  shaderMaterial.uniforms.resolution.value = new THREE.Vector2(window.innerWidth, window.innerHeight)
+  shaderMaterial.uniforms.pxDensity.value = pxDensity
+}
+
 
 // TODO: add pixelation shader
 
@@ -400,4 +415,5 @@ function onResizeSynthwave() {
   composer.setSize(window.innerWidth, window.innerHeight)
   camera.aspect = window.innerWidth / window.innerHeight
   camera.updateProjectionMatrix()
+  if (shaderMaterial) { updateShaderMatPxDensity() }
 }

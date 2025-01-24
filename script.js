@@ -5,6 +5,7 @@ function loadingScreenSynthwave() {
   addStars()
 
   setLoadingProgress("Starting synthwave animation...")
+  defShaderMaterial()
   preAnimateSynthwave(25)
   animateSynthwave(0)
 }
