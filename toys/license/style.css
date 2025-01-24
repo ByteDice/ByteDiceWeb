@@ -1,7 +1,7 @@
 .allContainer {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: calc(100vh - calc(25px * var(--pxDensity)));
 }
 .blackBorderRect {
   background-color: #FFFFFF;

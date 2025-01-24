@@ -1,24 +1,28 @@
 #licenseContainer {
   font-family: "Comic Sans MS", "Comic Sans", cursive;
   position: relative;
-  width: 600px;
-  /* height: 400px; */
+  max-width: min(100vw, 600px);
+  max-height: 400px /* min(calc(50vh - calc(25px * var(--pxDensity))), 400px) */;
   aspect-ratio: 3 / 2;
+  width: auto;
   height: auto;
-  padding: 0px 20px 40px 40px;
-  margin: calc(5px * var(--pxDensity)) auto calc(25px * var(--pxDensity)) auto;
-  font-size: 0.75rem;
+  padding: 0px min(20px, 3.333%) min(40px, 6.667%) min(20px, 3.333%);
+  margin: calc(5px * var(--pxDensity)) auto 0% /* calc(25px * var(--pxDensity)) */ auto;
+  font-size: min(max(1.05vmax, 1.5vmin), 0.75rem);
   box-sizing: border-box;
   display: grid;
   grid-template-columns: repeat(2, auto);
   grid-template-rows: repeat(2, auto);
 }
 #picContainer {
-  width: 150px;
-  height: 150px;
+  width: max(10vmax, 15vmin);
+  height: max(10vmax, 15vmin);
+  max-height: 150px;
+  max-width: 150px;
   display: block;
   overflow: hidden;
-  background-color: #FFFFFF;
+  background-color: transparent;
+  border-radius: 25%;
 }
 #picValue {
   width: 100%;
@@ -32,7 +36,7 @@
   left: 0%;
   margin: 0% 0% 0% 20px;
   color: var(--navBarBtn_Inner);
-  font-size: 0.6rem;
+  font-size: min(max(1vmax, 1.2vmin), 0.6rem);
 }
 #signatureContainer {
   display: inline-flex;
@@ -45,7 +49,7 @@
   font-style: normal;
   margin: 0% 0% -0.2rem 0%;/* margin: 0% 0% 0.2rem 0%; */
   text-align: center;
-  font-size: 1.2rem;
+  font-size: min(max(2.5vmax, 3vmin), 1.5rem);
 }
 #signHere {
   border-top: #000000 solid 6px;
@@ -81,7 +85,7 @@ h2 {
 }
 #titleValue {
   grid-area: 1 / 1 / 2 / 3;
-  font-size: 1.5rem;
+  font-size: min(max(3vmax, 4vmin), 1.6rem);
   margin: 0% auto 0% auto;
   height: max-content;
 }
