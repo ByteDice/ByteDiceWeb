@@ -167,3 +167,25 @@ input[type=file] {
 form {
   display: inline-block;
 }
+#generateButton {
+  background-color: var(--navBarBtn_Inner);
+  box-shadow: calc(1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
+              calc(-1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
+              0px calc(1px * var(--pxDensity)) var(--navBarBtn_Border),
+              0px calc(-1px * var(--pxDensity)) var(--navBarBtn_Border);
+
+  /* padding: calc(1px * var(--pxDensity)); */
+  border: none;
+  margin: calc(6px * var(--pxDensity)) calc(2px * var(--pxDensity)) 0% 0%;
+  box-sizing: border-box;
+  width: calc(100% - (4px * var(--pxDensity)));
+  height: calc(6px * var(--pxDensity));
+  display: inline-block;
+}
+.generateButtonIcon {
+  height: calc(4px * var(--pxDensity));
+  aspect-ratio: 1 / 1;
+  width: auto;
+  display: inline-block;
+  margin: auto 0%;
+}

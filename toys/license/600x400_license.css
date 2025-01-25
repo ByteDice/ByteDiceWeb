@@ -2,7 +2,7 @@
   font-family: "Comic Sans MS", "Comic Sans", cursive;
   position: absolute;
   top: 0vh; 
-  left: 200vw;
+  left: 300vw;
   width: 600px;
   height: 400px;
   padding: 0px 20px 40px 20px;
@@ -57,24 +57,28 @@
   display: grid;
   grid-template-columns: repeat(2, auto);
 }
-#sillyValue_600x400 {
-  height: 100%;
-  background-color: #FF0000;
-}
-.sillyGrid_600x400 {
-  width: 99%;
-  aspect-ratio: 10 / 1;
+.sillyBar_600x400 {
+  width: auto;
   height: auto;
-  background-image: repeating-linear-gradient(
-    to right, 
-    #000000 0px, 
-    #000000 3px,
-    transparent 3px, 
-    transparent 10%
-  );
+  background-color: #000000;
   border: 3px solid black;
   border-radius: 8px;
   align-self: center;
+  display: flex;
+  gap: 3px;
+}
+.sillyValue_600x400 {
+  position: relative;
+	width: calc(100% / 10);
+	height: 100%;
+  aspect-ratio: 1 / 1;
+  display: block;
+}
+.sillyValue_600x400:first-child {
+  border-radius: 5px 0px 0px 5px;
+}
+.sillyValue_600x400:last-child {
+  border-radius: 0px 5px 5px 0px;
 }
 #titleValue_600x400 {
   grid-area: 1 / 1 / 2 / 3;

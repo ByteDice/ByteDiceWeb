@@ -23,33 +23,42 @@ for (const [inputId, outputId] of Object.entries(inputOutputMap)) {
 }
 
 const sillyInput = document.getElementById("sillyInput")
-const sillyValue = document.getElementById("sillyValue")
-const sillyValue_600x400 = document.getElementById("sillyValue_600x400")
 const sillyNumberValue = document.getElementById("sillyNumberValue")
+let sillyValues = []
+let sillyValues_600x400 = []
 
-if (sillyInput && sillyValue && sillyNumberValue) {
+for (let i = 0; i < 10; i++) {
+  sillyValues.push(document.getElementById(`sillyValue${i}`))
+  sillyValues_600x400.push(document.getElementById(`sillyValue${i}_600x400`))
+}
+
+
+if (sillyInput && sillyValues && sillyNumberValue) {
   sillyInput.oninput = function () {
     setSillyValue(this.value)
   }
 }
 
+
 function setSillyValue(value) {
   sillyNumberValue.innerHTML = prependZero(value)
-  sillyValue.style.width = `${value * 10 + 0.1}%`
-  sillyValue_600x400.style.width = `${value * 10 + 0.1}%`
+  
 
-  let percent = value == 0 ? 0 : 100 / value
-  let bgImg = `
-    repeating-linear-gradient(
-      to right, 
-      #000000 0px, 
-      #000000 3px,
-      transparent 3px, 
-      transparent ${percent}%
-    )
-  `
-  sillyValue.style.backgroundImage = bgImg
-  sillyValue_600x400.style.backgroundImage = bgImg
+  for (let i in sillyValues) {
+    let sillyValue = sillyValues[i]
+    let sillyValue_600x400 = sillyValues_600x400[i]
+
+    let isTurnedOn = i <= value - 1
+
+    if (isTurnedOn) {
+      sillyValue.className = "sillyValue on"
+      sillyValue_600x400.className = "sillyValue_600x400 on"
+    }
+    else {
+      sillyValue.className = "sillyValue off"
+      sillyValue_600x400.className = "sillyValue_600x400 off"
+    }
+  }
 }
 
 const picInput = document.getElementById("picInput")
@@ -86,6 +95,19 @@ picInput.oninput = function() { setPictureValue() }
 function prependZero(number) {
   return number < 10 ? "0" + number : number
 }
+
+
+function generateLicense() {
+  const element = document.getElementById("licenseContainer_600x400")
+  
+  html2canvas(element).then(canvas => {
+    const link = document.createElement("a");
+    link.download = "boykisserLicense.png";
+    link.href = canvas.toDataURL("image/png");
+    link.click();
+  });
+}
+
 
 function onLoadLicense() {
   for (const [inputId, outputId] of Object.entries(inputOutputMap)) {

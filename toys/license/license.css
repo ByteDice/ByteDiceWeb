@@ -64,24 +64,35 @@
 h2 {
   margin: 5px;
 }
-#sillyValue {
-  height: 100%;
-  background-color: #FF0000;
-}
-.sillyGrid {
-  width: 99%;
-  aspect-ratio: 10 / 1;
+.sillyBar {
+  width: auto;
   height: auto;
-  background-image: repeating-linear-gradient(
-    to right, 
-    #000000 0px, 
-    #000000 3px,
-    transparent 3px, 
-    transparent 10%
-  );
+  background-color: #000000;
   border: 3px solid black;
   border-radius: 8px;
   align-self: center;
+  display: flex;
+  gap: 3px;
+}
+.sillyValue {
+  position: relative;
+	width: calc(100% / 10);
+	height: 100%;
+  aspect-ratio: 1 / 1;
+  display: block;
+}
+.on {
+  background-image: url(/assets/scribble_32x32.png);
+}
+.off {
+  background-image: none;
+  background-color: #FFFFFF;
+}
+.sillyValue:first-child {
+  border-radius: 5px 0px 0px 5px;
+}
+.sillyValue:last-child {
+  border-radius: 0px 5px 5px 0px;
 }
 #titleValue {
   grid-area: 1 / 1 / 2 / 3;

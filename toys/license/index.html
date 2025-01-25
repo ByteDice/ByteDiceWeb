@@ -104,6 +104,10 @@
             license bg-image/bg-gradient
           -->
         </form>
+
+        <button id="generateButton" onclick="generateLicense()">
+          <img src="/assets/icons/download.svg" class="generateButtonIcon" draggable="false">
+        </button>
       </div>
 
       <div id="licenseContainer" class="blackBorderRect">
@@ -126,7 +130,18 @@
             <h2>Expires  </h2><h2 id="expireValue" >never</h2>
             <h2>Identity </h2><h2 id="genderValue" >unknown</h2>
             <h2>Silly</h2>
-            <div class="sillyGrid"><div id="sillyValue"></div></div>
+            <div class="sillyBar">
+              <div id="sillyValue0" class="sillyValue on"></div>
+              <div id="sillyValue1" class="sillyValue on"></div>
+              <div id="sillyValue2" class="sillyValue on"></div>
+              <div id="sillyValue3" class="sillyValue off"></div>
+              <div id="sillyValue4" class="sillyValue off"></div>
+              <div id="sillyValue5" class="sillyValue off"></div>
+              <div id="sillyValue6" class="sillyValue off"></div>
+              <div id="sillyValue7" class="sillyValue off"></div>
+              <div id="sillyValue8" class="sillyValue off"></div>
+              <div id="sillyValue9" class="sillyValue off"></div>
+            </div>
           </div>
         </div>
 
@@ -154,7 +169,18 @@
           <h2>Expires  </h2><h2 id="expireValue_600x400" >never</h2>
           <h2>Identity </h2><h2 id="genderValue_600x400" >unknown</h2>
           <h2>Silly</h2>
-          <div class="sillyGrid_600x400"><div id="sillyValue_600x400"></div></div>
+          <div class="sillyBar_600x400">
+            <div id="sillyValue0_600x400" class="sillyValue_600x400 on"></div>
+            <div id="sillyValue1_600x400" class="sillyValue_600x400 on"></div>
+            <div id="sillyValue2_600x400" class="sillyValue_600x400 on"></div>
+            <div id="sillyValue3_600x400" class="sillyValue_600x400 off"></div>
+            <div id="sillyValue4_600x400" class="sillyValue_600x400 off"></div>
+            <div id="sillyValue5_600x400" class="sillyValue_600x400 off"></div>
+            <div id="sillyValue6_600x400" class="sillyValue_600x400 off"></div>
+            <div id="sillyValue7_600x400" class="sillyValue_600x400 off"></div>
+            <div id="sillyValue8_600x400" class="sillyValue_600x400 off"></div>
+            <div id="sillyValue9_600x400" class="sillyValue_600x400 off"></div>
+          </div>
         </div>
       </div>
 
@@ -163,6 +189,9 @@
   </div>
 
   <div id="loadingScreen"></div>
+
+  <!-- libs -->
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 
   <!-- global -->
   <script src="/global/globalScript.js"></script>
