@@ -31,6 +31,11 @@ function randomInt(min, max) {
 }
 
 
+function randomBool(probablity) {
+  return Math.random() <= probablity
+}
+
+
 function clampNearest(n, mul) {
   if(n > 0)
     return Math.ceil(n / mul) * mul;
