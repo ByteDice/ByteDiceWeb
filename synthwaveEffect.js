@@ -107,7 +107,7 @@ if (!renderer) {
 
 renderer.setSize(window.innerWidth, window.innerHeight)
 
-const mainCanvas = document.getElementById("canvasContainer")
+const mainCanvas = document.getElementById("synthwaveCanvas")
 mainCanvas.appendChild(renderer.domElement)
 
 renderer.setClearColor(0x000000, 0)
@@ -363,9 +363,11 @@ function animateSynthwave(timestamp) {
   for (let hill of allHillMeshes) {
     hill.position.z += moveDist
     
-    const outOfBoundsCoord = camera.aspect * 75
+    const outOfBoundsCoord = 5
     if (hill.position.z - hill.geometry.boundingBox.min.y >= outOfBoundsCoord) {
       scene.remove(hill)
+      allHillMeshes.splice(allHillMeshes.indexOf(hill), 1)
+      continue
     }
   }
 
@@ -407,13 +409,4 @@ function render() {
 
     requestAnimationFrame(animateSynthwave)
   }
-}
-
-
-function onResizeSynthwave() {
-  renderer.setSize(window.innerWidth, window.innerHeight)
-  composer.setSize(window.innerWidth, window.innerHeight)
-  camera.aspect = window.innerWidth / window.innerHeight
-  camera.updateProjectionMatrix()
-  if (shaderMaterial) { updateShaderMatPxDensity() }
 }
