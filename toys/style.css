@@ -1,7 +1,7 @@
 .toyContainer {
   border: none;
   width: calc(64px * var(--pxDensity));
-  height: calc(48px * var(--pxDensity));
+  /* height: calc(48px * var(--pxDensity)); */
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: calc(32px * var(--pxDensity)) 1fr;
@@ -21,6 +21,7 @@
   text-align: left;
   overflow-y: scroll;
   overflow-x: hidden;
+  height: calc(16px * var(--pxDensity));
 }
 h1 {
   font-size: max(1.2em, 2.5vmin);
