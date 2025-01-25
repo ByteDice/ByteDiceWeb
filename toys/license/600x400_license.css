@@ -1,0 +1,84 @@
+#licenseContainer_600x400 {
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  position: absolute;
+  top: 0vh; 
+  left: 200vw;
+  width: 600px;
+  height: 400px;
+  padding: 0px 20px 40px 20px;
+  font-size: 0.75rem;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: repeat(2, auto);
+}
+#picContainer_600x400 {
+  width: 150px;
+  height: 150px;
+  display: block;
+  overflow: hidden;
+  background-color: transparent;
+  border-radius: 32px;
+}
+#picValue_600x400 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+#credits_600x400 {
+  position: absolute;
+  bottom: 0%;
+  left: 0%;
+  margin: 0% 0% 0% 20px;
+  color: var(--navBarBtn_Inner);
+  font-size: 0.6rem;
+}
+#signatureContainer_600x400 {
+  display: inline-flex;
+  flex-direction: column;
+  margin: 5% 0% 0% 0%;
+}
+#signatureValue_600x400 {
+  font-family: "Yellowtail", serif;
+  font-weight: 400;
+  font-style: normal;
+  margin: 0% 0% -0.2rem 0%;/* margin: 0% 0% 0.2rem 0%; */
+  text-align: center;
+  font-size: 1.5rem;
+}
+#signHere_600x400 {
+  border-top: #000000 solid 6px;
+  margin: 0%;
+  padding: 0% 25px;
+  text-align: center;
+}
+#detailsContainer_600x400 {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+}
+#sillyValue_600x400 {
+  height: 100%;
+  background-color: #FF0000;
+}
+.sillyGrid_600x400 {
+  width: 99%;
+  aspect-ratio: 10 / 1;
+  height: auto;
+  background-image: repeating-linear-gradient(
+    to right, 
+    #000000 0px, 
+    #000000 3px,
+    transparent 3px, 
+    transparent 10%
+  );
+  border: 3px solid black;
+  border-radius: 8px;
+  align-self: center;
+}
+#titleValue_600x400 {
+  grid-area: 1 / 1 / 2 / 3;
+  font-size: min(max(3vmax, 4vmin), 1.6rem);
+  margin: 0% auto 0% auto;
+  height: max-content;
+}
