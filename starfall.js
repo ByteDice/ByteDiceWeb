@@ -37,43 +37,43 @@ class Starfall {
 
 
 function drawPixelLine(fromX, fromY, toX, toY) {
-  const pxInflate = 0.1;
+  const pxInflate = 0.1
 
-  const dx = Math.abs(toX - fromX);
-  const dy = Math.abs(toY - fromY);
-  const sx = fromX < toX ? 1 : -1;
-  const sy = fromY < toY ? 1 : -1;
-  let err = dx - dy;
+  const dx = Math.abs(toX - fromX)
+  const dy = Math.abs(toY - fromY)
+  const sx = fromX < toX ? 1 : -1
+  const sy = fromY < toY ? 1 : -1
+  let err = dx - dy
 
-  let x = fromX;
-  let y = fromY;
+  let x = fromX
+  let y = fromY
 
-  starfallCtx.beginPath();
+  starfallCtx.beginPath()
 
-  const steps = Math.max(dx, dy);
+  const steps = Math.max(dx, dy)
 
   for (let i = 0; i <= steps; i++) {
     const alpha = i == 0 ? 1 : 0.1 * (1 - i / steps)
-    starfallCtx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+    starfallCtx.fillStyle = `rgba(255, 255, 255, ${alpha})`
 
     starfallCtx.rect(
       clampNearest(x * pxDensity, pxDensity) - 0.5,
       clampNearest(y * pxDensity, pxDensity) - 0.5,
       pxInflate + pxDensity,
       pxInflate + pxDensity
-    );
+    )
 
-    const e2 = 2 * err;
+    const e2 = 2 * err
     if (e2 > -dy) {
-      err -= dy;
-      x += sx;
+      err -= dy
+      x += sx
     }
     if (e2 < dx) {
-      err += dx;
-      y += sy;
+      err += dx
+      y += sy
     }
 
-    starfallCtx.fill();
+    starfallCtx.fill()
   }
 }
 

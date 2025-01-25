@@ -17,7 +17,7 @@ let isAnimating = true
 let gridVisible = false
 
 function randomFloat(min, max) {
-  return Math.random() * (max - min) + min;
+  return Math.random() * (max - min) + min
 }
 
 
@@ -38,11 +38,11 @@ function randomBool(probablity) {
 
 function clampNearest(n, mul) {
   if(n > 0)
-    return Math.ceil(n / mul) * mul;
+    return Math.ceil(n / mul) * mul
   else if( n < 0)
-    return Math.floor(n / mul) * mul;
+    return Math.floor(n / mul) * mul
   else
-    return 0;
+    return 0
 }
 
 
@@ -60,7 +60,7 @@ function debugPrint(title, value) {
 0 | debugPrint()
   | ^^^^^^^^^^-- argument #1 of type \`Any\` is missing`
 )
-    return;
+    return
   }
 
   if (value) {
@@ -198,35 +198,35 @@ window.addEventListener("pageshow", (event) => {
     // reload page to clear unwanted cache.
     // for some reason the loading screen stays
     // permanently open without this.
-    window.location.reload();
+    window.location.reload()
   }
-});
+})
 
 let prevAnimationState = isAnimating
 
 /*
 document.addEventListener("visibilitychange", function() {
   if (document.hidden) {
-    prevAnimationState = isAnimating;
-    isAnimating = false;
+    prevAnimationState = isAnimating
+    isAnimating = false
   }
   else {
-    isAnimating = prevAnimationState;
+    isAnimating = prevAnimationState
   }
-});
+})
 
 
 window.addEventListener("blur", function() {
   if (document.visibilityState === "visible") {
-    prevAnimationState = isAnimating;
-    isAnimating = false;
+    prevAnimationState = isAnimating
+    isAnimating = false
   }
-});
+})
 
 
 window.addEventListener("focus", function() {
   if (!document.hidden) {
-    isAnimating = prevAnimationState;
+    isAnimating = prevAnimationState
   }
-});
+})
 */
