@@ -7,6 +7,7 @@
   overflow-y: scroll;
   max-width: min(600px, 100vw);
   flex-grow: 1;
+  font-size: calc(4px * var(--pxDensity));
 }
 .optionsCredits {
   margin: 0%;
@@ -83,8 +84,10 @@ input {
   margin: calc(3px * var(--pxDensity)) calc(2px * var(--pxDensity)) 0% 0%;
   box-sizing: border-box;
   width: 50%;
-  height: round(auto, var(--pxDensity));
+  height: calc(6px * var(--pxDensity));
   color: inherit;
+  align-items: center;
+  display: flex;
 }
 #sillyNumberValue {
   display: inline;
@@ -100,7 +103,7 @@ input {
   margin: calc(3px * var(--pxDensity)) calc(3px * var(--pxDensity)) 0% 0%;
   box-sizing: border-box;
   width: round(auto, var(--pxDensity));
-  height: auto;
+  height: calc(6px * var(--pxDensity));;
   aspect-ratio: 1 / 1;
 }
 h1 {
@@ -156,6 +159,7 @@ input[type=file] {
   aspect-ratio: 1 / 1;
   width: auto;
   background-image: url(/assets/icons/upload.svg);
+  display: inline-flex;
 }
 #picUploadIcon {
   height: calc(4px * var(--pxDensity));
@@ -180,7 +184,8 @@ form {
   box-sizing: border-box;
   width: calc(100% - (4px * var(--pxDensity)));
   height: calc(6px * var(--pxDensity));
-  display: inline-block;
+  display: inline-flex;
+  justify-content: center;
 }
 .generateButtonIcon {
   height: calc(4px * var(--pxDensity));
@@ -188,4 +193,8 @@ form {
   width: auto;
   display: inline-block;
   margin: auto 0%;
+}
+.paramContainer {
+  display: flex;
+  align-items: center;
 }

@@ -58,19 +58,19 @@
         
         <h1>Basic</h1><br>
         <form>
-          <label for="titleInput">Title</label><input type="text" id="titleInput" name="titleInput" value="Boykisser license"><br>
-          <label for="authorInput">For/Author</label><input type="text" id="authorInput" name="authorInput" value="Byte Dice"><br>
-          <label for="createdInput">Issued</label><input type="text" id="createdInput" name="createdInput" value="2025-01-01"><br>
-          <label for="expireInput">Expires</label><input type="text" id="expireInput" name="expireInput" value="NEVER!!!"><br>
-          <label for="identityInput">Identity</label><input type="text" id="identityInput" name="identityInput" value="any pronouns"><br>
+          <div class="paramContainer"><label for="titleInput">Title</label><input type="text" id="titleInput" name="titleInput" value="Boykisser license"></div>
+          <div class="paramContainer"><label for="authorInput">For/Author</label><input type="text" id="authorInput" name="authorInput" value="Byte Dice"></div>
+          <div class="paramContainer"><label for="createdInput">Issued</label><input type="text" id="createdInput" name="createdInput" value="2025-01-01"></div>
+          <div class="paramContainer"><label for="expireInput">Expires</label><input type="text" id="expireInput" name="expireInput" value="NEVER!!!"></div>
+          <div class="paramContainer"><label for="identityInput">Identity</label><input type="text" id="identityInput" name="identityInput" value="any pronouns"></div>
 
-          <label for="sillyInput">Silly</label><div id="sillyNumberValue">03</div><div class="sliderDiv">
+          <div class="paramContainer"><label for="sillyInput">Silly</label><div id="sillyNumberValue">03</div><div class="sliderDiv">
             <input type="range" min="0" max="10" value="3" class="slider" id="sillyInput" name="sillyInput">
-          </div><br>
+          </div></div>
 
-          <label for="signatureInput">Signature</label><input type="text" id="signatureInput" name="signatureInput" value="Byte Dice"><br>
+          <div class="paramContainer"><label for="signatureInput">Signature</label><input type="text" id="signatureInput" name="signatureInput" value="Byte Dice"></div>
 
-          <label for="picInput">Picture</label><select id="picInput" name="picInput">
+          <div class="paramContainer"><label for="picInput">Picture</label><select id="picInput" name="picInput">
             <option value="boykisser"    >Boykisser</option>
             <option value="bi-kisser"    >Bi-kisser</option>
             <option value="Ace-kisser"   >Ace-kisser</option>
@@ -83,7 +83,7 @@
             for="picUpload" id="picUploadLabel"><img src="/assets/icons/upload.svg" id="picUploadIcon" draggable="false"></label
           ><input
             type="file" id="picUpload" name="picUpload" accept=".png,.jpg,.jpeg,.webp"
-          ><br>
+          ></div>
         </form><br>
 
         <h1>Extra</h1><br>
