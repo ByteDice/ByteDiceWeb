@@ -18,11 +18,13 @@
     "icon": "powerplates_8x8.png",
     "action": "navigate",
     "actionValue": "/powerplates",
+    "disabled": true,
     "alt": {
       "name": "byte",
       "icon": "dice3_8x8.png",
       "action": "navigate",
-      "actionValue": "/"
+      "actionValue": "/",
+      "disabled": false
     }
   },
   {

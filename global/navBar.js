@@ -21,7 +21,8 @@ function onLoadNavBar() {
       btn["action"]      || "",
       btn["actionValue"] || "",
       btn["iconId"]      || "",
-      btn["alt"]         || ""
+      btn["alt"]         || "",
+      btn["disabled"]    || false
     ))
   }
 
@@ -29,12 +30,13 @@ function onLoadNavBar() {
   container.appendChild(navBarAligner)
 }
 
-function createNavBarBtn(icon = "", action = "", actionValue = "", iconId = "", alt = "", hidden = "") {
+function createNavBarBtn(icon = "", action = "", actionValue = "", iconId = "", alt = "", disabled = false) {
   if (alts.includes(alt["name"])) {
     icon        = alt["icon"]        || ""
     action      = alt["action"]      || ""
     actionValue = alt["actionValue"] || ""
     iconId      = alt["iconId"]      || ""
+    disabled    = alt["disabled"]    || false
   }
 
   let onClick
@@ -47,7 +49,7 @@ function createNavBarBtn(icon = "", action = "", actionValue = "", iconId = "", 
   let btn = document.createElement("li")
 
   btn.innerHTML = `
-    <button onclick="${onClick}" class="navBtn">
+    <button onclick="${onClick}" class="navBtn" ${disabled == true ? "disabled" : ""}>
       <img class="navBtnImg" draggable="false" src="/assets/navBarBtn.png">
       <img class="navBtnIcon" draggable="false" src="/assets/icons/${icon}" id="${iconId}">
     </button>

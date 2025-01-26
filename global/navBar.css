@@ -22,12 +22,25 @@ li {
   filter: drop-shadow(0px calc(1px * var(--pxDensity)) rgba(0, 0, 0, 0.5));
 }
 button:hover {
-  filter: brightness(1.35)  drop-shadow(0px calc(1px * var(--pxDensity)) rgba(0, 0, 0, 0.5));
+  filter: brightness(1.35) drop-shadow(0px calc(1px * var(--pxDensity)) rgba(0, 0, 0, 0.5));
   cursor: pointer;
 }
 button:active {
   filter: brightness(0.75);
   transform: translateY(calc(1px * var(--pxDensity)));
+}
+.button:disabled, button[disabled] {
+  filter: brightness(0.75) drop-shadow(0px calc(1px * var(--pxDensity)) rgba(0, 0, 0, 0.5));
+  cursor: not-allowed;
+}
+.button:disabled:hover, button[disabled]:hover {
+  filter: brightness(0.75) drop-shadow(0px calc(1px * var(--pxDensity)) rgba(0, 0, 0, 0.5));
+  cursor: not-allowed;
+}
+.button:disabled:active, button[disabled]:active {
+  filter: brightness(0.75) drop-shadow(0px calc(1px * var(--pxDensity)) rgba(0, 0, 0, 0.5));
+  cursor: not-allowed;
+  transform: none;
 }
 .navBtnImg {
   width: calc(12px * var(--pxDensity));
