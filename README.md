@@ -3,5 +3,5 @@
 
 # Open-source - Copyright
 
-**BDE_ParticleSys © 2024 by Byte Dice is licensed under CC BY-NC-SA 4.0.**\
+**BDE_ParticleSys © 2025 by Byte Dice is licensed under CC BY-NC-SA 4.0.**\
 **You can learn more about copyright by reading the full [license](/LICENSE.txt).**
