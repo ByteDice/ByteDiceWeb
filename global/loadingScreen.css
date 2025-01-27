@@ -4,7 +4,7 @@
   top: 0%;
   left: 0%;
   width: 100vw;
-  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
 }
 .loadingImg {
   position: absolute;
@@ -19,7 +19,6 @@
   0% {opacity: 100%;}
   100% {opacity: 0%;}
 }
-/* custom pixel 3x5 font */
 #loadingCornerText {
   background-color: transparent;
   color: #ffffff;
@@ -31,8 +30,8 @@
   cursor: pointer;
 }
 #loadingText {
-  position: absolute;
-  bottom: 0;
+  position: fixed;
+  bottom: 0%;
   left: calc(50vw - min(45vw, 250px));
   width: min(90vw, 500px);
   text-align: center;
@@ -40,4 +39,5 @@
   display: flex;
   justify-content: center;
   color: #ffffff;
+  pointer-events: none;
 }

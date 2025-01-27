@@ -32,11 +32,12 @@ function onLoadNavBar() {
 
 function createNavBarBtn(icon = "", action = "", actionValue = "", iconId = "", alt = "", disabled = false) {
   if (alts.includes(alt["name"])) {
-    icon        = alt["icon"]        || ""
-    action      = alt["action"]      || ""
-    actionValue = alt["actionValue"] || ""
-    iconId      = alt["iconId"]      || ""
-    disabled    = alt["disabled"]    || false
+    icon        = alt["icon"]        || icon        || ""
+    action      = alt["action"]      || action      || ""
+    actionValue = alt["actionValue"] || actionValue || ""
+    iconId      = alt["iconId"]      || iconId      || ""
+
+    disabled = alt["disabled"] === undefined ? disabled : alt["disabled"] || false;
   }
 
   let onClick

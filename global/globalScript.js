@@ -137,7 +137,13 @@ function pauseAnimBtn(state) {
 }
 
 
+function setVh() {
+  document.documentElement.style.setProperty("--vh", window.innerHeight * 0.01 + "px");
+}
+
+
 document.addEventListener("DOMContentLoaded", async function() {
+  
   debugPrint("currentPage", `${CURRENT_PAGE} ${Object.keys(PAGES)[CURRENT_PAGE + 1]}`)
 
   startLoadingScreen()
@@ -180,6 +186,7 @@ document.addEventListener("DOMContentLoaded", async function() {
 
 
 window.addEventListener("resize", function() {
+  document.documentElement.style.setProperty("--vh", window.innerHeight * 0.01 + "px");
   calcPixelDensity()
 
   switch (CURRENT_PAGE) {
@@ -192,6 +199,11 @@ window.addEventListener("resize", function() {
     toggleGrid()
   }
 })
+
+
+if ("scrollRestoration" in history) {
+  history.scrollRestoration = "manual";
+}
 
 
 window.addEventListener("pageshow", (event) => {

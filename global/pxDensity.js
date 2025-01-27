@@ -1,4 +1,4 @@
-let pxDensity = parseFloat(getComputedStyle(document.body).getPropertyValue("--pxDensity"))
+let pxDensity = 1
 let pxDensityDefined = false
 
 let pxWidth = 256
@@ -16,7 +16,7 @@ function calcPixelDensity() {
   document.documentElement.style.setProperty("--pxDensity", widest)
   document.documentElement.style.setProperty("--pxDensityPx", `${widest}px`)
 
-  pxDensity = parseFloat(getComputedStyle(document.body).getPropertyValue("--pxDensity"))
+  pxDensity = widest
 
   pxDensityDefined = true
 }
