@@ -2,7 +2,8 @@
   {
     "icon": "discord_8x8.png",
     "action": "navigate",
-    "actionValue": "https://discord.com"
+    "actionValue": "https://discord.com",
+    "disabled": true
   },
   {
     "icon": "youtube_8x8.png",
