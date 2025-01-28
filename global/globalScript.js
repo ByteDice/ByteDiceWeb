@@ -143,7 +143,7 @@ function setVh() {
 
 
 document.addEventListener("DOMContentLoaded", async function() {
-  
+  setVh()
   debugPrint("currentPage", `${CURRENT_PAGE} ${Object.keys(PAGES)[CURRENT_PAGE + 1]}`)
 
   startLoadingScreen()
@@ -186,7 +186,7 @@ document.addEventListener("DOMContentLoaded", async function() {
 
 
 window.addEventListener("resize", function() {
-  document.documentElement.style.setProperty("--vh", window.innerHeight * 0.01 + "px");
+  setVh()
   calcPixelDensity()
 
   switch (CURRENT_PAGE) {

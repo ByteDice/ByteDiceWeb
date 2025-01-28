@@ -13,9 +13,13 @@
   <link rel="stylesheet" href="options.css">
   <link rel="stylesheet" href="600x400_license.css">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
+  <!-- fonts -->
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Yellowtail&display=swap");
+    @import url("https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400&display=swap");
+    @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
+  </style>
+
 
   <link rel="icon" type="image/png" href="/assets/favicon_32x32.png">
   <title>Byte Dice - Boykisser license</title>
@@ -110,7 +114,7 @@
         </button>
       </div>
 
-      <div id="licenseContainer" class="blackBorderRect">
+      <div id="licenseContainer" class="blackBorderRect sans">
         <h3 id="titleValue">Boykisser license</h3>
         <div style="width: max-content;">
           <div id="picContainer" class="blackBorderRect">
@@ -118,14 +122,14 @@
           </div>
 
           <div id="signatureContainer">
-            <p id="signatureValue">Byte Dice</p>
+            <p id="signatureValue" class="yellowTail">Byte Dice</p>
             <p id="signHere">Sign here</p>
           </div>
         </div>
       
         <div>
           <div id="detailsContainer">
-            <h2>For      </h2><h2 id="authorValue" >Byte Dice</h2>
+            <h2 class="sans-bold">For      </h2><h2 id="authorValue" >Byte Dice</h2>
             <h2>Issued   </h2><h2 id="createdValue">2025-01-18</h2>
             <h2>Expires  </h2><h2 id="expireValue" >never</h2>
             <h2>Identity </h2><h2 id="genderValue" >unknown</h2>
@@ -149,14 +153,14 @@
       </div>
     </div>
 
-    <div id="licenseContainer_600x400" class="blackBorderRect">
+    <div id="licenseContainer_600x400" class="blackBorderRect sans">
       <h3 id="titleValue_600x400">Boykisser license</h3>
       <div style="width: max-content;">
         <div id="picContainer_600x400" class="blackBorderRect">
           <img id="picValue_600x400" src="" draggable="false">
         </div>
 
-        <div id="signatureContainer_600x400">
+        <div id="signatureContainer_600x400" class="yellowTail">
           <p id="signatureValue_600x400">Byte Dice</p>
           <p id="signHere_600x400">Sign here</p>
         </div>

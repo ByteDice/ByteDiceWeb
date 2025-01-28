@@ -1,5 +1,4 @@
 #licenseContainer_600x400 {
-  font-family: "Comic Sans MS", "Comic Sans", cursive;
   position: absolute;
   top: 0vh; 
   left: 300vw;
@@ -40,9 +39,6 @@
   margin: 5% 0% 0% 0%;
 }
 #signatureValue_600x400 {
-  font-family: "Yellowtail", serif;
-  font-weight: 400;
-  font-style: normal;
   margin: 0% 0% -0.2rem 0%;/* margin: 0% 0% 0.2rem 0%; */
   text-align: center;
   font-size: 1.5rem;
@@ -82,7 +78,8 @@
 }
 #titleValue_600x400 {
   grid-area: 1 / 1 / 2 / 3;
-  font-size: min(max(3vmax, 4vmin), 1.6rem);
+  font-size: 2rem;
   margin: 0% auto 0% auto;
   height: max-content;
+  text-align: center;
 }

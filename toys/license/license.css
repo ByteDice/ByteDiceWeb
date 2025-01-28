@@ -1,5 +1,4 @@
 #licenseContainer {
-  font-family: "Comic Sans MS", "Comic Sans", cursive;
   position: relative;
   max-width: min(100vw, 600px);
   max-height: 400px /* min(calc(50vh - calc(25px * var(--pxDensity))), 400px) */;
@@ -13,6 +12,21 @@
   display: grid;
   grid-template-columns: repeat(2, auto);
   grid-template-rows: repeat(2, auto);
+}
+.sans {
+  font-family: "Comic Neue", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.sans-bold { /* TODO: bold not working */
+  font-family: "Comic Neue", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+.yellowTail {
+  font-family: "Yellowtail", serif;
+  font-weight: 400;
+  font-style: normal;
 }
 #picContainer {
   width: max(10vmax, 15vmin);
@@ -44,9 +58,6 @@
   margin: 5% 0% 0% 0%;
 }
 #signatureValue {
-  font-family: "Yellowtail", serif;
-  font-weight: 400;
-  font-style: normal;
   margin: 0% 0% -0.2rem 0%;/* margin: 0% 0% 0.2rem 0%; */
   text-align: center;
   font-size: min(max(2.5vmax, 3vmin), 1.5rem);
@@ -96,7 +107,8 @@ h2 {
 }
 #titleValue {
   grid-area: 1 / 1 / 2 / 3;
-  font-size: min(max(3vmax, 4vmin), 1.6rem);
+  font-size: min(max(3vmax, 4vmin), 2rem);
   margin: 0% auto 0% auto;
   height: max-content;
+  text-align: center;
 }
