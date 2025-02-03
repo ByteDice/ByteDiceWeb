@@ -8,7 +8,7 @@
   max-width: min(600px, 100vw);
   max-height: 40vh;
   flex-grow: 1;
-  font-size: calc(4px * var(--pxDensity));
+  font-size: min(1.5rem, calc(4px * var(--pxDensity)));
 }
 .optionsCredits {
   margin: 0%;
