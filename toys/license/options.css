@@ -14,7 +14,7 @@
   margin: 0%;
   max-width: calc(100% - (4px * var(--pxDensity)));
 }
-label {
+.licenseForm label {
   background-color: var(--navBarBtn_Inner);
   box-shadow: calc(1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
               calc(-1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
@@ -27,7 +27,7 @@ label {
   width: round(auto, var(--pxDensity));
   height: calc(6px * var(--pxDensity));
 }
-input {
+.licenseForm input[type="text"] {
   font-family: "Roboto", sans-serif;
   background-color: var(--navBarBtn_Inner);
   box-shadow: calc(1px * var(--pxDensity)) 0px var(--navBarBtn_Border),

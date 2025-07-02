@@ -9,9 +9,18 @@ loadingScreenEl.className = "bgDiv"
 loadingScreenEl.innerHTML = `
   <img class="loadingImg" draggable="false" src="/assets/byteDiceBlinkAnim_32x32.png">
 
-  <button class="pxFont" onclick="stopShowingLoading()" id="loadingCornerText">
-    Press ESC to instantly close the loading screen<br>Or click me to never see it again.
-  </button>
+  <div style="margin-left: calc(3px * var(--pxDensity)); display: flex;">
+    <p class="encased" style="height: 100%">
+      Use extended loading screen?<br>
+      <small style="margin: 0px; font-size: 10px;">(For immersion)</small>
+    </p>
+    <div class="encased" style="height: inherit; display: flex;">
+      <label class="switch" style="margin: auto;">
+        <input type="checkbox" name="fakeLoadingToggle" onclick="setShowLoading(this.checked)" ${localStorage["fakeLoading"] != "true" ? "" : "checked"}>
+        <span class="switchDecor"></span>
+      </label>
+    </div>
+  </div>
 
   <p id="loadingText">Loading...<br>Loading files...<br><br>Tip: Tip loading...</p>
 `
@@ -57,11 +66,6 @@ function setLoadingProgress(newText) {
 function startLoadingScreen() {
 	loadingScreenProgress.innerHTML = `Loading...<br><br>Tip: ${selectedTip}`
 
-  if (fakeLoading != "true") {
-    let cText = document.getElementById("loadingCornerText")
-    if (cText) { cText.remove() }
-  }
-
 	const loadDur = randomFloat(2000, 4000)
   debugPrint("loadDur initial", loadDur)
 
@@ -72,7 +76,7 @@ function startLoadingScreen() {
 }
 
 
-function removeLoadingScreen(rmCornerText = false) {
+function removeLoadingScreen() {
   if (!isLoading) { return }
 
   setLoadingProgress("Done!")
@@ -85,18 +89,14 @@ function removeLoadingScreen(rmCornerText = false) {
 
     setTimeout(function() {
       loadingScreenEl.style.left = "100vw"
-      if (rmCornerText) {
-        let cText = document.getElementById("loadingCornerText")
-        if (cText) { cText.remove() }
-      }
       newTip()
     }, fadeOutDur * 1000)
   }, 500)
 }
 
 
-function stopShowingLoading() {
-	localStorage["fakeLoading"] = false
+function setShowLoading(state) {
+	localStorage["fakeLoading"] = state
 }
 
 

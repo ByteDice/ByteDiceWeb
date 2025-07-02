@@ -16,10 +16,7 @@
     "actionValue": "https://github.com/ByteDice"
   },
   {
-    "icon": "powerplates_8x8.png",
-    "action": "navigate",
-    "actionValue": "/powerplates",
-    "disabled": true,
+    "hidden": true,
     "alt": {
       "name": "byte",
       "icon": "dice3_8x8.png",

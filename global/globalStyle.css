@@ -4,6 +4,7 @@
   --navBar_SecondInner: #344b6c;
   --navBarBtn_Inner: #474747;
   --navBarBtn_Border: #232323;
+  --brightBlue: #569cd6;
   --pxDensity: 1;
   --pxDensityPx: 1px;
   --bottomPxMargin: 1px;
@@ -50,4 +51,52 @@ canvas {
   background-color: transparent;
   border: none;
   color: inherit;
+}
+.encased {
+  display: inline-block;
+  background-color: var(--navBarBtn_Inner);
+  box-shadow: calc(1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
+              calc(-1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
+              0px calc(1px * var(--pxDensity)) var(--navBarBtn_Border),
+              0px calc(-1px * var(--pxDensity)) var(--navBarBtn_Border);
+
+  padding: calc(1px * var(--pxDensity));
+  margin: calc(3px * var(--pxDensity)) calc(3px * var(--pxDensity)) 0% 0%;
+  width: round(auto, var(--pxDensity));
+  height: calc(6px * var(--pxDensity));
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+.switch input {
+  display: none;
+}
+.switchDecor {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--navBarBtn_Border);
+  transition: 0.2s steps(2, end);
+}
+.switchDecor:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: var(--navBarBtn_Inner);
+  transition: 0.2s steps(2, end);
+}
+.switch input:checked + .switchDecor {
+  background-color: var(--brightBlue);
+}
+.switch input:checked + .switchDecor:before {
+  transform: translateX(26px);
 }

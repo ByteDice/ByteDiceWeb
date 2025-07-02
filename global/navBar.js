@@ -6,6 +6,8 @@ function onLoadNavBar() {
   const altString = container.dataset.alt || ""
   alts = altString.replace(" ", "").split(",")
 
+  debugPrint("Navbar alts", alts);
+
   if (!container) { return }
 
   const navBarAligner = document.createElement("div")
@@ -16,21 +18,26 @@ function onLoadNavBar() {
 
 
   for (let btn of navBarJson) {
-    navBar.appendChild(createNavBarBtn(
+    createdBtn = createNavBarBtn(
       btn["icon"]        || "",
       btn["action"]      || "",
       btn["actionValue"] || "",
       btn["iconId"]      || "",
       btn["alt"]         || "",
-      btn["disabled"]    || false
-    ))
+      btn["disabled"]    || false,
+      btn["hidden"]      || false
+    )
+
+    if (createdBtn != null) {
+      navBar.appendChild(createdBtn)
+    }
   }
 
   navBarAligner.appendChild(navBar)
   container.appendChild(navBarAligner)
 }
 
-function createNavBarBtn(icon = "", action = "", actionValue = "", iconId = "", alt = "", disabled = false) {
+function createNavBarBtn(icon = "", action = "", actionValue = "", iconId = "", alt = "", disabled = false, hidden = false) {
   if (alts.includes(alt["name"])) {
     icon        = alt["icon"]        || icon        || ""
     action      = alt["action"]      || action      || ""
@@ -38,6 +45,7 @@ function createNavBarBtn(icon = "", action = "", actionValue = "", iconId = "", 
     iconId      = alt["iconId"]      || iconId      || ""
 
     disabled = alt["disabled"] === undefined ? disabled : alt["disabled"] || false;
+    hidden = alt["hidden"] || false;
   }
 
   let onClick
@@ -46,6 +54,8 @@ function createNavBarBtn(icon = "", action = "", actionValue = "", iconId = "", 
     case "function": onClick = `${actionValue}`; break
     default: ""
   }
+
+  if (hidden) { return null; }
 
   let btn = document.createElement("li")
 
@@ -56,7 +66,7 @@ function createNavBarBtn(icon = "", action = "", actionValue = "", iconId = "", 
     </button>
   `
 
-  return btn
+  return btn;
 }
 
 async function loadNavBarJson() {
