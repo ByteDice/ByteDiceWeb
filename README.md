@@ -1,5 +1,5 @@
 # ByteDiceWeb - [ByteDice.net](https://bytedice.net)
-> A small website served as a place to find all (not yet all) content related to Byte Dice.
+> A small website served as a place to find content related to Byte Dice.
 
 # Open-source - Copyright
 

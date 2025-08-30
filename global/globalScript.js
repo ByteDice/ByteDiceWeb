@@ -4,6 +4,7 @@ const PAGES = {
   SYNTHWAVE: 1,
   TOYS: 2,
   LICENSE: 3,
+  SC_TRACKER: 4
 }
 const CONSOLE_COLORS = {
   red: "color: #FF0000;",
@@ -32,8 +33,8 @@ function randomInt(min, max) {
 }
 
 
-function randomBool(probablity) {
-  return Math.random() <= probablity
+function randomBool(probability) {
+  return Math.random() <= probability
 }
 
 
