@@ -68,8 +68,8 @@ canvas {
 .switch {
   position: relative;
   display: inline-block;
-  width: 60px;
-  height: 34px;
+  width: calc(8px * var(--pxDensity));
+  height: calc(4px * var(--pxDensity));
 }
 .switch input {
   display: none;
@@ -87,10 +87,10 @@ canvas {
 .switchDecor:before {
   position: absolute;
   content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
+  height: calc(2px * var(--pxDensity));
+  width: calc(2px * var(--pxDensity));
+  left: calc(1px * var(--pxDensity));
+  bottom: calc(1px * var(--pxDensity));
   background-color: var(--navBarBtn_Inner);
   transition: 0.2s steps(2, end);
 }
@@ -98,5 +98,5 @@ canvas {
   background-color: var(--brightBlue);
 }
 .switch input:checked + .switchDecor:before {
-  transform: translateX(26px);
+  transform: translateX(calc(4px * var(--pxDensity)));
 }

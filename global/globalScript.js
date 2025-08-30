@@ -72,7 +72,7 @@ function debugPrint(title, value) {
   }
 }
 
-function toggleGrid() {
+function toggleGrid(offX = 0, offY = 0) {
   if (gridVisible) {
     document.getElementById("gridCanvas").remove()
     gridVisible = false
@@ -84,8 +84,8 @@ function toggleGrid() {
   canvasEl.width = window.innerWidth
   canvasEl.height = window.innerHeight
   canvasEl.style.position = "absolute"
-  canvasEl.style.top = "0%"
-  canvasEl.style.left = "0%"
+  canvasEl.style.top = `${offY * pxDensity}px`
+  canvasEl.style.left = `${offX * pxDensity}px`
   canvasEl.style.pointerEvents = "none"
 
   let ctx = canvasEl.getContext("2d")

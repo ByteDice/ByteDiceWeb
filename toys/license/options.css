@@ -72,7 +72,6 @@
   height: calc(3px * var(--pxDensity));
 }
 .sliderDiv {
-  display: inline-block;
   background-color: var(--navBarBtn_Inner);
   box-shadow: calc(1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
               calc(-1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
