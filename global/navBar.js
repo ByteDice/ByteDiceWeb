@@ -1,6 +1,8 @@
 let navBarJson
 let alts
 
+navBarPresent = true
+
 function onLoadNavBar() {
   const container = document.getElementById("navBarContainer")
   const altString = container.dataset.alt || ""

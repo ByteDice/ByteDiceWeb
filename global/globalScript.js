@@ -4,7 +4,8 @@ const PAGES = {
   SYNTHWAVE: 1,
   TOYS: 2,
   LICENSE: 3,
-  SC_TRACKER: 4
+  SC_TRACKER: 4,
+  LOADING: 5
 }
 const CONSOLE_COLORS = {
   red: "color: #FF0000;",
@@ -17,6 +18,7 @@ let CURRENT_PAGE = PAGES.null
 
 let isAnimating = true
 let gridVisible = false
+let navBarPresent = false
 
 function randomFloat(min, max) {
   return Math.random() * (max - min) + min
@@ -139,7 +141,7 @@ function pauseAnimBtn(state) {
 
 
 function setVh() {
-  document.documentElement.style.setProperty("--vh", window.innerHeight * 0.01 + "px");
+  document.documentElement.style.setProperty("--vh", window.innerHeight * 0.01 + "px")
 }
 
 
@@ -161,17 +163,27 @@ document.addEventListener("DOMContentLoaded", async function() {
   if (densityWidth > densityHeight) { debugPrint("pxDensity", `Width, ${pxDensity}`) }
   else { debugPrint("pxDensity", `Height, ${pxDensity}`) } 
 
-  setLoadingProgress("adding navBar...")
-  await loadNavBarJson()
-  onLoadNavBar()
+  if (navBarPresent) {
+    setLoadingProgress("adding navBar...")
+    await loadNavBarJson()
+    onLoadNavBar()
+  }
 
   switch (CURRENT_PAGE) {
     case (PAGES.SYNTHWAVE): loadingScreenSynthwave(); break
     case (PAGES.LICENSE):   onLoadLicense(); break
   }
   
-  pauseAnimBtn(localStorage["isAnimating"] || "true")
-  debugPrint("isAnimating", isAnimating)
+  if (navBarPresent) {
+    pauseAnimBtn(localStorage["isAnimating"] || "true")
+    debugPrint("isAnimating", isAnimating)
+  }
+
+  if (CURRENT_PAGE == PAGES.LOADING) {
+    clearLoadingScreenClutter()
+    periodicallyChangeTips()
+    return
+  }
 
   if (fakeLoading != "true") { 
     removeLoadingScreen(true)

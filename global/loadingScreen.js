@@ -7,9 +7,9 @@ let fakeLoadingComplete = false
 
 loadingScreenEl.className = "bgDiv"
 loadingScreenEl.innerHTML = `
-  <img class="loadingImg" draggable="false" src="/assets/byteDiceBlinkAnim_32x32.png">
+  <img class="loadingImg" draggable="false" src="/assets/byteDiceBlinkAnim_32x32.png" id="loadingImg">
 
-  <div style="margin-left: calc(3px * var(--pxDensity)); display: flex;">
+  <div style="margin-left: calc(3px * var(--pxDensity)); display: flex;" id="fakeLoadingToggle">
     <p class="encased" style="height: 100%">
       Use extended loading screen?<br>
       <small style="margin: 0px; font-size: 10px;">(For immersion)</small>
