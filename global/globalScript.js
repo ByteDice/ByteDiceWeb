@@ -181,7 +181,7 @@ document.addEventListener("DOMContentLoaded", async function() {
 
   if (CURRENT_PAGE == PAGES.LOADING) {
     clearLoadingScreenClutter()
-    periodicallyChangeTips()
+    setInterval(periodicallyChangeTips, 60 * 1000)
     return
   }
 

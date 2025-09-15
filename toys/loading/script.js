@@ -14,8 +14,6 @@ function clearLoadingScreenClutter() {
 function periodicallyChangeTips() {
   newTip()
   setLoadingProgress("")
-
-  setInterval(periodicallyChangeTips, 60 * 1000)
 }
 
 
