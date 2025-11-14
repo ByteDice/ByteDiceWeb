@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no">
+
+  <link rel="stylesheet" href="/global/navBar.css">
+  <link rel="stylesheet" href="/global/globalStyle.css">
+  <link rel="stylesheet" href="/global/loadingScreen.css">
+  <link rel="stylesheet" href="../style.css">
+
+  <link rel="icon" type="image/png" href="/assets/favicon_32x32.png">
+  <title>Byte Dice - Libs [EXPERIMENTAL]</title>
+
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://bytedice.net/libs/test">
+
+  <meta name="description"         content="A list of JS libraries made by Byte Dice. [EXPERIMENTAL]">
+  <meta name="keywords"            content="Byte Dice, pixel art, procedural generation, game art, digital art, ByteDice showcase, library">
+  <meta name="author"              content="Byte Dice">
+
+  <meta property="og:title"        content="Byte Dice">
+  <meta property="og:description"  content="A list of JS libraries made by Byte Dice. [EXPERIMENTAL]">
+  <meta property="og:url"          content="https://bytedice.net/libs/test">
+  <meta property="og:type"         content="website">
+</head>
+
+<body>
+  <div id="mainDiv">
+    <div id="navBarContainer" data-alt="byte, noAnim, return"></div>
+
+		<div class="encased" style="margin: calc(3px * var(--pxDensity)); max-width: 30em">
+			<h1 style="margin-bottom: calc(1px * var(--pxDensity)); font-size: 2em; color: red; text-decoration: underline;">
+				WARNING
+			</h1>
+			These are experimental/testing libraries. Do not expect them to function. Do not expect them to stay functioning. Do not expect them stay as a whole. Do not expect their advertising to be correct. Do not expect anything from them.
+		</div>
+
+		<div style="height: calc(1px * var(--pxDensity)); margin: 0 calc(3px * var(--pxDensity)); background-color: var(--navBarBtn_Border);"></div>
+
+    <ul class="libUl">
+			<li class="libLi">
+        <div class="libContainer borderedRect">
+          <img class="libImg" src="/assets/js.png" style="border-radius: 16px;">
+          <div class="libTextContainer">
+            <h1>Calendar Library</h1>
+            <p class="desc">A fully customizable calendar library. So customizable that you can barely call it a calendar library.</p>
+          </div>
+					<div class="libSrcContainer">
+						&lt;script src="https://www.bytedice.net/libs/test/calendar_test.js"&gt;&lt;/script&gt;
+					</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div id="loadingScreen"></div>
+
+  <!-- global -->
+  <script src="/global/globalScript.js"></script>
+  <script src="/global/pxDensity.js"></script>
+  <script src="/global/loadingScreen.js"></script>
+  <script src="/global/navBar.js"></script>
+  <script src="/global/screenTransition.js"></script>
+
+  <!-- local -->
+  <script src="../script.js"></script>
+</body>
+
+</html>

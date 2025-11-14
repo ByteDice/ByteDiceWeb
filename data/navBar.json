@@ -25,15 +25,35 @@
       "disabled": false
     }
   },
+	{
+		"hidden": true,
+		"alt": {
+			"name": "testtube",
+			"icon": "testtube_8x8.png",
+			"action": "navigate",
+			"actionValue": "/libs/test",
+			"disabled": false
+		}
+	},
+	{
+		"hidden": true,
+		"alt": {
+			"name": "return",
+			"icon": "return_8x8.png",
+			"action": "navigate",
+			"actionValue": "../",
+			"disabled": false
+		}
+	},
   {
     "icon": "pauseAnimation_8x8.png",
     "action": "function",
     "actionValue": "pauseAnimBtn('auto')",
     "iconId": "animationToggle",
-    "disabled": false,
+    "hidden": false,
     "alt": {
-      "name": "playDisabled",
-      "disabled": true
-    }
+      "name": "noAnim",
+      "hidden": true
+		}
   }
 ]

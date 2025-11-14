@@ -4,8 +4,8 @@ const PAGES = {
   SYNTHWAVE: 1,
   TOYS: 2,
   LICENSE: 3,
-  SC_TRACKER: 4,
-  LOADING: 5
+  LOADING: 4,
+	LIBS: 5
 }
 const CONSOLE_COLORS = {
   red: "color: #FF0000;",
@@ -126,6 +126,7 @@ function pauseAnimBtn(state) {
   }
 
   let pauseBtn = document.getElementById("animationToggle")
+	if (pauseBtn == undefined) { return; }
 
   if (state == "true") {
     isAnimating = true
@@ -181,6 +182,7 @@ document.addEventListener("DOMContentLoaded", async function() {
 
   if (CURRENT_PAGE == PAGES.LOADING) {
     clearLoadingScreenClutter()
+		setLoadingProgress("")
     setInterval(periodicallyChangeTips, 60 * 1000)
     return
   }

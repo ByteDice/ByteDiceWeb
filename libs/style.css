@@ -1,12 +1,13 @@
-.toyContainer {
+.libContainer {
   border: none;
   display: grid;
 	width: 100%;
-  grid-template-columns: 1fr;
-  grid-template-rows: calc(32px * var(--pxDensity)) 1fr;
+	max-height: calc(39px * var(--pxDensity));
+  grid-template-columns: calc(24px * var(--pxDensity)) 1fr;
+  grid-template-rows: 1fr auto;
   color: inherit;
 }
-.toyImg {
+.libImg {
   image-rendering: pixelated;
   overflow: hidden;
   width: 100%;
@@ -14,14 +15,23 @@
 	object-fit: contain;
   margin: auto auto;
 }
-.toyTextContainer {
-  background-color: var(--navBar_SecondInner);
+.libSrcContainer {
+	background-color: var(--navBar_SecondInner);
   padding: calc(1px * var(--pxDensity));
   border-top: calc(1px * var(--pxDensity)) solid var(--navBar_Border);
   text-align: left;
+  overflow-x: hidden;
+	grid-column: 1 / -1;
+	grid-row: 2;
+}
+.libTextContainer {
+  background-color: var(--navBar_SecondInner);
+  padding: calc(1px * var(--pxDensity));
+  border-left: calc(1px * var(--pxDensity)) solid var(--navBar_Border);
+  text-align: left;
   overflow-y: scroll;
   overflow-x: hidden;
-  height: calc(16px * var(--pxDensity));
+  height: calc(100% - (2px * var(--pxDensity)));
 }
 h1 {
   font-size: max(1.2em, 2.5vmin);
@@ -40,13 +50,16 @@ button:active {
   filter: brightness(0.85);
   transform: translateY(calc(1px * var(--pxDensity)));
 }
-.toyUl {
+.libUl {
 	padding: calc(3px * var(--pxDensity));
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
+	grid-template-columns: 1fr 1fr;
 	gap: calc(6px * var(--pxDensity))
 }
-.toyLi {
+@media (max-width: 1024px) {
+	.libUl { grid-template-columns: 1fr !important; }
+}
+.libLi {
   margin: 0;
 }
 ul {

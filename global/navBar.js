@@ -6,9 +6,9 @@ navBarPresent = true
 function onLoadNavBar() {
   const container = document.getElementById("navBarContainer")
   const altString = container.dataset.alt || ""
-  alts = altString.replace(" ", "").split(",")
+  alts = altString.replaceAll(" ", "").split(",")
 
-  debugPrint("Navbar alts", alts);
+  debugPrint("Navbar alts", alts.join(", "));
 
   if (!container) { return }
 

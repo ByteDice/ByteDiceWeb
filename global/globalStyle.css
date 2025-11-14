@@ -63,7 +63,7 @@ canvas {
   padding: calc(1px * var(--pxDensity));
   margin: calc(3px * var(--pxDensity)) calc(3px * var(--pxDensity)) 0% 0%;
   width: round(auto, var(--pxDensity));
-  height: calc(6px * var(--pxDensity));
+  /*height: calc(6px * var(--pxDensity));*/
 }
 .switch {
   position: relative;
