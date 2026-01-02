@@ -9,6 +9,7 @@
   max-height: 40vh;
   flex-grow: 1;
   font-size: min(1.5rem, calc(4px * var(--pxDensity)));
+	box-sizing: border-box;
 }
 .optionsCredits {
   margin: 0%;
@@ -16,7 +17,7 @@
 }
 .licenseFormContainer {
 	display: grid;
-	grid-template-columns: 35% 65%;
+	grid-template-columns: 40% 60%;
 }
 .licenseForm label {
   background-color: var(--navBarBtn_Inner);
