@@ -14,6 +14,10 @@
   margin: 0%;
   max-width: calc(100% - (4px * var(--pxDensity)));
 }
+.licenseFormContainer {
+	display: grid;
+	grid-template-columns: 35% 65%;
+}
 .licenseForm label {
   background-color: var(--navBarBtn_Inner);
   box-shadow: calc(1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
@@ -40,13 +44,12 @@
   font-size: inherit;
   margin: calc(3px * var(--pxDensity)) calc(2px * var(--pxDensity)) 0% 0%;
   box-sizing: border-box;
-  /* width: round(auto, var(--pxDensity)); */
-  width: 50%;
+  width: round(auto, var(--pxDensity));
   height: calc(6px * var(--pxDensity));
   color: inherit;
   display: inline-block;
 }
-.slider { /* its slightly offset down >:( */
+.slider {
   -webkit-appearance: none;
   appearance: none;
   background-color: var(--navBarBtn_Border);
@@ -83,7 +86,6 @@
   font-size: inherit;
   margin: calc(3px * var(--pxDensity)) calc(2px * var(--pxDensity)) 0% 0%;
   box-sizing: border-box;
-  width: 50%;
   height: calc(6px * var(--pxDensity));
   color: inherit;
   align-items: center;
@@ -152,6 +154,7 @@ input[type=file] {
   display: none;
 }
 #picInput {
+	height: calc(6px * var(--pxDensity));
   margin-right: calc(3px * var(--pxDensity));
 }
 #picUploadLabel {
@@ -193,8 +196,4 @@ form {
   width: auto;
   display: inline-block;
   margin: auto 0%;
-}
-.paramContainer {
-  display: flex;
-  align-items: center;
 }

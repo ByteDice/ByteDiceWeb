@@ -61,53 +61,53 @@
         </h1><br>
         
         <h1>Basic</h1><br>
-        <form class="licenseForm">
-          <div class="paramContainer"><label for="titleInput">Title</label><input type="text" id="titleInput" name="titleInput" value="Boykisser license"></div>
-          <div class="paramContainer"><label for="authorInput">For/Author</label><input type="text" id="authorInput" name="authorInput" value="Byte Dice"></div>
-          <div class="paramContainer"><label for="createdInput">Issued</label><input type="text" id="createdInput" name="createdInput" value="2025-01-01"></div>
-          <div class="paramContainer"><label for="expireInput">Expires</label><input type="text" id="expireInput" name="expireInput" value="NEVER!!!"></div>
-          <div class="paramContainer"><label for="identityInput">Identity</label><input type="text" id="identityInput" name="identityInput" value="any pronouns"></div>
+        <form class="licenseForm licenseFormContainer">
+          <label for="titleInput">Title</label><input type="text" id="titleInput" name="titleInput" value="Boykisser license">
+          <label for="authorInput">For/Author</label><input type="text" id="authorInput" name="authorInput" value="Byte Dice">
+          <label for="createdInput">Issued</label><input type="text" id="createdInput" name="createdInput" value="2025-01-01">
+          <label for="expireInput">Expires</label><input type="text" id="expireInput" name="expireInput" value="NEVER!!!">
+          <label for="identityInput">Identity</label><input type="text" id="identityInput" name="identityInput" value="any pronouns">
 
-          <div class="paramContainer"><label for="sillyInput">Silly</label><div id="sillyNumberValue">03</div><div class="sliderDiv">
-            <input type="range" min="0" max="10" value="3" class="slider" id="sillyInput" name="sillyInput">
-          </div></div>
+          <label for="sillyInput">Silly</label><div style="display: inline-flex">
+						<div id="sillyNumberValue">03</div><div class="sliderDiv">
+            <input type="range" min="0" max="10" value="3" class="slider" id="sillyInput" name="sillyInput"></div>
+          </div>
 
-          <div class="paramContainer"><label for="signatureInput">Signature</label><input type="text" id="signatureInput" name="signatureInput" value="Byte Dice"></div>
+          <label for="signatureInput">Signature</label><input type="text" id="signatureInput" name="signatureInput" value="Byte Dice">
 
-          <div class="paramContainer"><label for="picInput">Picture</label><select id="picInput" name="picInput">
-            <option value="boykisser"    >Boykisser</option>
-            <option value="bi-kisser"    >Bi-kisser</option>
-            <option value="ace-kisser"   >Ace-kisser</option>
-            <option value="pan-kisser"   >Pan-kisser</option>
-            <option value="trans-kisser" >Trans-kisser</option>
-            <option value="bytedice"     >Byte Dice</option>
-            <option value="custom" id="customPic">Custom (upload)</option>
-          <!-- very clean code, nothing to see here (i dont want whitespaces) -->
-          </select><label
-            for="picUpload" id="picUploadLabel"><img src="/assets/icons/upload.svg" id="picUploadIcon" draggable="false"></label
-          ><input
-            type="file" id="picUpload" name="picUpload" accept=".png,.jpg,.jpeg,.webp"
-          ></div>
+          <label for="picInput">Picture</label><div style="display: inline-flex">
+						<select id="picInput" name="picInput">
+							<option value="boykisser"    >Boykisser</option>
+							<option value="bi-kisser"    >Bi-kisser</option>
+							<option value="ace-kisser"   >Ace-kisser</option>
+							<option value="pan-kisser"   >Pan-kisser</option>
+							<option value="trans-kisser" >Trans-kisser</option>
+							<option value="bytedice"     >Byte Dice</option>
+							<option value="custom" id="customPic">Custom (upload)</option>
+          	</select>
+						<label for="picUpload" id="picUploadLabel"><img src="/assets/icons/upload.svg" id="picUploadIcon" draggable="false"></label>
+						<input type="file" id="picUpload" name="picUpload" accept=".png,.jpg,.jpeg,.webp">
+					</div>
         </form><br>
 
-        <h1>Extra</h1><br>
+        <!--<h1>Extra</h1><br>
         <form class="licenseForm">
           <label for="soon1">Soon...</label><input type="text" name="soon1" value="Does nothing"><br>
-          <!-- decorations like
+          <\!-- decorations like
             the QR-code and other "accessories"
-          -->
-        </form><br>
+          -\->
+        </form><br>-->
 
-        <h1>Advanced</h1><br>
+        <!--<h1>Advanced</h1><br>
         <form class="licenseForm">
           <label for="soon2">Soon...</label><input type="text" name="soon2" value="Does nothing"><br>
-          <!-- 
+          <\!-- 
             license border radius
             pic border radius
             title gradient (2 colors + direction) or flag
             license bg-image/bg-gradient
-          -->
-        </form>
+          -\->
+        </form>-->
 
         <button id="generateButton" onclick="generateLicense()">
           <img src="/assets/icons/download.svg" class="generateButtonIcon" draggable="false">
