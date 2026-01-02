@@ -1,7 +1,9 @@
 .toyContainer {
   border: none;
-  display: grid;
-	width: 100%;
+  display: inline-grid;
+	width: 25%;
+	min-width: 100%;
+	max-width: 512px;
   grid-template-columns: 1fr;
   grid-template-rows: calc(32px * var(--pxDensity)) 1fr;
   color: inherit;
@@ -42,9 +44,12 @@ button:active {
 }
 .toyUl {
 	padding: calc(3px * var(--pxDensity));
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	gap: calc(6px * var(--pxDensity))
+	display: inline-flex;
+	width: fit-content;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+	gap: calc(6px * var(--pxDensity));
+	margin: 0 auto;
 }
 .toyLi {
   margin: 0;

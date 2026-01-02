@@ -28,10 +28,8 @@
 
 <body>
   <div id="mainDiv">
-    <div id="navBarContainer" data-alt="byte, noAnim"></div>
-
-    <ul class="toyUl">
-      <li class="toyLi">
+    <div class="toyUl">
+      <div class="toyLi">
         <button onclick="slideTransition('/toys/license', event)" class="toyContainer borderedRect">
           <img class="toyImg" src="/assets/boykisserLicense.png">
           <div class="toyTextContainer">
@@ -39,8 +37,8 @@
             <p class="desc">Automatically generates a "Boykissser license" for you. Free of charge and very silly.</p>
           </div>
         </button>
-      </li>
-      <li class="toyLi">
+      </div>
+      <div class="toyLi">
         <button onclick="slideTransition('/toys/loading', event)" class="toyContainer borderedRect">
           <img class="toyImg" src="/assets/byte_dice_fancy_64x64.png">
           <div class="toyTextContainer">
@@ -48,17 +46,10 @@
             <p class="desc">The same loading screen as the website uses but less clutter and infinite. (Loading the rest of the description...)</p>
           </div>
         </button>
-      </li>
-			<li class="toyLi">
-        <button onclick="slideTransition('/libs', event)" class="toyContainer borderedRect">
-          <img class="toyImg" src="/assets/js.png" style="border-radius: 16px;">
-          <div class="toyTextContainer">
-            <h1>Libraries</h1>
-            <p class="desc">A few JS libraries that I have made.</p>
-          </div>
-        </button>
-      </li>
-    </ul>
+      </div>
+    </div>
+
+    <div id="navBarContainer" data-alt="byte, noAnim"></div>
   </div>
 
   <div id="loadingScreen"></div>
