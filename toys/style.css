@@ -24,6 +24,7 @@
   overflow-y: scroll;
   overflow-x: hidden;
   height: calc(16px * var(--pxDensity));
+	font-size: min(5vmin, 2vmax, 25px);
 }
 h1 {
   font-size: max(1.2em, 2.5vmin);
@@ -46,7 +47,7 @@ button:active {
 	padding: calc(3px * var(--pxDensity));
 	display: inline-flex;
 	width: fit-content;
-	justify-content: flex-start;
+	justify-content: center;
 	flex-wrap: wrap;
 	gap: calc(6px * var(--pxDensity));
 	margin: 0 auto;

@@ -10,9 +10,9 @@ loadingScreenEl.innerHTML = `
   <img class="loadingImg" draggable="false" src="/assets/byteDiceBlinkAnim_32x32.png" id="loadingImg">
 
   <div style="margin-left: calc(3px * var(--pxDensity)); display: flex;" id="fakeLoadingToggle">
-    <p class="encased" style="height: 100%">
+    <p class="encased" style="height: 100%; font-size: min(5vmin, 2vmax, 25px)">
       Use extended loading screen?<br>
-      <small style="margin: 0px; font-size: 10px;">(For immersion)</small>
+      <small style="margin: 0px; font-size: min(5vmin, 2vmax, 10px)">(For immersion)</small>
     </p>
     <div class="encased" style="height: inherit; display: flex;">
       <label class="switch" style="margin: auto;">
@@ -44,9 +44,8 @@ let selectedTip = "undefined"
 
 function newTip() {
   if (randomIntFrom0(1000) == 0) {
-    // If you snitch this easter egg code
-    // then I'll close the source and
-    // permanently remove the easter egg. 
+    // If you snitch the code for this easter egg
+    // then I'll permanently remove the easter egg. 
     selectedTip = `You like kissing boys, don't you?<br>
       <img src="/assets/boykissers/boykisser_64x64.png"
       style="aspect-ratio: 1 / 1; width: min-content; height: min-content;">`
