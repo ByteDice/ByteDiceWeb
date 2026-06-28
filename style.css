@@ -8,16 +8,6 @@
   left: round(50%, var(--pxDensityPx));
   transform: translate(-50%, -50%);
 }
-#starNoise {
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  width: calc(512px * var(--pxDensity));
-  height: auto;
-  aspect-ratio: 1 / 1;
-  image-rendering: pixelated;
-  transform: translate(-50%, -50%);
-}
 .bgGradient {
   image-rendering: pixelated;
   width: calc(256px * var(--pxDensity));

@@ -100,3 +100,13 @@ canvas {
 .switch input:checked + .switchDecor:before {
   transform: translateX(calc(4px * var(--pxDensity)));
 }
+#starNoise {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: calc(512px * var(--pxDensity));
+  height: auto;
+  aspect-ratio: 1 / 1;
+  image-rendering: pixelated;
+  transform: translate(-50%, -50%);
+}

@@ -2,6 +2,8 @@ const starfallCanvas = document.getElementById("starfallCanvas")
 starfallCanvas.width = window.innerWidth
 starfallCanvas.height = window.innerHeight
 
+let lastUpd = Date.now()
+
 const starfallCtx = starfallCanvas.getContext("2d")
 
 
@@ -15,23 +17,26 @@ class Starfall {
     const dir = randomBool(0.5)
     this.pos.x = dir ? -50 : pxWidth + 50
     this.pos.y = randomInt(-starfallCanvas.height / 2, starfallCanvas.height / 2)
-    this.vel.x = dir ? randomFloat(3, 6) : randomFloat(-6, -3)
-    this.vel.y = randomFloat(0.25, 1)
+    this.vel.x = dir ? randomFloat(240, 580) : randomFloat(-580, -240)
+    this.vel.y = randomFloat(20, 80)
   }
 
   draw() {
-    // very expensive but idk how to make it less expensive
+		const LEN_X = this.vel.x / 15
+		const LEN_Y = this.vel.y / 15
+
+    // very expensive but idk how to make it less expensive (thanks canvas)
     drawPixelLine(
       this.pos.x,
       this.pos.y,
-      this.pos.x - (this.vel.x * 5),
-      this.pos.y - (this.vel.y * 5)
+      this.pos.x - LEN_X,
+      this.pos.y - LEN_Y
     )
   }
 
-  stepAnimation() {
-    this.pos.x += this.vel.x
-    this.pos.y += this.vel.y
+  stepAnimation(dt) {
+    this.pos.x += this.vel.x * dt
+    this.pos.y += this.vel.y * dt
   }
 }
 
@@ -81,6 +86,12 @@ function drawPixelLine(fromX, fromY, toX, toY) {
 let allStarfalls = []
 
 function animateStarfalls() {
+	let now = Date.now()
+
+	const MILLISEC = 1000
+	let dt = (now - lastUpd) / MILLISEC
+	lastUpd = now
+
   if (!isAnimating) { return }
 
   starfallCtx.clearRect(0, 0, starfallCanvas.width, starfallCanvas.height)
@@ -99,7 +110,7 @@ function animateStarfalls() {
       continue
     }
 
-    starfall.stepAnimation()
+    starfall.stepAnimation(dt)
     starfall.draw()
   }
 }
@@ -109,4 +120,25 @@ function startStarfall() {
   animateStarfalls()
 
   requestAnimationFrame(startStarfall)
+}
+
+
+function addStars() {
+  let starNoise = document.getElementById("starNoise")
+  let randX = randomInt(0, 256)
+  let randY = randomInt(0, 256)
+
+  debugPrint("Star pos", `[x: ${randX}, y: ${randY}]`)
+
+  starNoise.style.top = `round(calc(${randX}px * var(--pxDensity)), var(--pxDensityPx))`
+  starNoise.style.left = `round(calc(${randY}px * var(--pxDensity)), var(--pxDensityPx))`
+}
+
+
+function loadingScreenStars() {
+	setLoadingProgress("Adding stars...")
+  addStars()
+
+  setLoadingProgress("Starting starfall animation...")
+  startStarfall()
 }

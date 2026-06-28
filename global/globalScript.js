@@ -99,6 +99,7 @@ function toggleGrid(offX = 0, offY = 0) {
   let repeatCountY = window.innerHeight / pxDensity
 
   ctx.strokeStyle = "#ff0000"
+	ctx.strokeSize = 1
   ctx.beginPath()
 
   for (x = 0; x < repeatCountX; x++) {
@@ -172,7 +173,9 @@ document.addEventListener("DOMContentLoaded", async function() {
 
   switch (CURRENT_PAGE) {
     case (PAGES.SYNTHWAVE): loadingScreenSynthwave(); break
-    case (PAGES.LICENSE):   onLoadLicense(); break
+    case (PAGES.LICENSE):   onLoadLicense(); loadingScreenStars(); break
+		case (PAGES.TOYS):      loadingScreenStars(); break
+		case (PAGES.LIBS):      loadingScreenStars(); break
   }
   
   if (navBarPresent) {

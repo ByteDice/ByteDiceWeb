@@ -28,9 +28,12 @@
 
 <body>
   <div id="mainDiv">
+		<img src="/assets/backgrounds/starNoise_512x512.png" draggable="false" id="starNoise">
+		<canvas id="starfallCanvas"></canvas>
+
     <div id="navBarContainer" data-alt="byte, noAnim, return"></div>
 
-		<div class="encased" style="margin: calc(3px * var(--pxDensity)); max-width: 30em">
+		<div class="borderedRect" style="margin: calc(3px * var(--pxDensity)); max-width: 30em">
 			<h1 style="margin-bottom: calc(1px * var(--pxDensity)); font-size: 2em; color: red; text-decoration: underline;">
 				WARNING
 			</h1>
@@ -64,6 +67,7 @@
 
   <!-- local -->
   <script src="../script.js"></script>
+	<script src="/stars.js"></script>
 </body>
 
 </html>
