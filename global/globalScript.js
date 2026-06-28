@@ -173,7 +173,7 @@ document.addEventListener("DOMContentLoaded", async function() {
 
   switch (CURRENT_PAGE) {
     case (PAGES.SYNTHWAVE): loadingScreenSynthwave(); break
-    case (PAGES.LICENSE):   onLoadLicense(); loadingScreenStars(); break
+    case (PAGES.LICENSE):   loadingScreenLicense(); loadingScreenStars(); break
 		case (PAGES.TOYS):      loadingScreenStars(); break
 		case (PAGES.LIBS):      loadingScreenStars(); break
   }
@@ -209,6 +209,7 @@ window.addEventListener("resize", function() {
 
   switch (CURRENT_PAGE) {
     case (PAGES.SYNTHWAVE): onResizeSynthwave()
+		case (PAGES.LICENSE): scaleDisplayLicense()
   }
 
   // unoptimal but works well enough

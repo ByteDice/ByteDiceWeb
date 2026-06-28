@@ -1,6 +1,7 @@
 .allContainer {
   display: flex;
   flex-direction: column;
+	gap: calc(4px * var(--pxDensity));
   height: calc(100vh - calc(25px * var(--pxDensity)));
 }
 .blackBorderRect {

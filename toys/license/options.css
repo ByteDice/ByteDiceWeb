@@ -2,12 +2,9 @@
   display: block;
   margin: calc(2px * var(--pxDensity)) auto 0% auto;
   width: max-content;
-  height: auto;
   padding: calc(2px * var(--pxDensity));
   overflow-y: scroll;
   max-width: min(600px, 100vw);
-  max-height: 40vh;
-  flex-grow: 1;
   font-size: min(1.5rem, calc(4px * var(--pxDensity)));
 	box-sizing: border-box;
 }
@@ -31,6 +28,7 @@
   box-sizing: border-box;
   width: round(auto, var(--pxDensity));
   height: calc(6px * var(--pxDensity));
+	font-weight: 800;
 }
 .licenseForm input[type="text"] {
   font-family: "Roboto", sans-serif;
@@ -175,7 +173,7 @@ input[type=file] {
 form {
   display: inline-block;
 }
-#generateButton {
+.generateButton {
   background-color: var(--navBarBtn_Inner);
   box-shadow: calc(1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
               calc(-1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
@@ -190,6 +188,9 @@ form {
   height: calc(6px * var(--pxDensity));
   display: inline-flex;
   justify-content: center;
+	align-items: center;
+	font-size: min(5vmin, 2vmax, 30px);
+	color: #ffffff
 }
 .generateButtonIcon {
   height: calc(4px * var(--pxDensity));

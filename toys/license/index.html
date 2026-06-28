@@ -11,7 +11,6 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="license.css">
   <link rel="stylesheet" href="options.css">
-  <link rel="stylesheet" href="600x400_license.css">
 
   <!-- fonts -->
   <style>
@@ -44,11 +43,6 @@
 </head>
 
 <body>
-  <!-- If you came here from u/RandomPersonDotExe, let them know that they are a good developer. -->
-  <!-- Also, u/RandomPersonDotExe and Byte Dice are the same person. -->
-  <!-- Proof for the above comment? None, but I am Byte Dice and randomPerson probably sent you this saying it's their work -->
-  <!-- Proof that I am Byte Dice? Check the commit history. -->
-
   <div id="mainDiv">
 		<img src="/assets/backgrounds/starNoise_512x512.png" draggable="false" id="starNoise">
 		<canvas id="starfallCanvas"></canvas>
@@ -65,13 +59,13 @@
         
         <h1>Basic</h1><br>
         <form class="licenseForm licenseFormContainer">
-          <label for="titleInput">Title</label><input type="text" id="titleInput" name="titleInput" value="Boykisser license">
-          <label for="authorInput">For/Author</label><input type="text" id="authorInput" name="authorInput" value="Byte Dice">
-          <label for="createdInput">Issued</label><input type="text" id="createdInput" name="createdInput" value="2025-01-01">
-          <label for="expireInput">Expires</label><input type="text" id="expireInput" name="expireInput" value="NEVER!!!">
-          <label for="identityInput">Identity</label><input type="text" id="identityInput" name="identityInput" value="any pronouns">
+          <label for="titleInput"   >Title</label     ><input type="text" id="titleInput"    name="titleInput"    value="Boykisser license">
+          <label for="authorInput"  >User</label      ><input type="text" id="authorInput"   name="authorInput"   value="Byte Dice">
+          <label for="createdInput" >Issued</label    ><input type="text" id="createdInput"  name="createdInput"  value="2025-01-01">
+          <label for="expireInput"  >Expires</label   ><input type="text" id="expireInput"   name="expireInput"   value="NEVER!!!">
+          <label for="identityInput">Identity</label  ><input type="text" id="identityInput" name="identityInput" value="any pronouns">
 
-          <label for="sillyInput">Silly</label><div style="display: inline-flex">
+          <label for="sillyInput">Silliness</label><div style="display: inline-flex">
 						<div id="sillyNumberValue">03</div><div class="sliderDiv">
             <input type="range" min="0" max="10" value="3" class="slider" id="sillyInput" name="sillyInput"></div>
           </div>
@@ -112,87 +106,60 @@
           -\->
         </form>-->
 
-        <button id="generateButton" onclick="generateLicense()">
-          <img src="/assets/icons/download.svg" class="generateButtonIcon" draggable="false">
-        </button>
+				<div style="display: flex; gap: calc(1px * var(--pxDensity))">
+					<button id="generateButton" class="generateButton" onclick="generateLicense()">
+						Download
+					</button>
+					<button class="generateButton" onclick="exportData()">
+						Copy Data
+					</button>
+					<button class="generateButton" onclick="importData()">
+						Import
+					</button>
+				</div>
       </div>
+		
+		<div style="display: inline-flex; justify-content: center;">
+			<div id="licenseAnchor" style="display: inline-block; transform-origin: center;">
+				<div id="licenseContainer" class="blackBorderRect sans">
+					<h3 id="titleValue">Boykisser license</h3>
+					<div style="width: max-content;">
+						<div id="picContainer" class="blackBorderRect">
+							<img id="picValue" src="" draggable="false">
+						</div>
 
-      <div id="licenseContainer" class="blackBorderRect sans">
-        <h3 id="titleValue">Boykisser license</h3>
-        <div style="width: max-content;">
-          <div id="picContainer" class="blackBorderRect">
-            <img id="picValue" src="" draggable="false">
-          </div>
+						<div id="signatureContainer" class="yellowTail">
+							<p id="signatureValue">Byte Dice</p>
+							<p id="signHere">Sign here</p>
+						</div>
+					</div>
+				
+					<div>
+						<div id="detailsContainer">
+							<h2>User     </h2><h2 id="authorValue" >foo</h2>
+							<h2>Issued   </h2><h2 id="createdValue">bar</h2>
+							<h2>Expires  </h2><h2 id="expireValue" >baz</h2>
+							<h2>Identity </h2><h2 id="genderValue" >cux</h2>
+							<h2>Silliness</h2>
+							<div class="sillyBar">
+								<div id="sillyValue0" class="sillyValue on"></div>
+								<div id="sillyValue1" class="sillyValue on"></div>
+								<div id="sillyValue2" class="sillyValue on"></div>
+								<div id="sillyValue3" class="sillyValue off"></div>
+								<div id="sillyValue4" class="sillyValue off"></div>
+								<div id="sillyValue5" class="sillyValue off"></div>
+								<div id="sillyValue6" class="sillyValue off"></div>
+								<div id="sillyValue7" class="sillyValue off"></div>
+								<div id="sillyValue8" class="sillyValue off"></div>
+								<div id="sillyValue9" class="sillyValue off"></div>
+							</div>
+						</div>
+					</div>
 
-          <div id="signatureContainer">
-            <p id="signatureValue" class="yellowTail">Byte Dice</p>
-            <p id="signHere">Sign here</p>
-          </div>
-        </div>
-      
-        <div>
-          <div id="detailsContainer">
-            <h2 class="sans-bold">For      </h2><h2 id="authorValue" >Byte Dice</h2>
-            <h2>Issued   </h2><h2 id="createdValue">2025-01-18</h2>
-            <h2>Expires  </h2><h2 id="expireValue" >never</h2>
-            <h2>Identity </h2><h2 id="genderValue" >unknown</h2>
-            <h2>Silly</h2>
-            <div class="sillyBar">
-              <div id="sillyValue0" class="sillyValue on"></div>
-              <div id="sillyValue1" class="sillyValue on"></div>
-              <div id="sillyValue2" class="sillyValue on"></div>
-              <div id="sillyValue3" class="sillyValue off"></div>
-              <div id="sillyValue4" class="sillyValue off"></div>
-              <div id="sillyValue5" class="sillyValue off"></div>
-              <div id="sillyValue6" class="sillyValue off"></div>
-              <div id="sillyValue7" class="sillyValue off"></div>
-              <div id="sillyValue8" class="sillyValue off"></div>
-              <div id="sillyValue9" class="sillyValue off"></div>
-            </div>
-          </div>
-        </div>
-
-        <p id="credits">Original by Chilli<br>Remade by Byte Dice at bytedice.net/toys</p>
-      </div>
-    </div>
-
-    <div id="licenseContainer_600x400" class="blackBorderRect sans">
-      <h3 id="titleValue_600x400">Boykisser license</h3>
-      <div style="width: max-content;">
-        <div id="picContainer_600x400" class="blackBorderRect">
-          <img id="picValue_600x400" src="" draggable="false">
-        </div>
-
-        <div id="signatureContainer_600x400" class="yellowTail">
-          <p id="signatureValue_600x400">Byte Dice</p>
-          <p id="signHere_600x400">Sign here</p>
-        </div>
-      </div>
-    
-      <div>
-        <div id="detailsContainer_600x400">
-          <h2>For      </h2><h2 id="authorValue_600x400" >Byte Dice</h2>
-          <h2>Issued   </h2><h2 id="createdValue_600x400">2025-01-18</h2>
-          <h2>Expires  </h2><h2 id="expireValue_600x400" >never</h2>
-          <h2>Identity </h2><h2 id="genderValue_600x400" >unknown</h2>
-          <h2>Silly</h2>
-          <div class="sillyBar_600x400">
-            <div id="sillyValue0_600x400" class="sillyValue_600x400 on"></div>
-            <div id="sillyValue1_600x400" class="sillyValue_600x400 on"></div>
-            <div id="sillyValue2_600x400" class="sillyValue_600x400 on"></div>
-            <div id="sillyValue3_600x400" class="sillyValue_600x400 off"></div>
-            <div id="sillyValue4_600x400" class="sillyValue_600x400 off"></div>
-            <div id="sillyValue5_600x400" class="sillyValue_600x400 off"></div>
-            <div id="sillyValue6_600x400" class="sillyValue_600x400 off"></div>
-            <div id="sillyValue7_600x400" class="sillyValue_600x400 off"></div>
-            <div id="sillyValue8_600x400" class="sillyValue_600x400 off"></div>
-            <div id="sillyValue9_600x400" class="sillyValue_600x400 off"></div>
-          </div>
-        </div>
-      </div>
-
-      <p id="credits_600x400">Original by Chilli<br>Remade by Byte Dice at bytedice.net/toys</p>
-    </div>
+					<p id="credits">Original by Chilli<br>Remade by Byte Dice at bytedice.net/toys</p>
+				</div>
+			</div>
+		</div>
 
     <div id="navBarContainer" data-alt="byte"></div>
   </div>
@@ -210,7 +177,9 @@
   <script src="/global/screenTransition.js"></script>
 
   <!-- local -->
-  <script src="script.js"></script>
+	<script src="script3.js"></script>
+	<script src="license.js"></script>
+	<script src="input.js"></script>
 	<script src="/stars.js"></script>
 </body>
 
