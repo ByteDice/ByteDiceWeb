@@ -48,6 +48,10 @@
   color: inherit;
   display: inline-block;
 }
+.licenseForm input[type="text"]:hover {
+  filter: brightness(1.35);
+  cursor: pointer;
+}
 .slider {
   -webkit-appearance: none;
   appearance: none;
@@ -62,7 +66,11 @@
   margin: 0%;
   outline: none;
   padding: 0%;
-} 
+}
+.slider:hover {
+  filter: brightness(1.35);
+  cursor: pointer;
+}
 .slider::-webkit-slider-thumb, .slider::-moz-range-thumb {
   -webkit-appearance: none;
   appearance: none;
@@ -145,6 +153,10 @@ select {
   color: inherit;
   display: inline-block;
 }
+select:hover {
+  filter: brightness(1.35);
+  cursor: pointer;
+}
 input[type=file] {
   /* height: max-content;
   aspect-ratio: 1 / 1;
@@ -162,6 +174,14 @@ input[type=file] {
   width: auto;
   background-image: url(/assets/icons/upload.svg);
   display: inline-flex;
+}
+#picUploadLabel:hover {
+  filter: brightness(1.35);
+  cursor: pointer;
+}
+#picUploadLabel:active {
+  filter: brightness(0.75);
+  transform: translateY(calc(1px * var(--pxDensity)));
 }
 #picUploadIcon {
   height: calc(4px * var(--pxDensity));
