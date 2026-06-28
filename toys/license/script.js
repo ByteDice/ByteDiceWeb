@@ -1,7 +1,7 @@
 CURRENT_PAGE = PAGES.LICENSE
 
 
-function loadingScreenLicense() {
+async function loadingScreenLicense() {
 	setLoadingProgress("Preparing license...")
 
 	const VMAP = {
@@ -11,7 +11,8 @@ function loadingScreenLicense() {
 		expires:   "expireValue",
 		identity:  "genderValue",
 		signature: "signatureValue",
-		img:       "picValue"
+		img:       "picValue",
+		id:        "hashID"
 	}
 
 	function getE(e) { return document.getElementById(e) }
@@ -23,6 +24,7 @@ function loadingScreenLicense() {
 	license.identityE  = getE(VMAP.identity)
 	license.signatureE = getE(VMAP.signature)
 	license.imgE       = getE(VMAP.img)
+	license.idE        = getE(VMAP.id)
 
 	for (let i = 0; i < 10; i++) {
 		license.sillyValues.push(document.getElementById(`sillyValue${i}`))
@@ -30,6 +32,6 @@ function loadingScreenLicense() {
 
 	setLoadingProgress("Preparing options...")
 	prepInputs()
-	updLicense();
+	await updLicense();
 	scaleDisplayLicense();
 }

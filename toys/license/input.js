@@ -17,42 +17,43 @@ let jsonData = {
 const customPicOption = document.getElementById("customPic")
 
 
-function prepInputs() {
-	const VMAP = {
-		img:       "picInput",
-		user:      "authorInput",
-		title:     "titleInput",
-		silly:     "sillyInput",
-		issued:    "createdInput",
-		expires:   "expireInput",
-		identity:  "identityInput",
-		signature: "signatureInput",
-		imgUpload: "picUpload"
-	}
+const VMAP = {
+	img:       "picInput",
+	user:      "authorInput",
+	title:     "titleInput",
+	silly:     "sillyInput",
+	issued:    "createdInput",
+	expires:   "expireInput",
+	identity:  "identityInput",
+	signature: "signatureInput",
+	imgUpload: "picUpload"
+}
 
+
+async function prepInputs() {
 	function getE(e) { return document.getElementById(e) }
 
-	getE(VMAP.img)      .oninput = function() { jsonData.img.preset = this.value; updLicense() }
-	getE(VMAP.user)     .oninput = function() { jsonData.user = this.value; updLicense() }
-	getE(VMAP.title)    .oninput = function() { jsonData.title = this.value; updLicense() }
-	getE(VMAP.silly)    .oninput = function() { jsonData.silly = this.value; updLicense() }
-	getE(VMAP.issued)   .oninput = function() { jsonData.issued = this.value; updLicense() }
-	getE(VMAP.expires)  .oninput = function() { jsonData.expires = this.value; updLicense() }
-	getE(VMAP.identity) .oninput = function() { jsonData.identity = this.value; updLicense() }
-	getE(VMAP.signature).oninput = function() { jsonData.signature = this.value; updLicense() }
+	getE(VMAP.img)      .oninput = async function() { jsonData.img.preset = this.value; await updLicense() }
+	getE(VMAP.user)     .oninput = async function() { jsonData.user = this.value; await updLicense() }
+	getE(VMAP.title)    .oninput = async function() { jsonData.title = this.value; await updLicense() }
+	getE(VMAP.silly)    .oninput = async function() { jsonData.silly = parseInt(this.value); await updLicense() }
+	getE(VMAP.issued)   .oninput = async function() { jsonData.issued = this.value; await updLicense() }
+	getE(VMAP.expires)  .oninput = async function() { jsonData.expires = this.value; await updLicense() }
+	getE(VMAP.identity) .oninput = async function() { jsonData.identity = this.value; await updLicense() }
+	getE(VMAP.signature).oninput = async function() { jsonData.signature = this.value; await updLicense() }
 
-	getE(VMAP.imgUpload).oninput = function() {
+	getE(VMAP.imgUpload).oninput = async function() {
 		if (this.files.length == 0) { return; }
 		let f = this.files[0]
 		jsonData.img.file = URL.createObjectURL(f)
 		customPicOption.innerHTML = `Custom (${f.name})`
 
-		updLicense()
+		await updLicense()
 	}
 }
 
 
-function updLicense() { license.updateFromJSON(jsonData) }
+async function updLicense() { await license.updateFromJSON(jsonData) }
 
 
 function importData() {
@@ -61,7 +62,7 @@ function importData() {
 }
 
 
-function importFromB64(b64) {
+async function importFromB64(b64) {
 	if (b64.startsWith("B8D6:")) { b64 = b64.slice(5) }
 
 	try {
@@ -72,9 +73,26 @@ function importFromB64(b64) {
 			{ alert("Invalid data string imported (Invalid fields). Full results:\n" + isValid.join("\n")); return }
 	
 		jsonData = data
-		updLicense()
+		// make sure to add this since it isnt exported
+		jsonData.img = { preset: "boykisser", file: "" }
+		await updLicense()
+		makeOptionsTheSameAsJSON()
 	}
 	catch (err) { alert("Invalid data string imported. Full results:\n" + err); return }
+}
+
+
+function makeOptionsTheSameAsJSON() {
+	function getE(e) { return document.getElementById(e) }
+
+	getE(VMAP.user).value = jsonData.user
+	getE(VMAP.title).value = jsonData.title
+	getE(VMAP.silly).value = jsonData.silly
+	getE(VMAP.issued).value = jsonData.issued
+	getE(VMAP.expires).value = jsonData.expires
+	getE(VMAP.identity).value = jsonData.identity
+	getE(VMAP.signature).value = jsonData.signature
+	getE(VMAP.img).value = jsonData.img.preset
 }
 
 
@@ -115,7 +133,9 @@ function validateJSON_v0(obj) {
 
 
 function exportData() {
-	let str = JSON.stringify(jsonData)
+	let strippedData = jsonData
+	delete strippedData.img
+	let str = JSON.stringify(strippedData)
 	let b64 = btoa(str)
 	let watermarked = "B8D6:" + b64
 	navigator.clipboard.writeText(watermarked)

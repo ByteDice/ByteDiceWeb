@@ -173,7 +173,7 @@ document.addEventListener("DOMContentLoaded", async function() {
 
   switch (CURRENT_PAGE) {
     case (PAGES.SYNTHWAVE): loadingScreenSynthwave(); break
-    case (PAGES.LICENSE):   loadingScreenLicense(); loadingScreenStars(); break
+    case (PAGES.LICENSE):   loadingScreenStars(); await loadingScreenLicense(); break
 		case (PAGES.TOYS):      loadingScreenStars(); break
 		case (PAGES.LIBS):      loadingScreenStars(); break
   }
@@ -235,6 +235,18 @@ window.addEventListener("pageshow", (event) => {
 })
 
 let prevAnimationState = isAnimating
+
+
+async function sha256(text) {
+	const data = new TextEncoder().encode(text);
+
+	const hash = await crypto.subtle.digest("SHA-256", data);
+
+	return [...new Uint8Array(hash)]
+		.map(x => x.toString(16).padStart(2, "0"))
+		.join("");
+}
+
 
 /*
 document.addEventListener("visibilitychange", function() {

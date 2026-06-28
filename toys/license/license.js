@@ -3,6 +3,7 @@ const sillyOptNumber = document.getElementById("sillyNumberValue")
 
 class License {
 	constructor() {
+		this.idE        = undefined
 		this.imgE       = undefined
 		this.userE      = undefined
 		this.titleE     = undefined
@@ -17,7 +18,7 @@ class License {
 	}
 
 
-	updateFromJSON(json) {
+	async updateFromJSON(json) {
 		this.userE     .textContent = json.user
 		this.titleE    .textContent = json.title
 		this.issuedE   .textContent = json.issued
@@ -27,6 +28,9 @@ class License {
 
 		this.setSillyValue(json.silly)
 		this.setImgValue(json.img)
+
+		let hash = await sha256(JSON.stringify(json))
+		this.idE.textContent = "NR-ID: " + hash.slice(0, 16)
 	}
 
 
