@@ -1,3 +1,10 @@
+:root {
+	--licenseBgCol: #FFFFFF;
+	--licenseBorderCol: #000000;
+	--licenseTextCol: #000000;
+	--licenseScribbleCol: #FF0000; /* cannot get this to work */
+}
+
 .sans {
   font-family: "Comic Neue", serif;
   font-weight: 400;
@@ -19,8 +26,8 @@ h2 {
 .sillyBar {
   width: auto;
   height: auto;
-  background-color: #000000;
-  border: 3px solid black;
+  background-color: var(--licenseBorderCol);
+  border: 3px solid var(--licenseBorderCol);
   border-radius: 8px;
   align-self: center;
   display: flex;
@@ -38,7 +45,7 @@ h2 {
 }
 .off {
   background-image: none;
-  background-color: #FFFFFF;
+  background-color: var(--licenseBgCol);
 }
 .sillyValue:first-child {
   border-radius: 5px 0px 0px 5px;
@@ -55,6 +62,10 @@ h2 {
   display: grid;
   grid-template-columns: repeat(2, auto);
   grid-template-rows: repeat(2, auto);
+	background-color: var(--licenseBgCol);
+  border: 10px var(--licenseBorderCol) solid;
+  border-radius: 32px;
+  color: var(--licenseTextCol);
 }
 #picContainer {
   width: 150px;
@@ -63,6 +74,7 @@ h2 {
   overflow: hidden;
   background-color: transparent;
   border-radius: 32px;
+	border: 10px var(--licenseBorderCol) solid;
 }
 #picValue {
   width: 100%;
@@ -75,7 +87,7 @@ h2 {
   bottom: 12px;
   left: 0%;
   margin: 0% 0% 0% 20px;
-  color: var(--navBarBtn_Inner);
+  color: var(--licenseTextCol);
   font-size: 0.6rem;
 }
 #signatureContainer, #DsignatureContainer {
@@ -89,7 +101,7 @@ h2 {
   font-size: 1.5rem;
 }
 #signHere {
-  border-top: #000000 solid 6px;
+  border-top: var(--licenseBorderCol) solid 6px;
   margin: 0%;
   padding: 0% 25px;
   text-align: center;
@@ -97,29 +109,6 @@ h2 {
 #detailsContainer {
   display: grid;
   grid-template-columns: repeat(2, auto);
-}
-.sillyBar {
-  width: auto;
-  height: auto;
-  background-color: #000000;
-  border: 3px solid black;
-  border-radius: 8px;
-  align-self: center;
-  display: flex;
-  gap: 3px;
-}
-.sillyValue {
-  position: relative;
-	width: calc(100% / 10);
-	height: 100%;
-  aspect-ratio: 1 / 1;
-  display: block;
-}
-.sillyValue:first-child {
-  border-radius: 5px 0px 0px 5px;
-}
-.sillyValue:last-child {
-  border-radius: 0px 5px 5px 0px;
 }
 #titleValue {
   grid-area: 1 / 1 / 2 / 3;
@@ -133,6 +122,6 @@ h2 {
   bottom: 12px;
   right: 0%;
   margin: 0% 30px 0% 0%;
-  color: var(--navBarBtn_Inner);
+  color: var(--licenseTextCol);
   font-size: 0.6rem;
 }

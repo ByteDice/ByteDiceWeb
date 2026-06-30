@@ -5,26 +5,28 @@ async function loadingScreenLicense() {
 	setLoadingProgress("Preparing license...")
 
 	const VMAP = {
-		title:     "titleValue",
+		id:        "hashID",
+		img:       "picValue",
 		user:      "authorValue",
+		base:      "licenseContainer",
+		title:     "titleValue",
 		issued:    "createdValue",
 		expires:   "expireValue",
 		identity:  "genderValue",
-		signature: "signatureValue",
-		img:       "picValue",
-		id:        "hashID"
+		signature: "signatureValue"
 	}
 
 	function getE(e) { return document.getElementById(e) }
 
-	license.titleE     = getE(VMAP.title)
+	license.idE        = getE(VMAP.id)
+	license.imgE       = getE(VMAP.img)
 	license.userE      = getE(VMAP.user)
+	license.baseE      = getE(VMAP.base)
+	license.titleE     = getE(VMAP.title)
 	license.issuedE    = getE(VMAP.issued)
 	license.expiresE   = getE(VMAP.expires)
 	license.identityE  = getE(VMAP.identity)
 	license.signatureE = getE(VMAP.signature)
-	license.imgE       = getE(VMAP.img)
-	license.idE        = getE(VMAP.id)
 
 	for (let i = 0; i < 10; i++) {
 		license.sillyValues.push(document.getElementById(`sillyValue${i}`))
@@ -32,6 +34,7 @@ async function loadingScreenLicense() {
 
 	setLoadingProgress("Preparing options...")
 	prepInputs()
-	await updLicense();
-	scaleDisplayLicense();
+	makeOptionsTheSameAsJSON()
+	scaleDisplayLicense()
+	await updLicense()
 }

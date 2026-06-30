@@ -6,6 +6,7 @@ class License {
 		this.idE        = undefined
 		this.imgE       = undefined
 		this.userE      = undefined
+		this.baseE      = undefined // for bg
 		this.titleE     = undefined
 		this.issuedE    = undefined
 		this.expiresE   = undefined
@@ -28,6 +29,14 @@ class License {
 
 		this.setSillyValue(json.silly)
 		this.setImgValue(json.img)
+
+		if (json.bg.type == "image")
+		     { this.baseE.style.backgroundImage = `url("${json.bg.file}")` }
+		else { this.baseE.style.backgroundImage = "" }
+
+		document.documentElement.style.setProperty("--licenseBgCol",     json.bg.color)
+		document.documentElement.style.setProperty("--licenseBorderCol", json.border)
+		document.documentElement.style.setProperty("--licenseTextCol",   json.text)
 
 		let hash = await sha256(JSON.stringify(json))
 		this.idE.textContent = "NR-ID: " + hash.slice(0, 16)

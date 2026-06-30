@@ -10,43 +10,70 @@ let jsonData = {
 	img: {
 		preset: "boykisser",
 		file: ""
-	}
+	},
+	bg: {
+		type: "color",
+		color: "#FFFFFF",
+		file: ""
+	},
+	border: "#000000",
+	text: "#000000"
 }
 
 
 const customPicOption = document.getElementById("customPic")
+const customBgOption  = document.getElementById("customBg")
 
 
+// funny size sorting
 const VMAP = {
+	bg:        "bgTypeInput",
 	img:       "picInput",
 	user:      "authorInput",
+	text:      "textColInput",
 	title:     "titleInput",
 	silly:     "sillyInput",
+	bgCol:     "bgColInput",
 	issued:    "createdInput",
+	border:    "borderColInput",
 	expires:   "expireInput",
 	identity:  "identityInput",
+	bgUpload:  "bgUpload",
 	signature: "signatureInput",
-	imgUpload: "picUpload"
+	imgUpload: "picUpload",
 }
 
 
 async function prepInputs() {
 	function getE(e) { return document.getElementById(e) }
 
+	getE(VMAP.bg)       .oninput = async function() { jsonData.bg.type = this.value; await updLicense() }
 	getE(VMAP.img)      .oninput = async function() { jsonData.img.preset = this.value; await updLicense() }
 	getE(VMAP.user)     .oninput = async function() { jsonData.user = this.value; await updLicense() }
+	getE(VMAP.text)     .oninput = async function() { jsonData.text = this.value; await updLicense() }
 	getE(VMAP.title)    .oninput = async function() { jsonData.title = this.value; await updLicense() }
 	getE(VMAP.silly)    .oninput = async function() { jsonData.silly = parseInt(this.value); await updLicense() }
+	getE(VMAP.bgCol)    .oninput = async function() { jsonData.bg.color = this.value; await updLicense() }
 	getE(VMAP.issued)   .oninput = async function() { jsonData.issued = this.value; await updLicense() }
+	getE(VMAP.border)   .oninput = async function() { jsonData.border = this.value; await updLicense() }
 	getE(VMAP.expires)  .oninput = async function() { jsonData.expires = this.value; await updLicense() }
 	getE(VMAP.identity) .oninput = async function() { jsonData.identity = this.value; await updLicense() }
 	getE(VMAP.signature).oninput = async function() { jsonData.signature = this.value; await updLicense() }
 
-	getE(VMAP.imgUpload).oninput = async function() {
+	getE(VMAP.imgUpload).onchange = async function() {
 		if (this.files.length == 0) { return; }
 		let f = this.files[0]
 		jsonData.img.file = URL.createObjectURL(f)
 		customPicOption.innerHTML = `Custom (${f.name})`
+
+		await updLicense()
+	}
+
+	getE(VMAP.bgUpload).onchange = async function() {
+		if (this.files.length == 0) { return; }
+		let f = this.files[0]
+		jsonData.bg.file = URL.createObjectURL(f)
+		customBgOption.innerHTML = `Image (${f.name})`
 
 		await updLicense()
 	}
@@ -68,10 +95,16 @@ async function importFromB64(b64) {
 	try {
 		let str = atob(b64)
 		data = JSON.parse(str)
-		let isValid = validateJSON_v0(data)
+		
+		let isValid
+		switch (data.version) {
+			case 0: isValid = validateJSON_v0(data); break
+		}
+		
 		if (isValid != true)
 			{ alert("Invalid data string imported (Invalid fields). Full results:\n" + isValid.join("\n")); return }
 	
+		// TODO: make this not replace if the key doesnt exist
 		jsonData = data
 		// make sure to add this since it isnt exported
 		jsonData.img = { preset: "boykisser", file: "" }
@@ -85,14 +118,17 @@ async function importFromB64(b64) {
 function makeOptionsTheSameAsJSON() {
 	function getE(e) { return document.getElementById(e) }
 
+	getE(VMAP.img).value = jsonData.img.preset
 	getE(VMAP.user).value = jsonData.user
+	getE(VMAP.text).value = jsonData.text
 	getE(VMAP.title).value = jsonData.title
 	getE(VMAP.silly).value = jsonData.silly
+	getE(VMAP.bgCol).value = jsonData.bg.color
 	getE(VMAP.issued).value = jsonData.issued
+	getE(VMAP.border).value = jsonData.border
 	getE(VMAP.expires).value = jsonData.expires
 	getE(VMAP.identity).value = jsonData.identity
 	getE(VMAP.signature).value = jsonData.signature
-	getE(VMAP.img).value = jsonData.img.preset
 }
 
 

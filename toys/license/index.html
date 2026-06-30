@@ -72,7 +72,7 @@
 
           <label for="signatureInput">Signature</label><input type="text" id="signatureInput" name="signatureInput" value="Byte Dice">
 
-          <label for="picInput">Picture</label><div style="display: inline-flex">
+          <label for="picInput">Picture</label><div style="display: inline-flex;">
 						<select id="picInput" name="picInput">
 							<option value="boykisser"    >Boykisser</option>
 							<option value="bi-kisser"    >Bi-kisser</option>
@@ -82,15 +82,26 @@
 							<option value="bytedice"     >Byte Dice</option>
 							<option value="custom" id="customPic">Custom (upload)</option>
           	</select>
-						<label for="picUpload" id="picUploadLabel"><img src="/assets/icons/upload.svg" id="picUploadIcon" draggable="false"></label>
+						<label for="picUpload" id="picUploadLabel"><img src="/assets/icons/upload.svg" id="bgUploadIcon" draggable="false"></label>
 						<input type="file" id="picUpload" name="picUpload" accept=".png,.jpg,.jpeg,.webp">
 					</div>
         </form><br>
 
-        <!--<h1>Colors</h1><br>
-        <form class="licenseForm">
-          <label for="soon1">Soon...</label><input type="text" name="soon1" value="Does nothing"><br>
-        </form><br>-->
+				<h1>Colors</h1><br>
+        <form class="licenseForm licenseFormContainer">
+					<label for="bgTypeInput" name="bgTypeInput">BG Type</label><div style="display: inline-flex;">
+						<select id="bgTypeInput", name="bgTypeInput">
+							<option value="color">Solid Color</option>
+							<option value="image" id="customBg">Image (upload)</option>
+						</select>
+						<label for="bgUpload" id="bgUploadLabel"><img src="/assets/icons/upload.svg" id="bgUploadIcon" draggable="false"></label>
+						<input type="file" id="bgUpload" name="bgUpload" accept=".png,.jpg,.jpeg,.webp">
+					</div>
+
+          <label for="bgColInput"    >Background</label><input type="color" id="bgColInput"     name="bgColInput"     value="#FFFFFF">
+					<label for="borderColInput">Borders</label   ><input type="color" id="borderColInput" name="borderColInput" value="#000000">
+					<label for="textColInput"  >Text</label      ><input type="color" id="textColInput"   name="textColInput"   value="#000000">
+				</form><br>
 
         <!--<h1>Advanced</h1><br>
         <form class="licenseForm">
