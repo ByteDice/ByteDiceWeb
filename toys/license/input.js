@@ -1,5 +1,5 @@
 let jsonData = {
-	version: 0,
+	version: 1,
 	title: "Boykisser License",
 	user: "Byte Dice",
 	issued: "2025-01-01",
@@ -96,22 +96,31 @@ async function importFromB64(b64) {
 		let str = atob(b64)
 		data = JSON.parse(str)
 		
-		let isValid
-		switch (data.version) {
-			case 0: isValid = validateJSON_v0(data); break
-		}
+		let isValid = validateJSON(data)
 		
 		if (isValid != true)
 			{ alert("Invalid data string imported (Invalid fields). Full results:\n" + isValid.join("\n")); return }
 	
-		// TODO: make this not replace if the key doesnt exist
-		jsonData = data
-		// make sure to add this since it isnt exported
-		jsonData.img = { preset: "boykisser", file: "" }
+		jsonData = deepOverride(jsonData, data)
+
 		await updLicense()
 		makeOptionsTheSameAsJSON()
 	}
 	catch (err) { alert("Invalid data string imported. Full results:\n" + err); return }
+}
+
+
+function deepOverride(target, source) {
+	for (const key in source) {
+		if (
+			typeof source[key] === "object" &&
+			source[key] !== null &&
+			!Array.isArray(source[key])
+		) { target[key] = deepOverride(target[key] ?? {}, source[key]) }
+		else { target[key] = source[key] }
+	}
+
+	return target;
 }
 
 
@@ -133,18 +142,22 @@ function makeOptionsTheSameAsJSON() {
 
 
 // I wanna keep compatibility with older versions
-function validateJSON_v0(obj) {
+function validateJSON(obj) {
 	let is_valid = (
 		typeof obj            === "object" &&
 		       obj            !== null     &&
-		typeof obj.version    === "number" &&
-		typeof obj.title      === "string" &&
+		typeof obj.bg         === "object" &&
 		typeof obj.user       === "string" &&
+		typeof obj.title      === "string" &&
+		typeof obj.silly      === "number" &&
 		typeof obj.issued     === "string" &&
 		typeof obj.expires    === "string" &&
+		typeof obj.version    === "number" &&
 		typeof obj.identity   === "string" &&
 		typeof obj.signature  === "string" &&
-		typeof obj.silly      === "number"
+		typeof obj.bg.color   === "string" &&
+		typeof obj.border     === "string" &&
+		typeof obj.text       === "string"
 	)
 
 	if (is_valid) { return true }
@@ -153,11 +166,15 @@ function validateJSON_v0(obj) {
 	if (typeof obj !== "object") { errs.push("json != object") }
 	if (obj === null) { errs.push("json == null") }
 
+	if (typeof obj.bg !== "object")          { errs.push("json.bg != object") }
 	if (typeof obj.user !== "string")        { errs.push("json.user != string") }
+	if (typeof obj.text !== "string")        { errs.push("json.text != string") }
 	if (typeof obj.title !== "string")       { errs.push("json.title != string") }
 	if (typeof obj.issued !== "string")      { errs.push("json.issued != string") }
+	if (typeof obj.border !== "string")      { errs.push("json.border != string") }
 	if (typeof obj.expires !== "string")     { errs.push("json.expires != string") }
 	if (typeof obj.identity !== "string")    { errs.push("json.identity != string") }
+	if (typeof obj.bg.color !== "string")    { errs.push("json.bg.color != string") }
 	if (typeof obj.signature !== "string")   { errs.push("json.signature != string") }
 
 	if (typeof obj.version !== "number") { errs.push("json.version != number") }
@@ -167,10 +184,10 @@ function validateJSON_v0(obj) {
 }
 
 
-
 function exportData() {
 	let strippedData = jsonData
-	delete strippedData.img
+	delete strippedData.img.file
+	delete strippedData.bg.file
 	let str = JSON.stringify(strippedData)
 	let b64 = btoa(str)
 	let watermarked = "B8D6:" + b64
