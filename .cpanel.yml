@@ -1,6 +1,0 @@
----
-deployment:
-	tasks:
-		# $DEPLOYPATH needs to be initialized
-		- source ~/.bash_profile
-		- /bin/cp -R * $DEPLOYPATH
