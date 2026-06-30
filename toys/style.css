@@ -1,47 +1,47 @@
 .toyContainer {
-  border: none;
-  display: inline-grid;
+	border: none;
+	display: inline-grid;
 	width: 25%;
 	min-width: 100%;
 	max-width: 512px;
-  grid-template-columns: 1fr;
-  grid-template-rows: calc(32px * var(--pxDensity)) 1fr;
-  color: inherit;
+	grid-template-columns: 1fr;
+	grid-template-rows: calc(32px * var(--pxDensity)) 1fr;
+	color: inherit;
 }
 .toyImg {
-  image-rendering: pixelated;
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
+	image-rendering: pixelated;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
 	object-fit: contain;
-  margin: auto auto;
+	margin: auto auto;
 }
 .toyTextContainer {
-  background-color: var(--navBar_SecondInner);
-  padding: calc(1px * var(--pxDensity));
-  border-top: calc(1px * var(--pxDensity)) solid var(--navBar_Border);
-  text-align: left;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  height: calc(16px * var(--pxDensity));
+	background-color: var(--navBar_SecondInner);
+	padding: calc(1px * var(--pxDensity));
+	border-top: calc(1px * var(--pxDensity)) solid var(--navBar_Border);
+	text-align: left;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	height: calc(16px * var(--pxDensity));
 	font-size: min(5vmin, 2vmax, 25px);
 }
 h1 {
-  font-size: max(1.2em, 2.5vmin);
-  margin: 0%;
-  margin-bottom: calc(1px * var(--pxDensity));
+	font-size: max(1.2em, 2.5vmin);
+	margin: 0%;
+	margin-bottom: calc(1px * var(--pxDensity));
 }
 .desc {
-  font-size: max(1em, 2vmin);
-  margin: 0%;
+	font-size: max(1em, 2vmin);
+	margin: 0%;
 }
 button:hover {
-  filter: brightness(1.15)  drop-shadow(0px calc(1px * var(--pxDensity)) rgba(0, 0, 0, 0.5));
-  cursor: pointer;
+	filter: brightness(1.15)  drop-shadow(0px calc(1px * var(--pxDensity)) rgba(0, 0, 0, 0.5));
+	cursor: pointer;
 }
 button:active {
-  filter: brightness(0.85);
-  transform: translateY(calc(1px * var(--pxDensity)));
+	filter: brightness(0.85);
+	transform: translateY(calc(1px * var(--pxDensity)));
 }
 .toyUl {
 	padding: calc(3px * var(--pxDensity));
@@ -53,9 +53,9 @@ button:active {
 	margin: 0 auto;
 }
 .toyLi {
-  margin: 0;
+	margin: 0;
 }
 ul {
-  margin: 0%;
-  padding: 0%;
+	margin: 0%;
+	padding: 0%;
 }

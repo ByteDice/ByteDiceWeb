@@ -1,24 +1,24 @@
 [
-  {
-    "icon": "youtube_8x8.png",
-    "action": "navigate",
-    "actionValue": "https://youtube.com/@ByteDice"
-  },
-  {
-    "icon": "github_8x8.png",
-    "action": "navigate",
-    "actionValue": "https://github.com/ByteDice"
-  },
-  {
-    "hidden": true,
-    "alt": {
-      "name": "byte",
-      "icon": "dice3_8x8.png",
-      "action": "navigate",
-      "actionValue": "/",
-      "disabled": false
-    }
-  },
+	{
+		"icon": "youtube_8x8.png",
+		"action": "navigate",
+		"actionValue": "https://youtube.com/@ByteDice"
+	},
+	{
+		"icon": "github_8x8.png",
+		"action": "navigate",
+		"actionValue": "https://github.com/ByteDice"
+	},
+	{
+		"hidden": true,
+		"alt": {
+			"name": "byte",
+			"icon": "dice3_8x8.png",
+			"action": "navigate",
+			"actionValue": "/",
+			"disabled": false
+		}
+	},
 	{
 		"hidden": true,
 		"alt": {
@@ -39,15 +39,15 @@
 			"disabled": false
 		}
 	},
-  {
-    "icon": "pauseAnimation_8x8.png",
-    "action": "function",
-    "actionValue": "pauseAnimBtn('auto')",
-    "iconId": "animationToggle",
-    "hidden": false,
-    "alt": {
-      "name": "noAnim",
-      "hidden": true
+	{
+		"icon": "pauseAnimation_8x8.png",
+		"action": "function",
+		"actionValue": "pauseAnimBtn('auto')",
+		"iconId": "animationToggle",
+		"hidden": false,
+		"alt": {
+			"name": "noAnim",
+			"hidden": true
 		}
-  }
+	}
 ]

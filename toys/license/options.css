@@ -1,259 +1,259 @@
 #optionsContainer {
-  display: block;
-  margin: calc(2px * var(--pxDensity)) auto 0% auto;
-  width: max-content;
-  padding: calc(2px * var(--pxDensity));
-  overflow-y: scroll;
-  max-width: min(600px, 100vw);
-  font-size: min(1.5rem, calc(4px * var(--pxDensity)));
+	display: block;
+	margin: calc(2px * var(--pxDensity)) auto 0% auto;
+	width: max-content;
+	padding: calc(2px * var(--pxDensity));
+	overflow-y: scroll;
+	max-width: min(600px, 100vw);
+	font-size: min(1.5rem, calc(4px * var(--pxDensity)));
 	box-sizing: border-box;
 }
 .optionsCredits {
-  margin: 0%;
-  max-width: calc(100% - (4px * var(--pxDensity)));
+	margin: 0%;
+	max-width: calc(100% - (4px * var(--pxDensity)));
 }
 .licenseFormContainer {
 	display: grid;
 	grid-template-columns: 40% 60%;
 }
 .licenseForm label {
-  background-color: var(--navBarBtn_Inner);
-  box-shadow: calc(1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
-              calc(-1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
-              0px calc(1px * var(--pxDensity)) var(--navBarBtn_Border),
-              0px calc(-1px * var(--pxDensity)) var(--navBarBtn_Border);
+	background-color: var(--navBarBtn_Inner);
+	box-shadow: calc(1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
+							calc(-1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
+							0px calc(1px * var(--pxDensity)) var(--navBarBtn_Border),
+							0px calc(-1px * var(--pxDensity)) var(--navBarBtn_Border);
 
-  padding: calc(1px * var(--pxDensity));
-  margin: calc(3px * var(--pxDensity)) calc(3px * var(--pxDensity)) 0% 0%;
-  box-sizing: border-box;
-  width: round(auto, var(--pxDensity));
-  height: calc(6px * var(--pxDensity));
+	padding: calc(1px * var(--pxDensity));
+	margin: calc(3px * var(--pxDensity)) calc(3px * var(--pxDensity)) 0% 0%;
+	box-sizing: border-box;
+	width: round(auto, var(--pxDensity));
+	height: calc(6px * var(--pxDensity));
 	font-weight: 800;
 }
 .licenseForm input[type="text"] {
-  font-family: "Roboto", sans-serif;
-  background-color: var(--navBarBtn_Inner);
-  box-shadow: calc(1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
-              calc(-1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
-              0px calc(1px * var(--pxDensity)) var(--navBarBtn_Border),
-              0px calc(-1px * var(--pxDensity)) var(--navBarBtn_Border);
+	font-family: "Roboto", sans-serif;
+	background-color: var(--navBarBtn_Inner);
+	box-shadow: calc(1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
+							calc(-1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
+							0px calc(1px * var(--pxDensity)) var(--navBarBtn_Border),
+							0px calc(-1px * var(--pxDensity)) var(--navBarBtn_Border);
 
-  padding: calc(1px * var(--pxDensity));
-  border: none;
-  font-size: inherit;
-  margin: calc(3px * var(--pxDensity)) calc(2px * var(--pxDensity)) 0% 0%;
-  box-sizing: border-box;
-  width: round(auto, var(--pxDensity));
-  height: calc(6px * var(--pxDensity));
-  color: inherit;
-  display: inline-block;
+	padding: calc(1px * var(--pxDensity));
+	border: none;
+	font-size: inherit;
+	margin: calc(3px * var(--pxDensity)) calc(2px * var(--pxDensity)) 0% 0%;
+	box-sizing: border-box;
+	width: round(auto, var(--pxDensity));
+	height: calc(6px * var(--pxDensity));
+	color: inherit;
+	display: inline-block;
 }
 .licenseForm input[type="text"]:hover {
-  filter: brightness(1.35);
-  cursor: pointer;
+	filter: brightness(1.35);
+	cursor: pointer;
 }
 .slider {
-  -webkit-appearance: none;
-  appearance: none;
-  background-color: var(--navBarBtn_Border);
-  box-shadow: none;
-  filter: none;
-  border: none;
-  font-size: inherit;
-  box-sizing: border-box;
-  width: 100%;
-  height: calc(1px * var(--pxDensity));
-  margin: 0%;
-  outline: none;
-  padding: 0%;
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: var(--navBarBtn_Border);
+	box-shadow: none;
+	filter: none;
+	border: none;
+	font-size: inherit;
+	box-sizing: border-box;
+	width: 100%;
+	height: calc(1px * var(--pxDensity));
+	margin: 0%;
+	outline: none;
+	padding: 0%;
 }
 .slider:hover {
-  filter: brightness(1.35);
-  cursor: pointer;
+	filter: brightness(1.35);
+	cursor: pointer;
 }
 .slider::-moz-range-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  background-color: var(--navBar_Inner);
-  border: none;
-  cursor: pointer;
-  border-radius: 0%;
-  width: calc(3px * var(--pxDensity));
-  height: calc(3px * var(--pxDensity));
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: var(--navBar_Inner);
+	border: none;
+	cursor: pointer;
+	border-radius: 0%;
+	width: calc(3px * var(--pxDensity));
+	height: calc(3px * var(--pxDensity));
 }
 .slider::-webkit-slider-thumb {
 	-webkit-appearance: none;
-  appearance: none;
-  background-color: var(--navBar_Inner);
-  border: none;
-  cursor: pointer;
-  border-radius: 0%;
-  width: calc(3px * var(--pxDensity));
-  height: calc(3px * var(--pxDensity));
+	appearance: none;
+	background-color: var(--navBar_Inner);
+	border: none;
+	cursor: pointer;
+	border-radius: 0%;
+	width: calc(3px * var(--pxDensity));
+	height: calc(3px * var(--pxDensity));
 }
 .sliderDiv {
-  background-color: var(--navBarBtn_Inner);
-  box-shadow: calc(1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
-              calc(-1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
-              0px calc(1px * var(--pxDensity)) var(--navBarBtn_Border),
-              0px calc(-1px * var(--pxDensity)) var(--navBarBtn_Border);
+	background-color: var(--navBarBtn_Inner);
+	box-shadow: calc(1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
+							calc(-1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
+							0px calc(1px * var(--pxDensity)) var(--navBarBtn_Border),
+							0px calc(-1px * var(--pxDensity)) var(--navBarBtn_Border);
 
-  padding: calc(1px * var(--pxDensity));
-  border: none;
-  font-size: inherit;
-  margin: calc(3px * var(--pxDensity)) calc(2px * var(--pxDensity)) 0% 0%;
-  box-sizing: border-box;
+	padding: calc(1px * var(--pxDensity));
+	border: none;
+	font-size: inherit;
+	margin: calc(3px * var(--pxDensity)) calc(2px * var(--pxDensity)) 0% 0%;
+	box-sizing: border-box;
 	width: 100%;
-  height: calc(6px * var(--pxDensity));
-  color: inherit;
-  align-items: center;
-  display: flex;
+	height: calc(6px * var(--pxDensity));
+	color: inherit;
+	align-items: center;
+	display: flex;
 }
 #sillyNumberValue {
-  display: inline;
-  background-color: var(--navBarBtn_Inner);
-  box-shadow: calc(1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
-              calc(-1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
-              0px calc(1px * var(--pxDensity)) var(--navBarBtn_Border),
-              0px calc(-1px * var(--pxDensity)) var(--navBarBtn_Border);
+	display: inline;
+	background-color: var(--navBarBtn_Inner);
+	box-shadow: calc(1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
+							calc(-1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
+							0px calc(1px * var(--pxDensity)) var(--navBarBtn_Border),
+							0px calc(-1px * var(--pxDensity)) var(--navBarBtn_Border);
 
-  padding: calc(1px * var(--pxDensity));
-  border: none;
-  font-size: inherit;
-  margin: calc(3px * var(--pxDensity)) calc(3px * var(--pxDensity)) 0% 0%;
-  box-sizing: border-box;
-  width: round(auto, var(--pxDensity));
-  height: calc(6px * var(--pxDensity));;
-  aspect-ratio: 1 / 1;
+	padding: calc(1px * var(--pxDensity));
+	border: none;
+	font-size: inherit;
+	margin: calc(3px * var(--pxDensity)) calc(3px * var(--pxDensity)) 0% 0%;
+	box-sizing: border-box;
+	width: round(auto, var(--pxDensity));
+	height: calc(6px * var(--pxDensity));;
+	aspect-ratio: 1 / 1;
 }
 h1 {
-  background-color: var(--navBarBtn_Inner);
-  box-shadow: calc(1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
-              calc(-1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
-              0px calc(1px * var(--pxDensity)) var(--navBarBtn_Border),
-              0px calc(-1px * var(--pxDensity)) var(--navBarBtn_Border);
+	background-color: var(--navBarBtn_Inner);
+	box-shadow: calc(1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
+							calc(-1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
+							0px calc(1px * var(--pxDensity)) var(--navBarBtn_Border),
+							0px calc(-1px * var(--pxDensity)) var(--navBarBtn_Border);
 
-  padding: calc(1px * var(--pxDensity));
-  border: none;
-  margin: calc(6px * var(--pxDensity)) calc(2px * var(--pxDensity)) 0% 0%;
-  box-sizing: border-box;
-  width: round(auto, var(--pxDensity));
-  height: round(auto, var(--pxDensity));
-  color: inherit;
-  font-size: inherit;
-  display: inline-block;
+	padding: calc(1px * var(--pxDensity));
+	border: none;
+	margin: calc(6px * var(--pxDensity)) calc(2px * var(--pxDensity)) 0% 0%;
+	box-sizing: border-box;
+	width: round(auto, var(--pxDensity));
+	height: round(auto, var(--pxDensity));
+	color: inherit;
+	font-size: inherit;
+	display: inline-block;
 }
 .h1Top {
-  margin-top: 0%;
+	margin-top: 0%;
 }
 select {
-  background-color: var(--navBarBtn_Inner);
-  box-shadow: calc(1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
-              calc(-1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
-              0px calc(1px * var(--pxDensity)) var(--navBarBtn_Border),
-              0px calc(-1px * var(--pxDensity)) var(--navBarBtn_Border);
+	background-color: var(--navBarBtn_Inner);
+	box-shadow: calc(1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
+							calc(-1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
+							0px calc(1px * var(--pxDensity)) var(--navBarBtn_Border),
+							0px calc(-1px * var(--pxDensity)) var(--navBarBtn_Border);
 
-  padding: calc(1px * var(--pxDensity));
-  border: none;
-  font-size: inherit;
-  margin: calc(3px * var(--pxDensity)) calc(2px * var(--pxDensity)) 0% 0%;
-  box-sizing: border-box;
-  width: 100%;
-  height: round(auto, var(--pxDensity));
-  color: inherit;
-  display: inline-block;
+	padding: calc(1px * var(--pxDensity));
+	border: none;
+	font-size: inherit;
+	margin: calc(3px * var(--pxDensity)) calc(2px * var(--pxDensity)) 0% 0%;
+	box-sizing: border-box;
+	width: 100%;
+	height: round(auto, var(--pxDensity));
+	color: inherit;
+	display: inline-block;
 }
 select:hover {
-  filter: brightness(1.35);
-  cursor: pointer;
+	filter: brightness(1.35);
+	cursor: pointer;
 }
 input[type=file] {
-  /* height: max-content;
-  aspect-ratio: 1 / 1;
-  width: auto;
-  overflow: hidden; */
-  display: none;
+	/* height: max-content;
+	aspect-ratio: 1 / 1;
+	width: auto;
+	overflow: hidden; */
+	display: none;
 }
 #picInput, #bgTypeInput {
 	height: calc(6px * var(--pxDensity));
-  margin-right: calc(3px * var(--pxDensity));
+	margin-right: calc(3px * var(--pxDensity));
 }
 #picUploadLabel, #bgUploadLabel {
-  height: calc(6px * var(--pxDensity));
-  aspect-ratio: 1 / 1;
-  width: auto;
-  background-image: url(/assets/icons/upload.svg);
-  display: inline-flex;
+	height: calc(6px * var(--pxDensity));
+	aspect-ratio: 1 / 1;
+	width: auto;
+	background-image: url(/assets/icons/upload.svg);
+	display: inline-flex;
 	margin-right: calc(2px * var(--pxDensity));
 }
 #picUploadLabel:hover, #bgUploadLabel:hover {
-  filter: brightness(1.35);
-  cursor: pointer;
+	filter: brightness(1.35);
+	cursor: pointer;
 }
 #picUploadLabel:active, #bgUploadLabel:active {
-  filter: brightness(0.75);
-  transform: translateY(calc(1px * var(--pxDensity)));
+	filter: brightness(0.75);
+	transform: translateY(calc(1px * var(--pxDensity)));
 }
 #picUploadIcon, #bgUploadIcon {
-  height: calc(4px * var(--pxDensity));
-  aspect-ratio: 1 / 1;
-  width: auto;
-  display: inline-block;
-  vertical-align: middle;
+	height: calc(4px * var(--pxDensity));
+	aspect-ratio: 1 / 1;
+	width: auto;
+	display: inline-block;
+	vertical-align: middle;
 }
 form {
-  display: inline-block;
+	display: inline-block;
 }
 .generateButton {
-  background-color: var(--navBarBtn_Inner);
-  box-shadow: calc(1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
-              calc(-1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
-              0px calc(1px * var(--pxDensity)) var(--navBarBtn_Border),
-              0px calc(-1px * var(--pxDensity)) var(--navBarBtn_Border);
+	background-color: var(--navBarBtn_Inner);
+	box-shadow: calc(1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
+							calc(-1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
+							0px calc(1px * var(--pxDensity)) var(--navBarBtn_Border),
+							0px calc(-1px * var(--pxDensity)) var(--navBarBtn_Border);
 
-  /* padding: calc(1px * var(--pxDensity)); */
-  border: none;
-  margin: calc(6px * var(--pxDensity)) calc(2px * var(--pxDensity)) 0% 0%;
-  box-sizing: border-box;
-  width: calc(100% - (4px * var(--pxDensity)));
-  height: calc(6px * var(--pxDensity));
-  display: inline-flex;
-  justify-content: center;
+	/* padding: calc(1px * var(--pxDensity)); */
+	border: none;
+	margin: calc(6px * var(--pxDensity)) calc(2px * var(--pxDensity)) 0% 0%;
+	box-sizing: border-box;
+	width: calc(100% - (4px * var(--pxDensity)));
+	height: calc(6px * var(--pxDensity));
+	display: inline-flex;
+	justify-content: center;
 	align-items: center;
 	font-size: min(5vmin, 2vmax, 30px);
 	color: #ffffff
 }
 .generateButtonIcon {
-  height: calc(4px * var(--pxDensity));
-  aspect-ratio: 1 / 1;
-  width: auto;
-  display: inline-block;
-  margin: auto 0%;
+	height: calc(4px * var(--pxDensity));
+	aspect-ratio: 1 / 1;
+	width: auto;
+	display: inline-block;
+	margin: auto 0%;
 }
 input[type="color"] {
-  background-color: var(--navBarBtn_Inner);
-  box-shadow: calc(1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
-              calc(-1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
-              0px calc(1px * var(--pxDensity)) var(--navBarBtn_Border),
-              0px calc(-1px * var(--pxDensity)) var(--navBarBtn_Border);
+	background-color: var(--navBarBtn_Inner);
+	box-shadow: calc(1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
+							calc(-1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
+							0px calc(1px * var(--pxDensity)) var(--navBarBtn_Border),
+							0px calc(-1px * var(--pxDensity)) var(--navBarBtn_Border);
 
-  padding: 0;
-  border: none;
-  font-size: inherit;
-  margin: calc(3px * var(--pxDensity)) calc(2px * var(--pxDensity)) 0% 0%;
-  box-sizing: border-box;
-  width: round(auto, var(--pxDensity));
-  height: calc(6px * var(--pxDensity));
-  color: inherit;
-  display: inline-block;
+	padding: 0;
+	border: none;
+	font-size: inherit;
+	margin: calc(3px * var(--pxDensity)) calc(2px * var(--pxDensity)) 0% 0%;
+	box-sizing: border-box;
+	width: round(auto, var(--pxDensity));
+	height: calc(6px * var(--pxDensity));
+	color: inherit;
+	display: inline-block;
 }
 input[type="color"]::-moz-color-swatch {
 	border: none;
 }
 input[type="color"]::-webkit-color-swatch-wrapper {
-  padding: 0;
-  border-radius: 0;
+	padding: 0;
+	border-radius: 0;
 }
 input[type="color"]::-webkit-color-swatch {
-  border: none;
+	border: none;
 }

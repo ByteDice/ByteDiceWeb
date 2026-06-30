@@ -95,12 +95,12 @@ async function importFromB64(b64) {
 	try {
 		let str = atob(b64)
 		data = JSON.parse(str)
-		
+
 		let isValid = validateJSON(data)
-		
+
 		if (isValid != true)
 			{ alert("Invalid data string imported (Invalid fields). Full results:\n" + isValid.join("\n")); return }
-	
+
 		jsonData = deepOverride(jsonData, data)
 
 		await updLicense()
@@ -145,7 +145,7 @@ function makeOptionsTheSameAsJSON() {
 function validateJSON(obj) {
 	let is_valid = (
 		typeof obj            === "object" &&
-		       obj            !== null     &&
+					 obj            !== null     &&
 		typeof obj.bg         === "object" &&
 		typeof obj.user       === "string" &&
 		typeof obj.title      === "string" &&
@@ -198,21 +198,21 @@ function exportData() {
 
 
 function generateLicense() {
-  const element = document.getElementById("licenseContainer")
+	const element = document.getElementById("licenseContainer")
 	let dupe = element.cloneNode(true)
-  dupe.style.transform = "initial"
+	dupe.style.transform = "initial"
 	dupe.style.left = "300vw"
 	dupe.style.position = "absolute"
 	dupe.style.margin = "initial"
 
 	document.body.appendChild(dupe)
 
-  html2canvas(dupe).then(canvas => {
-    const link = document.createElement("a");
-    link.download = "boykisserLicense.png";
-    link.href = canvas.toDataURL("image/png");
-    link.click();
-  });
+	html2canvas(dupe).then(canvas => {
+		const link = document.createElement("a");
+		link.download = "boykisserLicense.png";
+		link.href = canvas.toDataURL("image/png");
+		link.click();
+	});
 
 	console.log(dupe.getBoundingClientRect())
 

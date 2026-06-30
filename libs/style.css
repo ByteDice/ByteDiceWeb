@@ -1,54 +1,54 @@
 .libContainer {
-  border: none;
-  display: grid;
+	border: none;
+	display: grid;
 	width: 100%;
 	max-height: calc(39px * var(--pxDensity));
-  grid-template-columns: calc(24px * var(--pxDensity)) 1fr;
-  grid-template-rows: 1fr auto;
-  color: inherit;
+	grid-template-columns: calc(24px * var(--pxDensity)) 1fr;
+	grid-template-rows: 1fr auto;
+	color: inherit;
 }
 .libImg {
-  image-rendering: pixelated;
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
+	image-rendering: pixelated;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
 	object-fit: contain;
-  margin: auto auto;
+	margin: auto auto;
 }
 .libSrcContainer {
 	background-color: var(--navBar_SecondInner);
-  padding: calc(1px * var(--pxDensity));
-  border-top: calc(1px * var(--pxDensity)) solid var(--navBar_Border);
-  text-align: left;
-  overflow-x: hidden;
+	padding: calc(1px * var(--pxDensity));
+	border-top: calc(1px * var(--pxDensity)) solid var(--navBar_Border);
+	text-align: left;
+	overflow-x: hidden;
 	grid-column: 1 / -1;
 	grid-row: 2;
 }
 .libTextContainer {
-  background-color: var(--navBar_SecondInner);
-  padding: calc(1px * var(--pxDensity));
-  border-left: calc(1px * var(--pxDensity)) solid var(--navBar_Border);
-  text-align: left;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  height: calc(100% - (2px * var(--pxDensity)));
+	background-color: var(--navBar_SecondInner);
+	padding: calc(1px * var(--pxDensity));
+	border-left: calc(1px * var(--pxDensity)) solid var(--navBar_Border);
+	text-align: left;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	height: calc(100% - (2px * var(--pxDensity)));
 }
 h1 {
-  font-size: max(1.2em, 2.5vmin);
-  margin: 0%;
-  margin-bottom: calc(1px * var(--pxDensity));
+	font-size: max(1.2em, 2.5vmin);
+	margin: 0%;
+	margin-bottom: calc(1px * var(--pxDensity));
 }
 .desc {
-  font-size: max(1em, 2vmin);
-  margin: 0%;
+	font-size: max(1em, 2vmin);
+	margin: 0%;
 }
 button:hover {
-  filter: brightness(1.15)  drop-shadow(0px calc(1px * var(--pxDensity)) rgba(0, 0, 0, 0.5));
-  cursor: pointer;
+	filter: brightness(1.15)  drop-shadow(0px calc(1px * var(--pxDensity)) rgba(0, 0, 0, 0.5));
+	cursor: pointer;
 }
 button:active {
-  filter: brightness(0.85);
-  transform: translateY(calc(1px * var(--pxDensity)));
+	filter: brightness(0.85);
+	transform: translateY(calc(1px * var(--pxDensity)));
 }
 .libUl {
 	padding: calc(3px * var(--pxDensity));
@@ -60,9 +60,9 @@ button:active {
 	.libUl { grid-template-columns: 1fr !important; }
 }
 .libLi {
-  margin: 0;
+	margin: 0;
 }
 ul {
-  margin: 0%;
-  padding: 0%;
+	margin: 0%;
+	padding: 0%;
 }

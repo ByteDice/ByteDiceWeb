@@ -8,15 +8,15 @@ let densityWidth = document.documentElement.clientWidth / pxWidth
 let densityHeight = document.documentElement.clientHeight / pxHeight
 
 function calcPixelDensity() {
-  densityWidth = document.documentElement.clientWidth / pxWidth
-  densityHeight = document.documentElement.clientHeight / pxHeight
+	densityWidth = document.documentElement.clientWidth / pxWidth
+	densityHeight = document.documentElement.clientHeight / pxHeight
 
-  let widest = Math.max(densityWidth, densityHeight)
+	let widest = Math.max(densityWidth, densityHeight)
 
-  document.documentElement.style.setProperty("--pxDensity", widest)
-  document.documentElement.style.setProperty("--pxDensityPx", `${widest}px`)
+	document.documentElement.style.setProperty("--pxDensity", widest)
+	document.documentElement.style.setProperty("--pxDensityPx", `${widest}px`)
 
-  pxDensity = widest
+	pxDensity = widest
 
-  pxDensityDefined = true
+	pxDensityDefined = true
 }

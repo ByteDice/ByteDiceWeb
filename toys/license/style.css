@@ -1,24 +1,24 @@
 .allContainer {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 	gap: calc(4px * var(--pxDensity));
-  height: calc(100vh - calc(25px * var(--pxDensity)));
+	height: calc(100vh - calc(25px * var(--pxDensity)));
 }
 .blackBorderRect {
-  background-color: #FFFFFF;
-  border: 10px #000000 solid;
-  border-radius: 32px;
-  color: #000000;
+	background-color: #FFFFFF;
+	border: 10px #000000 solid;
+	border-radius: 32px;
+	color: #000000;
 }
 a {
-  cursor: pointer;
-  color: #2222FF;
-  text-decoration: underline;
-  font-weight: normal;
+	cursor: pointer;
+	color: #2222FF;
+	text-decoration: underline;
+	font-weight: normal;
 }
 a:visited {
-  color: #551A8B;
+	color: #551A8B;
 }
 .mainDiv {
-  text-align: center;
+	text-align: center;
 }

@@ -1,57 +1,57 @@
 li {
-  list-style-type: none;
-  display: inline-flex;
-  margin: calc(1px * var(--pxDensity));
-  margin-bottom: calc(2px * var(--pxDensity));
+	list-style-type: none;
+	display: inline-flex;
+	margin: calc(1px * var(--pxDensity));
+	margin-bottom: calc(2px * var(--pxDensity));
 }
 
 .navBar {
-  display: inline;
-  position: absolute;
-  top: round(calc(100% - calc(5px * var(--pxDensity))), var(--pxDensityPx));
-  left: round(50%, var(--pxDensityPx));
-  transform: translate(-50%, -100%);
-  font-size: 0px;
-  width: max-content;
+	display: inline;
+	position: absolute;
+	top: round(calc(100% - calc(5px * var(--pxDensity))), var(--pxDensityPx));
+	left: round(50%, var(--pxDensityPx));
+	transform: translate(-50%, -100%);
+	font-size: 0px;
+	width: max-content;
 }
 .navBtn {
-  background-color: transparent;
-  display: inline-flex;
-  padding: 0%;
-  border: none;
-  filter: drop-shadow(0px calc(1px * var(--pxDensity)) rgba(0, 0, 0, 0.5));
+	background-color: transparent;
+	display: inline-flex;
+	padding: 0%;
+	border: none;
+	filter: drop-shadow(0px calc(1px * var(--pxDensity)) rgba(0, 0, 0, 0.5));
 }
 button:hover {
-  filter: brightness(1.35) drop-shadow(0px calc(1px * var(--pxDensity)) rgba(0, 0, 0, 0.5));
-  cursor: pointer;
+	filter: brightness(1.35) drop-shadow(0px calc(1px * var(--pxDensity)) rgba(0, 0, 0, 0.5));
+	cursor: pointer;
 }
 button:active {
-  filter: brightness(0.75);
-  transform: translateY(calc(1px * var(--pxDensity)));
+	filter: brightness(0.75);
+	transform: translateY(calc(1px * var(--pxDensity)));
 }
 .button:disabled, button[disabled] {
-  filter: brightness(0.75) drop-shadow(0px calc(1px * var(--pxDensity)) rgba(0, 0, 0, 0.5));
-  cursor: not-allowed;
+	filter: brightness(0.75) drop-shadow(0px calc(1px * var(--pxDensity)) rgba(0, 0, 0, 0.5));
+	cursor: not-allowed;
 }
 .button:disabled:hover, button[disabled]:hover {
-  filter: brightness(0.75) drop-shadow(0px calc(1px * var(--pxDensity)) rgba(0, 0, 0, 0.5));
-  cursor: not-allowed;
+	filter: brightness(0.75) drop-shadow(0px calc(1px * var(--pxDensity)) rgba(0, 0, 0, 0.5));
+	cursor: not-allowed;
 }
 .button:disabled:active, button[disabled]:active {
-  filter: brightness(0.75) drop-shadow(0px calc(1px * var(--pxDensity)) rgba(0, 0, 0, 0.5));
-  cursor: not-allowed;
-  transform: none;
+	filter: brightness(0.75) drop-shadow(0px calc(1px * var(--pxDensity)) rgba(0, 0, 0, 0.5));
+	cursor: not-allowed;
+	transform: none;
 }
 .navBtnImg {
-  width: calc(12px * var(--pxDensity));
-  height: calc(12px * var(--pxDensity));
-  image-rendering: pixelated;
-  margin: 0%;
+	width: calc(12px * var(--pxDensity));
+	height: calc(12px * var(--pxDensity));
+	image-rendering: pixelated;
+	margin: 0%;
 }
 .navBtnIcon {
-  width: calc(8px * var(--pxDensity));
-  height: calc(8px * var(--pxDensity));
-  image-rendering: pixelated;
-  position: absolute;
-  margin: calc(2px * var(--pxDensity));
+	width: calc(8px * var(--pxDensity));
+	height: calc(8px * var(--pxDensity));
+	image-rendering: pixelated;
+	position: absolute;
+	margin: calc(2px * var(--pxDensity));
 }

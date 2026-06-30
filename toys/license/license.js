@@ -31,7 +31,7 @@ class License {
 		this.setImgValue(json.img)
 
 		if (json.bg.type == "image")
-		     { this.baseE.style.backgroundImage = `url("${json.bg.file}")` }
+				 { this.baseE.style.backgroundImage = `url("${json.bg.file}")` }
 		else { this.baseE.style.backgroundImage = "" }
 
 		document.documentElement.style.setProperty("--licenseBgCol",     json.bg.color)
@@ -77,7 +77,7 @@ let license = new License()
 
 
 function prependZero(number) {
-  return number < 10 ? "0" + number : number
+	return number < 10 ? "0" + number : number
 }
 
 

@@ -1,112 +1,112 @@
 :root {
-  --navBar_Inner: #43608D;
-  --navBar_Border: #2F3E56;
-  --navBar_SecondInner: #344b6c;
-  --navBarBtn_Inner: #474747;
-  --navBarBtn_Border: #232323;
-  --brightBlue: #569cd6;
-  --pxDensity: 1;
-  --pxDensityPx: 1px;
-  --bottomPxMargin: 1px;
+	--navBar_Inner: #43608D;
+	--navBar_Border: #2F3E56;
+	--navBar_SecondInner: #344b6c;
+	--navBarBtn_Inner: #474747;
+	--navBarBtn_Border: #232323;
+	--brightBlue: #569cd6;
+	--pxDensity: 1;
+	--pxDensityPx: 1px;
+	--bottomPxMargin: 1px;
 }
 html {
-  font-family: "Roboto", sans-serif;
-  font-size: 1.3rem;
-  color: #ffffff;
-  background-color: #323232;
-  overflow: hidden;
-  width: 100vw;
-  height: calc(var(--vh, 1vh) * 100);
+	font-family: "Roboto", sans-serif;
+	font-size: 1.3rem;
+	color: #ffffff;
+	background-color: #323232;
+	overflow: hidden;
+	width: 100vw;
+	height: calc(var(--vh, 1vh) * 100);
 }
 body {
-  height: calc(var(--vh, 1vh) * 100);
-  background-color: #323232;
-  color: #ffffff;
-  overflow: hidden;
-  margin: 0%;
-  width: 100vw;
+	height: calc(var(--vh, 1vh) * 100);
+	background-color: #323232;
+	color: #ffffff;
+	overflow: hidden;
+	margin: 0%;
+	width: 100vw;
 }
 canvas {
-  position: absolute;
+	position: absolute;
 }
 .pxFont {
-  font-family: "Roboto", sans-serif;
-  font-size: min(5vmin, 2vmax, 1rem)
+	font-family: "Roboto", sans-serif;
+	font-size: min(5vmin, 2vmax, 1rem)
 }
 @keyframes slide-left {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-100%); }
+	0% { transform: translateX(0%); }
+	100% { transform: translateX(-100%); }
 }
 .borderedRect {
-  background-color: var(--navBar_Inner);
-  box-shadow: calc(1px * var(--pxDensity)) 0px var(--navBar_Border),
-              calc(-1px * var(--pxDensity)) 0px var(--navBar_Border),
-              0px calc(1px * var(--pxDensity)) var(--navBar_Border),
-              0px calc(-1px * var(--pxDensity)) var(--navBar_Border);
+	background-color: var(--navBar_Inner);
+	box-shadow: calc(1px * var(--pxDensity)) 0px var(--navBar_Border),
+							calc(-1px * var(--pxDensity)) 0px var(--navBar_Border),
+							0px calc(1px * var(--pxDensity)) var(--navBar_Border),
+							0px calc(-1px * var(--pxDensity)) var(--navBar_Border);
 
-  filter: drop-shadow(0px calc(2px * var(--pxDensity)) rgba(0, 0, 0, 0.5));
-  padding: 0%;
+	filter: drop-shadow(0px calc(2px * var(--pxDensity)) rgba(0, 0, 0, 0.5));
+	padding: 0%;
 }
 .invisible {
-  background-color: transparent;
-  border: none;
-  color: inherit;
+	background-color: transparent;
+	border: none;
+	color: inherit;
 }
 .encased {
-  display: inline-block;
-  background-color: var(--navBarBtn_Inner);
-  box-shadow: calc(1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
-              calc(-1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
-              0px calc(1px * var(--pxDensity)) var(--navBarBtn_Border),
-              0px calc(-1px * var(--pxDensity)) var(--navBarBtn_Border);
+	display: inline-block;
+	background-color: var(--navBarBtn_Inner);
+	box-shadow: calc(1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
+							calc(-1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
+							0px calc(1px * var(--pxDensity)) var(--navBarBtn_Border),
+							0px calc(-1px * var(--pxDensity)) var(--navBarBtn_Border);
 
-  padding: calc(1px * var(--pxDensity));
-  margin: calc(3px * var(--pxDensity)) calc(3px * var(--pxDensity)) 0% 0%;
-  width: round(auto, var(--pxDensity));
-  /*height: calc(6px * var(--pxDensity));*/
+	padding: calc(1px * var(--pxDensity));
+	margin: calc(3px * var(--pxDensity)) calc(3px * var(--pxDensity)) 0% 0%;
+	width: round(auto, var(--pxDensity));
+	/*height: calc(6px * var(--pxDensity));*/
 }
 .switch {
-  position: relative;
-  display: inline-block;
-  width: calc(8px * var(--pxDensity));
-  height: calc(4px * var(--pxDensity));
+	position: relative;
+	display: inline-block;
+	width: calc(8px * var(--pxDensity));
+	height: calc(4px * var(--pxDensity));
 }
 .switch input {
-  display: none;
+	display: none;
 }
 .switchDecor {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: var(--navBarBtn_Border);
-  transition: 0.2s steps(2, end);
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: var(--navBarBtn_Border);
+	transition: 0.2s steps(2, end);
 }
 .switchDecor:before {
-  position: absolute;
-  content: "";
-  height: calc(2px * var(--pxDensity));
-  width: calc(2px * var(--pxDensity));
-  left: calc(1px * var(--pxDensity));
-  bottom: calc(1px * var(--pxDensity));
-  background-color: var(--navBarBtn_Inner);
-  transition: 0.2s steps(2, end);
+	position: absolute;
+	content: "";
+	height: calc(2px * var(--pxDensity));
+	width: calc(2px * var(--pxDensity));
+	left: calc(1px * var(--pxDensity));
+	bottom: calc(1px * var(--pxDensity));
+	background-color: var(--navBarBtn_Inner);
+	transition: 0.2s steps(2, end);
 }
 .switch input:checked + .switchDecor {
-  background-color: var(--brightBlue);
+	background-color: var(--brightBlue);
 }
 .switch input:checked + .switchDecor:before {
-  transform: translateX(calc(4px * var(--pxDensity)));
+	transform: translateX(calc(4px * var(--pxDensity)));
 }
 #starNoise {
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  width: calc(512px * var(--pxDensity));
-  height: auto;
-  aspect-ratio: 1 / 1;
-  image-rendering: pixelated;
-  transform: translate(-50%, -50%);
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	width: calc(512px * var(--pxDensity));
+	height: auto;
+	aspect-ratio: 1 / 1;
+	image-rendering: pixelated;
+	transform: translate(-50%, -50%);
 }
