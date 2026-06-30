@@ -172,7 +172,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 	let engine = getEngine()
 	if (!["gecko", "blink"].includes(engine))
-		{ alert("Your web browser is not supported, expect major issues.\nRendering engine:" + engine) }
+		{ alert("Your web browser is not supported, expect major issues.\nRendering engine: " + engine) }
 
 	setLoadingProgress("Fetching tips...")
 
