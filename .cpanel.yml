@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/qoxpt/public_html/
+    - /usr/bin/rsync -av --delete ./ $DEPLOYPATH/
