@@ -139,7 +139,7 @@ function setVh() {
 }
 
 
-function getEngine() {
+/*function getEngine() {
 	if ("MozAppearance" in document.documentElement.style)
 		{ return "gecko" }
 
@@ -153,7 +153,7 @@ function getEngine() {
 		{ return "webkit" }
 
 	return "unknown";
-}
+}*/
 
 
 document.addEventListener("DOMContentLoaded", async function () {
@@ -162,9 +162,9 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 	startLoadingScreen()
 
-	let engine = getEngine()
+	/*let engine = getEngine()
 	if (!["gecko", "blink"].includes(engine))
-		{ alert("Your web browser is not supported, expect major issues.\nRendering engine: " + engine) }
+		{ alert("Your web browser is not supported, expect major issues.\nRendering engine: " + engine) }*/
 
 	setLoadingProgress("Fetching tips...")
 
