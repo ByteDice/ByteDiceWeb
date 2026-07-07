@@ -1,14 +1,20 @@
 # ByteDiceWeb - [ByteDice.net](https://bytedice.net)
 > A small website served as a place to find content related to Byte Dice.
 
-The website is actively tested on and compatible with the following browsers:
-* Firefox (PC & Mobile) - [Gecko]
-* Chrome (PC & Mobile) - [Chromium]
-* Microsoft Edge (PC) - [Chromium]
-* GNOME Web (PC) - [Webkit]
+# Compatibility
 
-And is known to be incompatible with:
-* Safari (PC & Mobile) - [Webkit]
+| Browser   | Render Engine | PC | Mobile |
+| --------- | ------------- | -- | ------ |
+| Firefox   | Gecko         | ✅️ | ✅️    |
+| Chrome    | Chromium      | ✅️ | ✅️    |
+| MS Edge   | Chromium      | ✅️ | ✅️    |
+| GNOME Web | Webkit        | ✅️ | 🟨     |
+| Safari    | Webkit        | ❌️ | ❌️    |
+
+> ✅️: Compatible & active testing \
+> 🟨: Untested (browsers not listed fall here) \
+> ❌️: Known to have issues
+
 
 # Open-source - Copyright
 
