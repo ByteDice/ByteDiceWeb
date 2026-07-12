@@ -6,13 +6,17 @@
 | Browser   | Render Engine | PC | Mobile |
 | --------- | ------------- | -- | ------ |
 | Firefox   | Gecko         | ✅️ | ✅️    |
+| Tor       | Gecko         | ☑️ | ☑️     |
 | Chrome    | Chromium      | ✅️ | ✅️    |
 | MS Edge   | Chromium      | ✅️ | ✅️    |
+| Opera     | Chromium      | ☑️ | ☑️     |
+| Brave     | Chromium      | ☑️ | ☑️     |
 | GNOME Web | Webkit        | ✅️ | 🟨     |
 | Safari    | Webkit        | ❌️ | ❌️    |
 
 > ✅️: Compatible & active testing \
-> 🟨: Untested (browsers not listed fall here) \
+> ☑️: Untested but likely works (most browsers fall here) \
+> 🟨: Untested \
 > ❌️: Known to have issues
 
 
