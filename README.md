@@ -11,12 +11,13 @@
 | MS Edge   | Chromium      | ✅️ | ✅️    |
 | Opera     | Chromium      | ☑️ | ☑️     |
 | Brave     | Chromium      | ☑️ | ☑️     |
+| Helium    | Chromium      | ✅️ | 🟨     |
 | GNOME Web | Webkit        | ✅️ | 🟨     |
 | Safari    | Webkit        | ❌️ | ❌️    |
 
 > ✅️: Compatible & active testing \
 > ☑️: Untested but likely works (most browsers fall here) \
-> 🟨: Untested \
+> 🟨: Untested / Doesn't exist \
 > ❌️: Known to have issues
 
 
