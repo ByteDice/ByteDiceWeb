@@ -16,7 +16,7 @@ loadingScreenEl.innerHTML = `
 		</p>
 		<div class="encased" style="height: inherit; display: flex;">
 			<label class="switch" style="margin: auto;">
-				<input type="checkbox" name="fakeLoadingToggle" onclick="setShowLoading(this.checked)" ${localStorage["fakeLoading"] != "true" ? "" : "checked"}>
+				<input type="checkbox" name="fakeLoadingToggle" onclick="setShowFakeLoading(this.checked)" ${localStorage["fakeLoading"] != "false" ? "checked" : ""}>
 				<span class="switchDecor"></span>
 			</label>
 		</div>
@@ -38,7 +38,7 @@ async function loadTips() {
 }
 
 
-const fakeLoading = localStorage["fakeLoading"] || "true"
+const fakeLoading = localStorage["fakeLoading"] != "false"
 let selectedTip = "undefined"
 
 
@@ -94,8 +94,8 @@ function removeLoadingScreen() {
 }
 
 
-function setShowLoading(state) {
-	localStorage["fakeLoading"] = state
+function setShowFakeLoading(state) {
+	localStorage["fakeLoading"] = state.toString()
 }
 
 

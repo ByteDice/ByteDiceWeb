@@ -203,8 +203,8 @@ document.addEventListener("DOMContentLoaded", async function () {
 		return
 	}
 
-	if (fakeLoading != "true") {
-		removeLoadingScreen(true)
+	if (!fakeLoading) {
+		removeLoadingScreen()
 	}
 	else {
 		setLoadingProgress("Cleaning up...")
