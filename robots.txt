@@ -8,6 +8,8 @@ User-agent: googlebot-mobile
 Allow: /
 User-agent: MSNBot
 Allow: /
+User-agent: DiscordBot
+Allow: /
 
 User-agent: Nutch
 Disallow: /
