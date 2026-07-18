@@ -1,0 +1,85 @@
+#trees {
+	position: absolute;
+	left: 0%;
+	top: 0%;
+	width: max-content;
+	height: max-content;
+	padding: calc(16px * var(--pxDensity)) calc(2px * var(--pxDensity));
+	overflow: visible;
+	display: flex;
+	flex-direction: column;
+	gap: calc(5px * var(--pxDensity));
+	user-select: none;
+}
+
+.tree {
+	display: inline-flex;
+	justify-content: center;
+	width: min-content;
+	height: min-content;
+	padding: calc(3px * var(--pxDensity));
+	background-color: rgba(0.1, 0.1, 0.1, 0.1);
+	user-select: none;
+}
+.item {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	overflow: visible;
+	margin-bottom: calc(3px * var(--pxDensity));
+	user-select: none;
+}
+.siblings {
+	display: flex;
+	justify-content: center;
+	gap: calc(3px * var(--pxDensity));
+	align-items: flex-end;
+	background-color: rgba(0.1, 0.1, 0.1, 0.1);
+	padding: calc(2px * var(--pxDensity));
+	margin-bottom: calc(3px * var(--pxDensity));
+	user-select: none;
+}
+
+.item p { /* from .encased */
+	display: inline-block;
+	background-color: var(--navBarBtn_Inner);
+	box-shadow: calc(1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
+							calc(-1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
+							0px calc(1px * var(--pxDensity)) var(--navBarBtn_Border),
+							0px calc(-1px * var(--pxDensity)) var(--navBarBtn_Border);
+
+	padding: calc(1px * var(--pxDensity));
+	width: round(auto, var(--pxDensity));
+	height: calc(3px * var(--pxDensity));
+	border: none;
+	color: #ffffff;
+	font-size: min(5vmin, 1.2vmax, 0.9rem);
+	min-width: calc(12px * var(--pxDensity));
+	text-align: center;
+	margin: 0;
+	user-select: none;
+}
+.item .blue {
+	background-color: var(--navBar_Inner);
+	box-shadow: calc(1px * var(--pxDensity)) 0px var(--navBar_Border),
+							calc(-1px * var(--pxDensity)) 0px var(--navBar_Border),
+							0px calc(1px * var(--pxDensity)) var(--navBar_Border),
+							0px calc(-1px * var(--pxDensity)) var(--navBar_Border);
+}
+
+
+#treeStaticContainer {
+	position: fixed;
+	top: 0%;
+	left: 0%;
+	width: 100vw;
+	height: 100vh;
+	display: inline-block;
+	cursor: grab;
+}
+
+#treeScaleContainer {
+	width: 100vw;
+	height: 100vh;
+}

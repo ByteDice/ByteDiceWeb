@@ -1,0 +1,84 @@
+.tomlInputContainer textarea {
+	font-family: "Roboto", sans-serif;
+	background-color: var(--navBarBtn_Inner);
+	box-shadow: calc(1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
+							calc(-1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
+							0px calc(1px * var(--pxDensity)) var(--navBarBtn_Border),
+							0px calc(-1px * var(--pxDensity)) var(--navBarBtn_Border);
+
+	padding: calc(1px * var(--pxDensity));
+	border: none;
+	font-size: min(5vmin, 1.2vmax, 0.9rem);
+	margin: calc(3px * var(--pxDensity)) 0% 0% 0%;
+	box-sizing: border-box;
+	width: calc(60px * var(--pxDensity));
+	/*height: calc(100px * var(--pxDensity));*/
+	height: 65vh;
+	color: inherit;
+	display: inline-block;
+	text-align: left;
+	resize: none
+}
+.tomlInputContainer textarea:hover {
+	filter: brightness(1.35);
+	cursor: pointer;
+}
+
+
+.tomlInputContainer label {
+	background-color: var(--navBarBtn_Inner);
+	box-shadow: calc(1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
+							calc(-1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
+							0px calc(1px * var(--pxDensity)) var(--navBarBtn_Border),
+							0px calc(-1px * var(--pxDensity)) var(--navBarBtn_Border);
+
+	padding: calc(1px * var(--pxDensity));
+	box-sizing: border-box;
+	width: round(auto, var(--pxDensity));
+	height: calc(6px * var(--pxDensity));
+	font-weight: 800;
+	text-align: center;
+}
+
+
+.tomlInputGrid {
+	display: grid;
+}
+
+
+.tomlInputContainer {
+	position: relative;
+	display: inline-flex;
+	margin: 0% auto 0% auto;
+	width: max-content;
+	max-height: 70vh;
+	padding: calc(2px * var(--pxDensity));
+	max-width: min(600px, 100vw, 100vw);
+	font-size: min(1.5rem, calc(4px * var(--pxDensity)));
+	box-sizing: border-box;
+}
+
+
+#generateButton {
+	width: 100%;
+	height: calc(6px * var(--pxDensity));
+}
+
+
+#collapseButton {
+	margin: 0% calc(3px * var(--pxDensity));
+	height: calc(6px * var(--pxDensity));
+	width: calc(6px * var(--pxDensity));
+	aspect-ratio: 1 / 1;
+}
+
+
+@keyframes collapse {
+	0% { transform: translateX(0%); }
+	100% { transform: translateX(calc(-63px * var(--pxDensity))); }
+}
+
+@keyframes un-collapse {
+	0% { transform: translateX(calc(-63px * var(--pxDensity))); }
+	100% { transform: translateX(0%); }
+}

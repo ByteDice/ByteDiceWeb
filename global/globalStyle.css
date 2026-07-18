@@ -64,6 +64,9 @@ canvas {
 	margin: calc(3px * var(--pxDensity)) calc(3px * var(--pxDensity)) 0% 0%;
 	width: round(auto, var(--pxDensity));
 	/*height: calc(6px * var(--pxDensity));*/
+	border: none;
+	color: #ffffff;
+	font-size: inherit;
 }
 .switch {
 	position: relative;
@@ -109,4 +112,41 @@ canvas {
 	aspect-ratio: 1 / 1;
 	image-rendering: pixelated;
 	transform: translate(-50%, -50%);
+}
+button {
+	display: inline-block;
+	background-color: var(--navBarBtn_Inner);
+	box-shadow: calc(1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
+							calc(-1px * var(--pxDensity)) 0px var(--navBarBtn_Border),
+							0px calc(1px * var(--pxDensity)) var(--navBarBtn_Border),
+							0px calc(-1px * var(--pxDensity)) var(--navBarBtn_Border);
+
+	padding: calc(1px * var(--pxDensity));
+	margin: calc(3px * var(--pxDensity)) calc(3px * var(--pxDensity)) 0% 0%;
+	width: round(auto, var(--pxDensity));
+	/*height: calc(6px * var(--pxDensity));*/
+	border: none;
+	color: #ffffff;
+	font-size: inherit;
+}
+button:hover {
+	filter: brightness(1.35) drop-shadow(0px calc(1px * var(--pxDensity)) rgba(0, 0, 0, 0.5));
+	cursor: pointer;
+}
+button:active {
+	filter: brightness(0.75);
+	transform: translateY(calc(1px * var(--pxDensity)));
+}
+button:disabled, button[disabled] {
+	filter: brightness(0.75) drop-shadow(0px calc(1px * var(--pxDensity)) rgba(0, 0, 0, 0.5));
+	cursor: not-allowed;
+}
+button:disabled:hover, button[disabled]:hover {
+	filter: brightness(0.75) drop-shadow(0px calc(1px * var(--pxDensity)) rgba(0, 0, 0, 0.5));
+	cursor: not-allowed;
+}
+button:disabled:active, button[disabled]:active {
+	filter: brightness(0.75) drop-shadow(0px calc(1px * var(--pxDensity)) rgba(0, 0, 0, 0.5));
+	cursor: not-allowed;
+	transform: none;
 }

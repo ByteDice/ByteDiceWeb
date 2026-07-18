@@ -5,7 +5,8 @@ const PAGES = {
 	TOYS: 2,
 	LICENSE: 3,
 	LOADING: 4,
-	LIBS: 5
+	LIBS: 5,
+	CRAFTING: 6
 }
 const CONSOLE_COLORS = {
 	red: "color: #FF0000;",
@@ -189,6 +190,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 		case (PAGES.LICENSE):   loadingScreenStars(); await loadingScreenLicense(); break
 		case (PAGES.TOYS):      loadingScreenStars(); break
 		case (PAGES.LIBS):      loadingScreenStars(); break
+		case (PAGES.CRAFTING):  loadingScreenCrafting(); break
 	}
 
 	if (navBarPresent) {
