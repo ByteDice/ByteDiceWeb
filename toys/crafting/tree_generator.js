@@ -76,8 +76,8 @@ function prettyTreeString(tree, indent=0) {
 
 
 function clearTrees() {
-	let children = trees.children
-	for (let c of children) { c.remove() }
+	while (trees.firstChild)
+		{ trees.firstChild.remove() }
 }
 
 
