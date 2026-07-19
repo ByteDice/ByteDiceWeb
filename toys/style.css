@@ -51,6 +51,8 @@ button:active {
 	flex-wrap: wrap;
 	gap: calc(6px * var(--pxDensity));
 	margin: 0 auto;
+	overflow-y: scroll;
+	max-height: 100vh;
 }
 .toyLi {
 	margin: 0;

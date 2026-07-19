@@ -13,7 +13,7 @@
 	box-sizing: border-box;
 	width: calc(60px * var(--pxDensity));
 	/*height: calc(100px * var(--pxDensity));*/
-	height: 65vh;
+	height: 45vh;
 	color: inherit;
 	display: inline-block;
 	text-align: left;

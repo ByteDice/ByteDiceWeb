@@ -19,12 +19,6 @@ let scale = 1
 let isCollapsed = false
 
 
-document.addEventListener("mousemove", function(event) {
-	mouseX = event.clientX;
-	mouseY = event.clientY;
-})
-
-
 function collapseInput() {
 	const COLLAPSE = "collapse 0.5s cubic-bezier(0, 0, 0, 1.46) forwards"
 	tomlInputContainer.style.animation = COLLAPSE
@@ -58,11 +52,6 @@ function drag_trees(mouse_offset) {
 
 	trees.style.transform = `translate(${dragX}px, ${dragY}px)`
 }
-function on_start_drag() {
-	dragOffsetX = mouseX - dragX * scale
-	dragOffsetY = mouseY - dragY * scale
-	isDragging = true
-}
 function dragLoop() {
 	if (isDragging) { drag_trees() }
 
@@ -70,12 +59,31 @@ function dragLoop() {
 }
 
 
-treeStatic.onmousedown = on_start_drag
-document.addEventListener("mouseup", function() { isDragging = false })
+treeStatic.addEventListener("pointerdown", function(event) {
+	mouseX = event.clientX
+	mouseY = event.clientY
+	dragOffsetX = mouseX - dragX * scale
+	dragOffsetY = mouseY - dragY * scale
+	isDragging = true
+
+	treeStatic.setPointerCapture(event.pointerId);
+	event.preventDefault()
+})
+
+document.addEventListener("pointerup", function()
+	{ isDragging = false })
+document.addEventListener("pointercancel", function()
+	{ isDragging = false })
+
 treeStatic.addEventListener("wheel", function(event) {
 	scale += (-event.deltaY / 500)
 	scale = Math.max(0.2, scale)
 	treeScale.style.transform = `scale(${scale})`
+})
+
+document.addEventListener("pointermove", function(event) {
+	mouseX = event.clientX;
+	mouseY = event.clientY;
 })
 
 document.addEventListener("DOMContentLoaded", dragLoop)
