@@ -98,7 +98,7 @@ function makeTreeHTML(tree, parentNode, blue = false) {
 
 	for (let i = 0; i < tree.length; i++) {
 		if (typeof(tree[i]) == "string") {
-			if (tree.length - 1 == i || tree[i + 1] == "string") { blue = true }
+			if (startItems.includes(tree[i])) { blue = true }
 			let n = makeItemNode(tree[i], blue)
 			parentNode.prepend(n)
 			previouslyAdded = n

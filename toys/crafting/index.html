@@ -40,8 +40,15 @@
 
 		<div class="tomlInputContainer" id="tomlInputContainer">
 			<div class="tomlInputGrid">
-				<label><a href="./docs">Tutorial / Docs</a></label>
-				<textarea id="tomlInput" name="tomlInput"></textarea>
+				<label><a onclick="slideTransition('https://github.com/ByteDice/ByteDiceWeb/blob/main/toys/crafting/DOCS.md', event)">Tutorial / Docs</a></label>
+				<textarea id="tomlInput" name="tomlInput" placeholder=
+"[io]
+inputs = []
+products = []
+
+[recipes]
+# ..."
+				></textarea>
 				<button id="generateButton">Generate Tree</button>
 			</div>
 			<button id="collapseButton">&lt;</button>

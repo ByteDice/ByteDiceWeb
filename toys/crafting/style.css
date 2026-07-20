@@ -82,3 +82,13 @@
 	0% { transform: translateX(calc(-63px * var(--pxDensity))); }
 	100% { transform: translateX(0%); }
 }
+
+a {
+	cursor: pointer;
+	color: #2222FF;
+	text-decoration: underline;
+	font-weight: normal;
+}
+a:visited {
+	color: #551A8B;
+}
