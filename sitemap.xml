@@ -23,12 +23,17 @@
 	<url>
 		<loc>https://www.bytedice.net/toys/loading</loc>
 		<priority>0.33</priority>
-		<lastmod>2025-11-14</lastmod>
+		<lastmod>2025-9-14</lastmod>
 	</url>
 	<url>
 		<loc>https://www.bytedice.net/toys/license</loc>
 		<priority>0.33</priority>
-		<lastmod>2025-11-14</lastmod>
+		<lastmod>2026-6-30</lastmod>
+	</url>
+	<url>
+		<loc>https://www.bytedice.net/toys/crafting</loc>
+		<priority>0.33</priority>
+		<lastmod>2027-7-20</lastmod>
 	</url>
 	<url>
 		<loc>https://www.bytedice.net/libs/test</loc>
